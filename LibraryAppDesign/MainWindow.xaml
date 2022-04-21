@@ -6,7 +6,21 @@
         xmlns:local="clr-namespace:LibraryAppDesign"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="BurlyWood" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+
+        <Button Grid.Row ="0" Name="button1" Click="Admin" Content="Админ" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"></Button>
+
+        <Button Grid.Row ="1" Name="button2" Click="Login" Content="Войти" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Grid.Row ="2" Name="button3" Click="Autorisation" Content="Зарегистрироваться" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+
+        <Button Grid.Row ="3" Name="button4" Click="LogOut" Content="Завершить" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+
     </Grid>
 </Window>
