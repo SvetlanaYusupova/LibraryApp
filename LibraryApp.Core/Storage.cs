@@ -20,6 +20,7 @@ namespace LibraryApp.Core
 
         public Storage()
         {
+            //hygfghjkhgfdrtyuijhbgvcfdrtyuijo
             Users = new List<User> { };
             Books = new List<BookInLibrary> { };
             Admins = new List<Admin> { };
