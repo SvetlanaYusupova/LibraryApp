@@ -25,7 +25,7 @@ namespace LibraryApp.Core
             {
                 //new BookInLibrary()
             };
-            //dct db;e
+            
             Admins = new List<Admin> { };
             /*ReadUsers();
             ReadAdmin();
