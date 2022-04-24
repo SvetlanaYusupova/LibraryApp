@@ -54,6 +54,7 @@ namespace LibraryAppDesign
             _storage.SaveUsers();
             _storage.SaveBooks();
             _storage.SaveAdmin();
+            _storage.SaveNotifications();
             Close();
         }
     }
