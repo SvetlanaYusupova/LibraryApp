@@ -40,7 +40,30 @@ namespace LibraryAppDesign
         private void Login(object sender, RoutedEventArgs e)
         {
             //для кнопки входа в пользователя и дальнейшие действия (в новом окне)
-
+            bool doing = true;
+            foreach (var user in users)
+            {
+                if (user.Login == textBoxName.Text)
+                {
+                    if (user.Password == textBoxPassword.Text)
+                    {
+                        MessageBox.Show("Авторизация пройдена.");
+                        Hide();
+                        new WindowUser().Show();
+                        Close();
+                        doing = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пароль неверный.");
+                        doing = false;
+                    }
+                }
+            }
+            if (doing)
+            {
+                MessageBox.Show("Такого пользователя нет.");
+            }
         }
 
         private void Autorisation(object sender, RoutedEventArgs e)
@@ -51,6 +74,7 @@ namespace LibraryAppDesign
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
+            //_storage.SaveUsers();
             Close();
         }
     }
