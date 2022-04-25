@@ -33,7 +33,7 @@
         <TextBox Name="textBoxLogin" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="20"></TextBox>
         <TextBox Name="textBoxPassword" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="20"></TextBox>
 
-        <Button Grid.Row ="5" Grid.ColumnSpan="2" Name="button3" Click="Autorisation" Content="Зарегистрироваться" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
-        <Button Grid.Row ="6" Grid.ColumnSpan="2" Name="button4" Click="LogOut" Content="Вернуться" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Grid.Row ="5" Grid.ColumnSpan="2" Name="button3" Click="Registration" Content="Зарегистрироваться" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Grid.Row ="6" Grid.ColumnSpan="2" Name="button4" Click="Return" Content="Вернуться" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
     </Grid>
 </Window>

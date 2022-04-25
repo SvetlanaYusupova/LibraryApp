@@ -20,9 +20,10 @@ namespace LibraryApp.Core
 
         public Storage()
         {
-            Users = new List<User> { };
+            //Users = new List<User> { };
             Books = new List<BookInLibrary> { };
             Admins = new List<Admin> { };
+            ReadUsers();
             /*ReadUsers();
             ReadAdmin();
             ReadBooks();*/

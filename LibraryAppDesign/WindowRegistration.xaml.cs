@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryApp.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,33 @@ namespace LibraryAppDesign
         public WindowRegistration()
         {
             InitializeComponent();
+        }
+
+        private void Return(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Registration(object sender, RoutedEventArgs e)
+        {
+            Storage storage = new Storage();
+            bool doing = true;
+            foreach (var user in storage.Users)
+            {
+                if (textBoxLogin.Text == user.Login)
+                {
+                    doing = false;
+                    MessageBox.Show("Такой логин есть. Повторите попытку.");
+                }
+            }
+            if (doing)
+            {
+                User userNew = new User(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxAge.Text), textBoxLogin.Text, textBoxPassword.Text, null, null, null, null);
+                storage.Users.Add(userNew);
+                MessageBox.Show("Регистрация пройдена.");
+                storage.SaveUsers();
+                Close();
+            }
         }
     }
 }

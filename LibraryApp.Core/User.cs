@@ -16,7 +16,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private int Age { get; set; }
         [JsonProperty]
-        private string Login { get; set; }
+        public string Login { get; private set; }
         [JsonProperty]
         private string Password { get; set; }
         [JsonProperty]

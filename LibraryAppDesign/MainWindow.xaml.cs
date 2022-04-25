@@ -51,9 +51,6 @@ namespace LibraryAppDesign
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            _storage.SaveUsers();
-            _storage.SaveBooks();
-            _storage.SaveAdmin();
             Close();
         }
     }
