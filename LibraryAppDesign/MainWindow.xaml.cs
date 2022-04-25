@@ -46,7 +46,7 @@ namespace LibraryAppDesign
         private void Autorisation(object sender, RoutedEventArgs e)
         {
             //для кнопки авторизации в пользователя
-
+            new WindowRegistration().Show();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
