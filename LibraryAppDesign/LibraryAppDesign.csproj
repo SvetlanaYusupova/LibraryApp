@@ -58,6 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WindowAdmin.xaml.cs">
+      <DependentUpon>WindowAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowPassword.xaml.cs">
+      <DependentUpon>WindowPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowRegistration.xaml.cs">
       <DependentUpon>WindowRegistration.xaml</DependentUpon>
     </Compile>
@@ -76,6 +82,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WindowAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
