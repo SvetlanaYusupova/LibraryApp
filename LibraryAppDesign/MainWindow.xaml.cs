@@ -35,19 +35,45 @@ namespace LibraryAppDesign
         private void Admin(object sender, RoutedEventArgs e)
         {
             //для кнопки входа в админа и дальнейшие действия (в новом окне)
-
+            new WindowPassword().Show();
+            Close();
         }
 
         private void Login(object sender, RoutedEventArgs e)
         {
             //для кнопки входа в пользователя и дальнейшие действия (в новом окне)
-
+            Storage storage = new Storage();
+            bool doing = true;
+            List<User> users = storage.Users;
+            foreach (var user in users)
+            {
+                if (user.Login == textBoxName.Text)
+                {
+                    if (user.Password == textBoxPassword.Text)
+                    {
+                        MessageBox.Show("Авторизация пройдена.");
+                        Hide();
+                        new WindowUser().Show();
+                        Close();
+                        doing = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пароль неверный.");
+                        doing = false;
+                    }
+                }
+            }
+            if (doing)
+            {
+                MessageBox.Show("Такого пользователя нет.");
+            }
         }
 
         private void Autorisation(object sender, RoutedEventArgs e)
         {
             //для кнопки авторизации в пользователя
-
+            new WindowRegistration().Show();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
