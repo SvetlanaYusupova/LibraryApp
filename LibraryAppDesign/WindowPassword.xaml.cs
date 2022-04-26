@@ -27,6 +27,7 @@ namespace LibraryAppDesign
 
         private void buttonReturn_Click(object sender, RoutedEventArgs e)
         {
+            new MainWindow().Show();
             Close();
         }
 
