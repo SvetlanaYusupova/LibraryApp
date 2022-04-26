@@ -30,6 +30,7 @@ namespace LibraryAppDesign
         List<User> users = _storage.Users;
         List<BookInLibrary> books = _storage.Books;
         List<Admin> admins = _storage.Admins;
+        List<Notification> notifications = _storage.Notifications;
 
         private void Admin(object sender, RoutedEventArgs e)
         {

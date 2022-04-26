@@ -13,14 +13,11 @@ namespace LibraryApp.Core
         private string Login { get; set; }
         [JsonProperty]
         private string Password { get; set; }
-        [JsonProperty]
-        private List<Notification> Messages { get; set; }
 
-        public Admin(string login, string password, List<Notification> messages)
+        public Admin(string login, string password)
         {
             Login = login;
             Password = password;
-            Messages = messages;
         }
 
 

@@ -24,11 +24,12 @@ namespace LibraryApp.Core
         {
             Users = new List<User> { };
             Books = new List<BookInLibrary> { };
-            Admins = new List<Admin> { new Admin("Admin", "qwerty", new List<Notification> { })};
+            Admins = new List<Admin> { new Admin("Admin", "qwerty")};
             Notifications = new List<Notification> { };
             /*ReadUsers();
             ReadAdmin();
-            ReadBooks();*/
+            ReadBooks();
+            ReadNotifications();*/
         }
 
 
@@ -99,8 +100,6 @@ namespace LibraryApp.Core
                 }
             }
         }
-
-
 
         public void SaveBooks()
         {

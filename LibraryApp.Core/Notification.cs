@@ -15,7 +15,7 @@ namespace LibraryApp.Core
         private string BookName { get; set; }
         
 
-        public Notification(string login, string bookName, string action)
+        public Notification(string login, string bookName)
         {
             Login = login;
             BookName = bookName;
