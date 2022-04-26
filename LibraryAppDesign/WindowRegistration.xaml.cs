@@ -44,11 +44,23 @@ namespace LibraryAppDesign
             }
             if (doing)
             {
-                User userNew = new User(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxAge.Text), textBoxLogin.Text, textBoxPassword.Text, null, null, null, null);
-                storage.Users.Add(userNew);
-                MessageBox.Show("Регистрация пройдена.");
-                storage.SaveUsers();
-                Close();
+                try
+                {
+                    if (int.Parse(textBoxAge.Text) <= 0)
+                    {
+                        MessageBox.Show("Некорректный возраст.");
+                        return;
+                    }
+                    User userNew = new User(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxAge.Text), textBoxLogin.Text, textBoxPassword.Text, null, null, null, null);
+                    storage.Users.Add(userNew);
+                    MessageBox.Show("Регистрация пройдена.");
+                    storage.SaveUsers();
+                    Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Некорректный возраст.");
+                }
             }
         }
     }
