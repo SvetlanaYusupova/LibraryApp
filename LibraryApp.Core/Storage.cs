@@ -22,7 +22,7 @@ namespace LibraryApp.Core
 
         public Storage()
         {
-            Users = new List<User> { };
+            /*Users = new List<User> { };
             Books = new List<BookInLibrary> 
             {
                 // книги жанра "Фантастика"
@@ -46,10 +46,46 @@ namespace LibraryApp.Core
                 new BookInLibrary("Мартин Иден", new List<string>() {"Джек Лондон"}, "16+", "«Мартин Иден» — самый известный роман Джека Лондона, впервые напечатанный в 1908-1909 гг. Во многом автобиографическая книга о человеке, который «сделал себя сам», выбравшись из самых низов, добился признания. Любовь к девушке из высшего общества побуждает героя заняться самообразованием. Он становится писателем, но все издательства отказывают ему в публикации. И как это часто бывает в жизни, пройдя сквозь лишения и унижения, получив отказ от любимой девушки, он наконец становится знаменитым. Но ни слава, ни деньги, ни успех, ни даже возвращение его возлюбленной не могут уберечь Мартина от разочарования в этой насквозь фальшивой жизни.", "Роман", 1, 1)
 
             };
-            Admins = new List<Admin> { };
-            //ReadUsers();
-            //ReadAdmin();
-            //ReadBooks();
+            Admins = new List<Admin> { new Admin("Admin", "qwerty") };
+            Notifications = new List<Notification> { };*/
+            ReadUsers();
+            ReadAdmin();
+            ReadBooks();
+            ReadNotifications();
+        }
+
+        public void SaveNotifications()
+        {
+            using (var sw = new StreamWriter(filePathNotifications))
+            {
+                using (var jsonWriter = new JsonTextWriter(sw))
+                {
+                    jsonWriter.Formatting = Formatting.Indented;
+
+                    var serializer = new JsonSerializer()
+                    {
+                        TypeNameHandling = TypeNameHandling.Auto
+                    };
+
+                    serializer.Serialize(jsonWriter, Notifications);
+                }
+            }
+        }
+
+        private void ReadNotifications()
+        {
+            using (var sr = new StreamReader(filePathNotifications))
+            {
+                using (var jsonReader = new JsonTextReader(sr))
+                {
+                    var serializer = new JsonSerializer()
+                    {
+                        TypeNameHandling = TypeNameHandling.Auto
+                    };
+
+                    Notifications = serializer.Deserialize<List<Notification>>(jsonReader);
+                }
+            }
         }
 
         public void SaveUsers()
