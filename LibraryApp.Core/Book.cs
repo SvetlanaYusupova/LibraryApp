@@ -12,7 +12,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private string BookName { get; set; }
         [JsonProperty]
-        private string Author { get; set; }
+        private List<string> Author { get; set; }
         [JsonProperty]
         private string AgeRating { get; set; }
         [JsonProperty]
@@ -20,7 +20,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private string Genre { get; set; }
 
-        public Book(string bookname, string author, string age, string description, string genre)
+        public Book(string bookname, List<string> author, string age, string description, string genre)
         {
             BookName = bookname;
             Author = author;
@@ -38,11 +38,11 @@ namespace LibraryApp.Core
         [JsonProperty]
         private int AvailableNumber { get; set; }
 
-        public BookInLibrary(int allnumber, int availblenumber, string bookname, string author, string age, string description, string genre)
+        public BookInLibrary(string bookname, List<string> author, string age, string description, string genre, int allnumber, int availablenumber)
         : base(bookname, author, age, description, genre)
         {
             AllNumber = allnumber;
-            AvailableNumber = availblenumber;
+            AvailableNumber = availablenumber;
         }
     }
 
@@ -54,7 +54,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private DateTime EndDate { get; set; }
 
-        public TakenBook(DateTime start, DateTime end, string bookname, string author, string age, string description, string genre)
+        public TakenBook(string bookname, List<string> author, string age, string description, string genre, DateTime start, DateTime end)
         : base(bookname, author, age, description, genre)
         {
             StartDate = start;
@@ -67,7 +67,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private DateTime EndDate { get; set; }
 
-        public OrderBook(DateTime end, string bookname, string author, string age, string description, string genre)
+        public OrderBook(string bookname, List<string> author, string age, string description, string genre, DateTime end)
         : base(bookname, author, age, description, genre)
         {
             EndDate = end;
