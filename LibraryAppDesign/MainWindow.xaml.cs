@@ -26,10 +26,9 @@ namespace LibraryAppDesign
             InitializeComponent();
         }
 
-        static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
-        List<BookInLibrary> books = _storage.Books;
-        List<Admin> admins = _storage.Admins;
+        //static Storage _storage = new Storage();
+        //List<BookInLibrary> books = _storage.Books;
+        //List<Admin> admins = _storage.Admins;
 
         private void Admin(object sender, RoutedEventArgs e)
         {
@@ -41,7 +40,9 @@ namespace LibraryAppDesign
         private void Login(object sender, RoutedEventArgs e)
         {
             //для кнопки входа в пользователя и дальнейшие действия (в новом окне)
+            Storage storage = new Storage();
             bool doing = true;
+            List<User> users = storage.Users;
             foreach (var user in users)
             {
                 if (user.Login == textBoxName.Text)
