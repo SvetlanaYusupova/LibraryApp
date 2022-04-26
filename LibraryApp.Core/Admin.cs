@@ -10,23 +10,14 @@ namespace LibraryApp.Core
     public class Admin
     {
         [JsonProperty]
-        private string Name { get; set; }
-        [JsonProperty]
-        private string Surname { get; set; }
-        [JsonProperty]
-        private int Age { get; set; }
-        [JsonProperty]
         private string Login { get; set; }
         [JsonProperty]
         private string Password { get; set; }
         [JsonProperty]
-        private List<List<string>> Messages { get; set; }
+        private List<Notification> Messages { get; set; }
 
-        public Admin(string name, string surname, int age, string login, string password, List<List<string>> messages)
+        public Admin(string login, string password, List<Notification> messages)
         {
-            Name = name;
-            Surname = surname;
-            Age = age;
             Login = login;
             Password = password;
             Messages = messages;

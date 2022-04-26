@@ -24,7 +24,7 @@ namespace LibraryApp.Core
         {
             Users = new List<User> { };
             Books = new List<BookInLibrary> { };
-            Admins = new List<Admin> { };
+            Admins = new List<Admin> { new Admin("Admin", "qwerty", new List<Notification> { })};
             Notifications = new List<Notification> { };
             /*ReadUsers();
             ReadAdmin();
