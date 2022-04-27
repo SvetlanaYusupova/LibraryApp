@@ -16,9 +16,9 @@ namespace LibraryApp.Core
         [JsonProperty]
         private int Age { get; set; }
         [JsonProperty]
-        public string Login { get; private set; }
+        private string Login { get; set; }
         [JsonProperty]
-        public string Password { get; private set; }
+        private string Password { get; set; }
         [JsonProperty]
         private List<TakenBook> UsersBook { get; set; }
         [JsonProperty]
@@ -42,5 +42,13 @@ namespace LibraryApp.Core
             // Messages = messages;
         }
 
+        public string GetLogin()
+        {
+            return Login;
+        }
+        public string GetPassword()
+        {
+            return Password;
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace LibraryAppDesign
             bool doing = true;
             foreach (var user in storage.Users)
             {
-                if (textBoxLogin.Text == user.Login)
+                if (textBoxLogin.Text == user.GetLogin())
                 {
                     doing = false;
                     MessageBox.Show("Такой логин есть. Повторите попытку.");
@@ -51,7 +51,7 @@ namespace LibraryAppDesign
                         MessageBox.Show("Некорректный возраст.");
                         return;
                     }
-                    User userNew = new User(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxAge.Text), textBoxLogin.Text, textBoxPassword.Text, null, null, null, null);
+                    User userNew = new User(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxAge.Text), textBoxLogin.Text, textBoxPassword.Text, new List<TakenBook>() { }, new List<OrderBook>() { }, new List<List<string>>() { }, new List<string>() { });
                     storage.Users.Add(userNew);
                     MessageBox.Show("Регистрация пройдена.");
                     storage.SaveUsers();

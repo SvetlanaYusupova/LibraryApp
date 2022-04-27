@@ -47,9 +47,9 @@ namespace LibraryAppDesign
             List<User> users = storage.Users;
             foreach (var user in users)
             {
-                if (user.Login == textBoxName.Text)
+                if (user.GetLogin() == textBoxName.Text)
                 {
-                    if (user.Password == textBoxPassword.Text)
+                    if (user.GetPassword() == textBoxPassword.Text)
                     {
                         MessageBox.Show("Авторизация пройдена.");
                         Hide();
