@@ -23,5 +23,36 @@ namespace LibraryAppDesign
         {
             InitializeComponent();
         }
+
+        private void Account(object sender, RoutedEventArgs e)
+        {
+            //для кнопки внесения изменений в данные пользователя
+        }
+
+        private void Notification(object sender, RoutedEventArgs e)
+        {
+            //для кнопки показа уведомлений пользователя
+        }
+
+        private void TakeNew(object sender, RoutedEventArgs e)
+        {
+            //для кнопки возможности поиска книг по жанрам и брони новой книги
+        }
+
+        private void LookPresent(object sender, RoutedEventArgs e)
+        {
+            //для кнопки возможности просмотра текущих книг на руках пользователя
+        }
+
+        private void LookPast(object sender, RoutedEventArgs e)
+        {
+            //для кнопки возможности просмотра прошлых книг пользователя
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            Close();
+        }
     }
 }
