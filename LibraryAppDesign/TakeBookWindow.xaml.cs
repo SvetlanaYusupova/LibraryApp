@@ -52,6 +52,14 @@ namespace LibraryAppDesign
         {
             //для кнопки показа уведомлений пользователя
         }
+        private void ChooseBook(object sender, RoutedEventArgs e)
+        {
+            //для кнопки выбора книги
+            Button ChooseBook = sender as Button;
+            new View1BookWindow(userlogin, ChooseBook.Tag.ToString()).Show();
+            //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
+            Close();
+        }
 
         private void Apply(object sender, RoutedEventArgs e)
         {
@@ -177,6 +185,14 @@ namespace LibraryAppDesign
             BookInLibrary book = AgeName.DataContext as BookInLibrary;
 
             AgeName.Text = book.GetAgeRating();
+        }
+        private void ButtonBook_Initialized(object sender, EventArgs e)
+        {
+            Button ChooseBook = sender as Button;
+
+            BookInLibrary book = ChooseBook.DataContext as BookInLibrary;
+
+            ChooseBook.Tag = book.GetName();
         }
 
         private void ChoseBooks()
