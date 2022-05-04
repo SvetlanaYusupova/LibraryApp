@@ -29,6 +29,12 @@ namespace LibraryApp.Core
             Genre = genre;
         }
 
+        public string GetGenre()
+        { return Genre; }
+
+        public string GetAgeRating()
+        { return AgeRating; }
+
     }
 
     public class BookInLibrary : Book

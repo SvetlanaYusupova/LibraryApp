@@ -31,10 +31,13 @@
         <TextBox Grid.Row ="1" Name="TitleName" Grid.Column="1" Margin="10"></TextBox>
         <TextBlock  Grid.Row ="2" Name="Author" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите автора книги</TextBlock>
         <TextBox Grid.Row ="2" Name="AuthorName" Grid.Column="1" Margin="10"></TextBox>
+		<TextBlock Grid.Row="3" Name="Genre" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Выберите жанр книги</TextBlock>
+		<ComboBox Grid.Row="3" Name="GenreName" Grid.Column="1" Margin="10" Initialized="NameGenre_Initialized" ></ComboBox>
+		<TextBlock Grid.Row="4" Name="Age" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Выберите возрастное ограничение книги</TextBlock>
+		<ComboBox Grid.Row="4" Name="AgeName" Grid.Column="1" Margin="10" Initialized="AgeName_Initialized"></ComboBox>
 
 
-
-        <Button Grid.Row ="4" Name="button9" Grid.Column="1" Click="Apply" Content="Применить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 5 75 5"></Button>
+        <Button Grid.Row ="6" Name="button9" Grid.Column="1" Click="Apply" Content="Применить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 5 75 5"></Button>
 
 
     </Grid>
