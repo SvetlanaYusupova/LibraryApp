@@ -19,11 +19,12 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class WindowUser : Window
     {
-        public WindowUser()
+        public WindowUser(string login)
         {
             InitializeComponent();
+            userlogin = login;
         }
-
+        string userlogin;
         private void Account(object sender, RoutedEventArgs e)
         {
             //для кнопки внесения изменений в данные пользователя
@@ -39,7 +40,7 @@ namespace LibraryAppDesign
             //для кнопки возможности поиска книг по жанрам и брони новой книги
 
             Hide();
-            new TakeBookWindow().Show();
+            new TakeBookWindow(userlogin, new List<string> { null, null, null, null }).Show();
             Close();
         }
 

@@ -20,9 +20,13 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class TakeBookWindow : Window
     {
-        public TakeBookWindow()
+        public TakeBookWindow(string login, List<string> filters)
         {
             InitializeComponent();
+            userlogin = login;
+            filters4Book = filters;
+            ChoseBooks();
+            BooksListBox.ItemsSource = filtersBooks;
         }
 
         static Storage _storage = new Storage();
@@ -33,6 +37,11 @@ namespace LibraryAppDesign
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
+        string userlogin;
+        List<string> filters4Book;
+        List<BookInLibrary> filtersBooks = new List<BookInLibrary> { };
+
+        
 
         private void Account(object sender, RoutedEventArgs e)
         {
@@ -47,11 +56,54 @@ namespace LibraryAppDesign
         private void Apply(object sender, RoutedEventArgs e)
         {
             //для кнопки применения фильтров
+            /*TextBox TitleName = sender as TextBox;
+            TextBox AuthorName = sender as TextBox;*/
+
+            /*ComboBox GenreName = sender as ComboBox;
+            ComboBox AgeName = sender as ComboBox;*/
+            //Close();
+            List<string> fil = new List<string> { };
+            if (TitleName.Text == null)
+            {
+                fil.Add(null);
+            }
+            else
+            {
+                fil.Add(TitleName.Text);
+            }
+            if (AuthorName.Text == null)
+            {
+                fil.Add(null);
+            }
+            else
+            {
+                fil.Add(AuthorName.Text);
+            }
+
+            if (GenreName.SelectedItem == null)
+            {
+                fil.Add(null);
+            }
+            else
+            {
+                fil.Add(GenreName.SelectedItem.ToString());
+            }
+            if (AgeName.SelectedItem == null)
+            {
+                fil.Add(null);
+            }
+            else
+            {
+                fil.Add(AgeName.SelectedItem.ToString());
+            }
+            new TakeBookWindow(userlogin, fil).Show();
+            //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
+            Close();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            new WindowUser().Show();
+            new WindowUser(userlogin).Show();
             Close();
         }
 
@@ -92,21 +144,53 @@ namespace LibraryAppDesign
             }
         }
 
+        private void NameBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock BookName = sender as TextBlock;
 
-        private void FillFilters()
+            BookInLibrary book = BookName.DataContext as BookInLibrary;
+
+            BookName.Text = book.GetName();
+        }
+
+        private void AuthorBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock AuthorName = sender as TextBlock;
+
+            BookInLibrary book = AuthorName.DataContext as BookInLibrary;
+            string authors = String.Join(", ", book.GetAuthor());
+
+            AuthorName.Text = authors;
+        }
+        private void GenreBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock GenreName = sender as TextBlock;
+
+            BookInLibrary book = GenreName.DataContext as BookInLibrary;
+
+            GenreName.Text = book.GetGenre();
+        }
+        private void AgeBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock AgeName = sender as TextBlock;
+
+            BookInLibrary book = AgeName.DataContext as BookInLibrary;
+
+            AgeName.Text = book.GetAgeRating();
+        }
+
+        private void ChoseBooks()
         {
             foreach (var item in books)
             {
-                if (!genres.Contains(item.GetGenre()))
+                if (new List<string> { null, "", item.GetName()}.Contains(filters4Book[0]) &&
+                    (item.GetAuthor().Contains(filters4Book[1]) || filters4Book[1] == null || filters4Book[1] =="") &&
+                    new List<string> { null, "",  item.GetGenre() }.Contains(filters4Book[2]) &&
+                    new List<string> { null, "", item.GetAgeRating() }.Contains(filters4Book[3]))
                 {
-                    genres.Add(item.GetGenre());
-                }
-
-                if (!ageRatings.Contains(item.GetAgeRating()))
-                {
-                    genres.Add(item.GetAgeRating());
+                    filtersBooks.Add(item);
                 }
             }
         }
-    }
+}
 }

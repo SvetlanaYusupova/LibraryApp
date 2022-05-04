@@ -13,6 +13,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -37,8 +38,31 @@
 		<ComboBox Grid.Row="4" Name="AgeName" Grid.Column="1" Margin="10" Initialized="AgeName_Initialized"></ComboBox>
 
 
-        <Button Grid.Row ="6" Name="button9" Grid.Column="1" Click="Apply" Content="Применить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 5 75 5"></Button>
+        <Button Grid.Row ="5" Name="button9" Grid.Column="1" Click="Apply" Content="Применить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 5 75 5"></Button>
 
+
+
+        <ListBox Name="BooksListBox" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Background="AliceBlue">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10 15 0 15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock Name="BookName"  Grid.Row="0" Grid.Column="0" Margin="10 5" FontSize="26" FontFamily="Monsterrat" Initialized="NameBook_Initialized"></TextBlock>
+                        <TextBlock Name="AuthorName"  Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="26" FontFamily="Monsterrat" Initialized="AuthorBook_Initialized"></TextBlock>
+                        <TextBlock Name="GenreName"  Grid.Row="2" Grid.Column="0" Margin="10 5" FontSize="26" FontFamily="Monsterrat" Initialized="GenreBook_Initialized"></TextBlock>
+                        <TextBlock Name="AgeName"  Grid.Row="3" Grid.Column="0" Margin="10 5" FontSize="26" FontFamily="Monsterrat" Initialized="AgeBook_Initialized"></TextBlock>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Window>

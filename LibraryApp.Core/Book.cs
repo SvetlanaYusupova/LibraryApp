@@ -35,6 +35,11 @@ namespace LibraryApp.Core
         public string GetAgeRating()
         { return AgeRating; }
 
+        public string GetName()
+        { return BookName; }
+        public List<string> GetAuthor()
+        { return Author; }
+
     }
 
     public class BookInLibrary : Book
