@@ -52,6 +52,14 @@ namespace LibraryAppDesign
         {
             //для кнопки показа уведомлений пользователя
         }
+
+        private void Return(object sender, RoutedEventArgs e)
+        {
+            //для кнопки сброса фильтров
+            new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
+            Close();
+        }
+
         private void ChooseBook(object sender, RoutedEventArgs e)
         {
             //для кнопки выбора книги
@@ -69,43 +77,23 @@ namespace LibraryAppDesign
 
             /*ComboBox GenreName = sender as ComboBox;
             ComboBox AgeName = sender as ComboBox;*/
-            //Close();
-            List<string> fil = new List<string> { };
-            if (TitleName.Text == null)
+            
+            List<string> fil = new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString()};
+            
+            AddFill(GenreName.SelectedItem);
+            AddFill(AgeName.SelectedItem);
+            void AddFill(object obj)
             {
-                fil.Add(null);
-            }
-            else
-            {
-                fil.Add(TitleName.Text);
-            }
-            if (AuthorName.Text == null)
-            {
-                fil.Add(null);
-            }
-            else
-            {
-                fil.Add(AuthorName.Text);
-            }
-
-            if (GenreName.SelectedItem == null)
-            {
-                fil.Add(null);
-            }
-            else
-            {
-                fil.Add(GenreName.SelectedItem.ToString());
-            }
-            if (AgeName.SelectedItem == null)
-            {
-                fil.Add(null);
-            }
-            else
-            {
-                fil.Add(AgeName.SelectedItem.ToString());
+                if (obj == null)
+                {
+                    fil.Add("");
+                }
+                else
+                {
+                    fil.Add(obj.ToString());
+                }
             }
             new TakeBookWindow(userlogin, fil).Show();
-            //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
             Close();
         }
 
@@ -208,5 +196,5 @@ namespace LibraryAppDesign
                 }
             }
         }
-}
+    }
 }
