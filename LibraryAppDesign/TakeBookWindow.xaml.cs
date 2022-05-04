@@ -23,5 +23,26 @@ namespace LibraryAppDesign
         {
             InitializeComponent();
         }
+
+        private void Account(object sender, RoutedEventArgs e)
+        {
+            //для кнопки внесения изменений в данные пользователя
+        }
+
+        private void Notification(object sender, RoutedEventArgs e)
+        {
+            //для кнопки показа уведомлений пользователя
+        }
+
+        private void Apply(object sender, RoutedEventArgs e)
+        {
+            //для кнопки применения фильтров
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            new WindowUser().Show();
+            Close();
+        }
     }
 }

@@ -37,6 +37,10 @@ namespace LibraryAppDesign
         private void TakeNew(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности поиска книг по жанрам и брони новой книги
+
+            Hide();
+            new TakeBookWindow().Show();
+            Close();
         }
 
         private void LookPresent(object sender, RoutedEventArgs e)
