@@ -55,6 +55,9 @@ namespace LibraryApp.Core
             AllNumber = allnumber;
             AvailableNumber = availablenumber;
         }
+
+        public int GetAvailableNumber()
+        { return AvailableNumber; }
     }
 
 
