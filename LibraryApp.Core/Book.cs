@@ -34,11 +34,21 @@ namespace LibraryApp.Core
 
         public string GetAgeRating()
         { return AgeRating; }
-
+        
+        public int GetIntBookAge()
+        {
+            var bookage = int.Parse(AgeRating.Substring(AgeRating.Length - 1));
+            return bookage;
+        }
         public string GetName()
         { return BookName; }
         public List<string> GetAuthor()
         { return Author; }
+
+        public string GetDescription()
+        {
+            return Description;
+        }
 
     }
 
@@ -56,8 +66,17 @@ namespace LibraryApp.Core
             AvailableNumber = availablenumber;
         }
 
+        public int GetAllNumber()
+        { return AllNumber; }
+
         public int GetAvailableNumber()
         { return AvailableNumber; }
+
+        public void Dicrease()
+        {
+            AvailableNumber--;
+        }
+
     }
 
 

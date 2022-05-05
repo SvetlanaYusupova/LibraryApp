@@ -26,7 +26,7 @@
 
 
         <Button Grid.Row ="4" Grid.Column="0" Name="button5" Click="GoOut" Content="Вернуться" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Button>
-        <Button Grid.Row ="4" Grid.Column="1" Name="button6" Click="BookBook" Content="Забронировать" Width="125" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"></Button>
+        <Button Grid.Row ="4" Grid.Column="1" Name="Book" Click="BookBook" Content="Забронировать" Width="125" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="260,0,0,6"></Button>
 
     </Grid>
 </Window>
