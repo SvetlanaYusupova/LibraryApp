@@ -35,7 +35,7 @@ namespace LibraryApp.Core
         public string GetAgeRating()
         { return AgeRating; }
         
-        public int GetIntBookAge()
+        public int GetIntBookAge() // целочисленное значение возрастного рейтинга книги для сравнения с возрастом пользователя
         {
             var bookage = int.Parse(AgeRating.Substring(0, AgeRating.Length - 1));
             return bookage;

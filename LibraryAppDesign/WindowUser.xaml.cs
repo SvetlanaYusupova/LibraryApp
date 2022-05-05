@@ -39,7 +39,7 @@ namespace LibraryAppDesign
         {
             //для кнопки возможности поиска книг по жанрам и брони новой книги
 
-            Hide();
+            //Hide();
             new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
             Close();
         }

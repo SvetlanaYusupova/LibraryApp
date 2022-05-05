@@ -20,17 +20,18 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class View1BookWindow : Window
     {
-        public View1BookWindow(string login, string tag)
+        public View1BookWindow(string login, string tag) // передаём логи пользователя и название книги
         {
             chosenbook = tag;
             userlogin = login;
 
-            currentuser = GetCurrentUser(userlogin);
-            currentbook = GetCurrentBook(chosenbook);
+            currentuser = GetCurrentUser(userlogin); // выбранная пользователем  книга
+            currentbook = GetCurrentBook(chosenbook); // пользователь
 
 
             InitializeComponent();
         }
+
         string chosenbook;
         string userlogin;
 
@@ -38,8 +39,8 @@ namespace LibraryAppDesign
         BookInLibrary currentbook;
 
         static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
-        List<BookInLibrary> books = _storage.Books;
+        //List<User> users = _storage.Users;
+        //List<BookInLibrary> books = _storage.Books;
         //List<Admin> admins = _storage.Admins;
         //List<Notification> notifications = _storage.Notifications;
 
@@ -60,43 +61,45 @@ namespace LibraryAppDesign
 
         private void GoOut(object sender, RoutedEventArgs e)
         {
+            _storage.SaveBooks();
+            _storage.SaveUsers();
             new TakeBookWindow(userlogin, new List<string> { null, null, null, null}).Show();
             Close();
         }
 
-        private void NameBook_Initialized(object sender, EventArgs e)
+        private void NameBook_Initialized(object sender, EventArgs e) // инициализация названия книги
         {
             TextBlock BookName = sender as TextBlock;
             BookName.Text = currentbook.GetName();
         }
 
-        private void AuthorName_Initialized(object sender, EventArgs e)
+        private void AuthorName_Initialized(object sender, EventArgs e) // инициализация автор(а/ов) книги
         {
             TextBlock AuthorName = sender as TextBlock;
             AuthorName.Text = String.Join(", ", currentbook.GetAuthor());
         }
 
-        private void GenreName_Initialized(object sender, EventArgs e)
+        private void GenreName_Initialized(object sender, EventArgs e) // инициализация жанра книги
         {
             TextBlock GenreName = sender as TextBlock;
             GenreName.Text = currentbook.GetGenre();
         }
 
-        private void AgeName_Initialized(object sender, EventArgs e)
+        private void AgeName_Initialized(object sender, EventArgs e) // инициализация названия книги
         {
             TextBlock AgeName = sender as TextBlock;
             AgeName.Text = currentbook.GetAgeRating();
         }
 
-        private void DescriptionName_Initialized(object sender, EventArgs e)
+        private void DescriptionName_Initialized(object sender, EventArgs e) // инициализация описания книги
         {
             TextBlock DescriptionName = sender as TextBlock;
             DescriptionName.Text = currentbook.GetDescription();
         }
 
-        BookInLibrary GetCurrentBook(string chosenbook)
+        BookInLibrary GetCurrentBook(string chosenbook) // функция для получения экземпляра книги, выбранной пользователем, по названию
         {
-            foreach (var book in books)
+            foreach (var book in _storage.Books)
             {
                 if (book.GetName() == chosenbook)
                 {
@@ -107,9 +110,9 @@ namespace LibraryAppDesign
             return default;
         }
 
-        User GetCurrentUser(string ulogin)
+        User GetCurrentUser(string ulogin) // функция для получения определённого пользователя
         {
-            foreach (var user in users)
+            foreach (var user in _storage.Users)
             {
                 if (user.GetLogin() == ulogin)
                 {
@@ -130,7 +133,7 @@ namespace LibraryAppDesign
 
             Check_Age();
 
-            void Check_Age()
+            void Check_Age() // функция для проверки соотношения возраста пользователя и возрастного рейтинга книги
             {
                 if (currentuser.GetAge() >= currentbook.GetIntBookAge())
                 {
@@ -144,7 +147,7 @@ namespace LibraryAppDesign
                 }
             }
 
-            void CheckUserBooks()
+            void CheckUserBooks() // функция для проверки наличия выбранной пользователем книги в списке забронированных пользователем книг и в списке книг, которые уже "на руках"
             {
                 bool check = true;
                 foreach (var book in currentuser.GetTakenBooks())
@@ -172,9 +175,18 @@ namespace LibraryAppDesign
                     }
                     if (check)
                     {
-                        currentuser.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
+                        //currentuser.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
 
-                        foreach (var book in books)
+                        foreach (var user in _storage.Users)
+                        {
+                            if (user == currentuser)
+                            {
+                                user.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
+                                break;
+                            }
+                        }
+
+                        foreach (var book in _storage.Books)
                         {
                             if (book == currentbook)
                             {
@@ -189,8 +201,6 @@ namespace LibraryAppDesign
                         MessageBox.Show("Книга забронирована! Вы можете получить её в течении 7 дней!");
                         new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
                         Close();
-
-                        
                     }
                     
                 }
