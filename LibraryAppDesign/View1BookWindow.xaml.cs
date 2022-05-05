@@ -26,9 +26,9 @@ namespace LibraryAppDesign
             chosenbook = tag;
             userlogin = login;
 
-            // выбранная пользователем  книга
+            // текущий пользователь
             currentuser = GetCurrentUser(userlogin);
-            // пользователь
+            // выбранная пользователем книга
             currentbook = GetCurrentBook(chosenbook); 
 
 
