@@ -20,13 +20,16 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class View1BookWindow : Window
     {
-        public View1BookWindow(string login, string tag) // передаём логи пользователя и название книги
+        // передаём логин пользователя и название книги
+        public View1BookWindow(string login, string tag) 
         {
             chosenbook = tag;
             userlogin = login;
 
-            currentuser = GetCurrentUser(userlogin); // выбранная пользователем  книга
-            currentbook = GetCurrentBook(chosenbook); // пользователь
+            // выбранная пользователем  книга
+            currentuser = GetCurrentUser(userlogin);
+            // пользователь
+            currentbook = GetCurrentBook(chosenbook); 
 
 
             InitializeComponent();
@@ -67,37 +70,43 @@ namespace LibraryAppDesign
             Close();
         }
 
-        private void NameBook_Initialized(object sender, EventArgs e) // инициализация названия книги
+        // инициализация названия книги
+        private void NameBook_Initialized(object sender, EventArgs e)
         {
             TextBlock BookName = sender as TextBlock;
             BookName.Text = currentbook.GetName();
         }
 
-        private void AuthorName_Initialized(object sender, EventArgs e) // инициализация автор(а/ов) книги
+        // инициализация автор(а/ов) книги
+        private void AuthorName_Initialized(object sender, EventArgs e) 
         {
             TextBlock AuthorName = sender as TextBlock;
             AuthorName.Text = String.Join(", ", currentbook.GetAuthor());
         }
 
-        private void GenreName_Initialized(object sender, EventArgs e) // инициализация жанра книги
+        // инициализация жанра книги
+        private void GenreName_Initialized(object sender, EventArgs e) 
         {
             TextBlock GenreName = sender as TextBlock;
             GenreName.Text = currentbook.GetGenre();
         }
 
-        private void AgeName_Initialized(object sender, EventArgs e) // инициализация названия книги
+        // инициализация названия книги
+        private void AgeName_Initialized(object sender, EventArgs e) 
         {
             TextBlock AgeName = sender as TextBlock;
             AgeName.Text = currentbook.GetAgeRating();
         }
 
-        private void DescriptionName_Initialized(object sender, EventArgs e) // инициализация описания книги
+        // инициализация описания книги
+        private void DescriptionName_Initialized(object sender, EventArgs e) 
         {
             TextBlock DescriptionName = sender as TextBlock;
             DescriptionName.Text = currentbook.GetDescription();
         }
 
-        BookInLibrary GetCurrentBook(string chosenbook) // функция для получения экземпляра книги, выбранной пользователем, по названию
+        // функция для получения экземпляра книги, выбранной пользователем, по названию
+        BookInLibrary GetCurrentBook(string chosenbook) 
         {
             foreach (var book in _storage.Books)
             {
@@ -110,7 +119,8 @@ namespace LibraryAppDesign
             return default;
         }
 
-        User GetCurrentUser(string ulogin) // функция для получения определённого пользователя
+        // функция для получения определённого пользователя
+        User GetCurrentUser(string ulogin) 
         {
             foreach (var user in _storage.Users)
             {
@@ -123,8 +133,8 @@ namespace LibraryAppDesign
             return default;
         }
 
-
-        private void BookBook(object sender, RoutedEventArgs e) //для бронирования данной книги
+        //для бронирования данной книги
+        private void BookBook(object sender, RoutedEventArgs e) 
         {
             Button Book = sender as Button;
 
@@ -133,7 +143,8 @@ namespace LibraryAppDesign
 
             Check_Age();
 
-            void Check_Age() // функция для проверки соотношения возраста пользователя и возрастного рейтинга книги
+            // функция для проверки соотношения возраста пользователя и возрастного рейтинга книги
+            void Check_Age() 
             {
                 if (currentuser.GetAge() >= currentbook.GetIntBookAge())
                 {
@@ -160,7 +171,9 @@ namespace LibraryAppDesign
                     Close();
                 }
             }
-            void CheckUserBooks() // функция для проверки наличия выбранной пользователем книги в списке забронированных пользователем книг и в списке книг, которые уже "на руках"
+
+            // функция для проверки наличия выбранной пользователем книги в списке забронированных пользователем книг и в списке книг, которые уже "на руках"
+            void CheckUserBooks() 
             {
                 bool check = true;
                 foreach (var book in currentuser.GetTakenBooks())
