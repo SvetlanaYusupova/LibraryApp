@@ -20,20 +20,32 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class WindowSettings : Window
     {
-        public WindowSettings()
+        public WindowSettings(string login)
         {
             InitializeComponent();
+            userlogin = login;
+            Storage storage = new Storage();
+            foreach (var us in storage.Users)
+            {
+                if (user.GetLogin() == userlogin)
+                {
+                    user = us;
+                }
+            }
         }
+        string userlogin;
+        User user;
 
         private void Return(object sender, RoutedEventArgs e)
         {
-            new WindowUser().Show();
+            new WindowUser(userlogin).Show();
             Close();
         }
 
         private void ChangeInfo(object sender, RoutedEventArgs e)
         {
             Storage storage = new Storage();
+            User userChoose;
             bool doing = true;
             foreach (var user in storage.Users)
             {
@@ -41,6 +53,49 @@ namespace LibraryAppDesign
                 {
                     doing = false;
                     MessageBox.Show("Такой логин есть. Повторите попытку.");
+                }
+            }
+            if (doing)
+            {
+                if (textBoxAge.Text != "")
+                {
+                    try
+                    {
+                        int newAge = int.Parse(textBoxAge.Text);
+                        if (newAge > 0)
+                        {
+                            user.SetAge(newAge);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Указан неверный возраст. Повторите попытку.");
+                            doing = false;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Указан неверный возраст. Повторите попытку.");
+                        doing = false;
+                    }
+                }
+            }
+            if (doing)
+            {
+                if (textBoxLogin.Text != "")
+                {
+                    user.SetLogin(textBoxLogin.Text);
+                }
+                if (textBoxPassword.Text != "")
+                {
+                    user.SetPassword(textBoxPassword.Text);
+                }
+                if (textBoxName.Text != "")
+                {
+                    user.SetName(textBoxName.Text);
+                }
+                if (textBoxSurname.Text != "")
+                {
+                    user.SetSurname(textBoxSurname.Text);
                 }
             }
         }

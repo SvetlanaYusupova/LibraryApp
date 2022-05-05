@@ -19,15 +19,17 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class WindowUser : Window
     {
-        public WindowUser()
+        public WindowUser(string login)
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            userlogin = login;
         }
+        string userlogin;
 
         private void Account(object sender, RoutedEventArgs e)
         {
             //для кнопки внесения изменений в данные пользователя
-            new WindowSettings().Show();
+            new WindowSettings(userlogin).Show();
             Close();
         }
 
