@@ -24,10 +24,18 @@ namespace LibraryAppDesign
         {
             chosenbook = tag;
             userlogin = login;
+
+            currentuser = GetCurrentUser(userlogin);
+            currentbook = GetCurrentBook(chosenbook);
+
+
             InitializeComponent();
         }
         string chosenbook;
         string userlogin;
+
+        User currentuser;
+        BookInLibrary currentbook;
 
         static Storage _storage = new Storage();
         List<User> users = _storage.Users;
@@ -56,12 +64,69 @@ namespace LibraryAppDesign
             Close();
         }
 
+        private void NameBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock BookName = sender as TextBlock;
+            BookName.Text = currentbook.GetName();
+        }
+
+        private void AuthorName_Initialized(object sender, EventArgs e)
+        {
+            TextBlock AuthorName = sender as TextBlock;
+            AuthorName.Text = String.Join(", ", currentbook.GetAuthor());
+        }
+
+        private void GenreName_Initialized(object sender, EventArgs e)
+        {
+            TextBlock GenreName = sender as TextBlock;
+            GenreName.Text = currentbook.GetGenre();
+        }
+
+        private void AgeName_Initialized(object sender, EventArgs e)
+        {
+            TextBlock AgeName = sender as TextBlock;
+            AgeName.Text = currentbook.GetAgeRating();
+        }
+
+        private void DescriptionName_Initialized(object sender, EventArgs e)
+        {
+            TextBlock DescriptionName = sender as TextBlock;
+            DescriptionName.Text = currentbook.GetDescription();
+        }
+
+        BookInLibrary GetCurrentBook(string chosenbook)
+        {
+            foreach (var book in books)
+            {
+                if (book.GetName() == chosenbook)
+                {
+                    return book;
+                }
+            }
+
+            return default;
+        }
+
+        User GetCurrentUser(string ulogin)
+        {
+            foreach (var user in users)
+            {
+                if (user.GetLogin() == ulogin)
+                {
+                    return user;
+                }
+            }
+
+            return default;
+        }
+
+
         private void BookBook(object sender, RoutedEventArgs e) //для бронирования данной книги
         {
             Button Book = sender as Button;
 
-            User currentuser = GetCurrentUser(userlogin);
-            BookInLibrary currentbook = GetCurrentBook(chosenbook);
+            currentuser = GetCurrentUser(userlogin);
+            currentbook = GetCurrentBook(chosenbook);
 
             Check_Age();
 
@@ -74,69 +139,60 @@ namespace LibraryAppDesign
                 else
                 {
                     MessageBox.Show("Контент не доступен!");
-                    new TakeBookWindow(userlogin, new List<string> { "", "", "", "" });
+                    new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
+                    Close();
                 }
-            }
-
-            BookInLibrary GetCurrentBook(string chosenbook)
-            {
-                foreach (var book in books)
-                {
-                    if (book.GetName() == chosenbook)
-                    {
-                        return book;
-                    }
-                }
-
-                return default;
-            }
-
-            User GetCurrentUser(string ulogin)
-            {
-                foreach (var user in users)
-                {
-                    if (user.GetLogin() == ulogin)
-                    {
-                        currentuser = user;
-                    }
-                }
-
-                return default;
             }
 
             void CheckUserBooks()
             {
+                bool check = true;
                 foreach (var book in currentuser.GetTakenBooks())
-                {
-                    if(book.GetName() == chosenbook)
-                    {
-                        MessageBox.Show("Данная книга сейчас у вас на руках!");
-                        new TakeBookWindow(userlogin, new List<string> { "", "", "", "" });
-                        Close();
-                    }
-                }
-
-                foreach (var book in currentuser.GetOrderedBooks())
                 {
                     if (book.GetName() == chosenbook)
                     {
-                        MessageBox.Show("Данная книга сейчас забронирована вами!");
-                        new TakeBookWindow(userlogin, new List<string> { "", "", "", "" });
+                        MessageBox.Show("Данная книга сейчас у вас на руках!");
+                        new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
                         Close();
+                        check = false;
                     }
                 }
 
-                MessageBox.Show("Книга забронирована! Вы можете получить её в течении 7 дней!");
-
-                currentuser.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
-
-                foreach (var book in books)
+                if (check)
                 {
-                    if (book == currentbook)
+                    foreach (var book in currentuser.GetOrderedBooks())
                     {
-                        book.Dicrease();
-                        break;
+                        if (book.GetName() == chosenbook)
+                        {
+                            MessageBox.Show("Данная книга сейчас забронирована вами!");
+                            new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
+                            Close();
+                            check = false;
+                        }
                     }
+                    if (check)
+                    {
+                        currentuser.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
+
+                        foreach (var book in books)
+                        {
+                            if (book == currentbook)
+                            {
+                                book.Dicrease();
+                                break;
+                            }
+                        }
+
+                        _storage.SaveBooks();
+                        _storage.SaveUsers();
+
+                        MessageBox.Show("Книга забронирована! Вы можете получить её в течении 7 дней!");
+                        new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
+                        Close();
+
+                        
+                    }
+                    
                 }
             }
         }

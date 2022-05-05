@@ -37,7 +37,7 @@ namespace LibraryApp.Core
         
         public int GetIntBookAge()
         {
-            var bookage = int.Parse(AgeRating.Substring(AgeRating.Length - 1));
+            var bookage = int.Parse(AgeRating.Substring(0, AgeRating.Length - 1));
             return bookage;
         }
         public string GetName()
