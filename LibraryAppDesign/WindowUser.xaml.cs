@@ -27,6 +27,8 @@ namespace LibraryAppDesign
         private void Account(object sender, RoutedEventArgs e)
         {
             //для кнопки внесения изменений в данные пользователя
+            new WindowSettings().Show();
+            Close();
         }
 
         private void Notification(object sender, RoutedEventArgs e)

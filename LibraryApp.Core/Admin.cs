@@ -20,6 +20,14 @@ namespace LibraryApp.Core
             Password = password;
         }
 
+        public string GetLogin()
+        {
+            return Login;
+        }
 
+        public string GetPassword()
+        {
+            return Password;
+        }
     }
 }
