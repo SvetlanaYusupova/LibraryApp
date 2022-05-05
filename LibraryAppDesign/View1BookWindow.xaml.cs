@@ -137,7 +137,7 @@ namespace LibraryAppDesign
             {
                 if (currentuser.GetAge() >= currentbook.GetIntBookAge())
                 {
-                    CheckUserBooks();
+                    CheckBookAvailable();
                 }
                 else
                 {
@@ -146,7 +146,20 @@ namespace LibraryAppDesign
                     Close();
                 }
             }
-
+            
+            void CheckBookAvailable()
+            {
+                if (currentbook.GetAvailableNumber() != 0)
+                {
+                    CheckUserBooks();
+                }
+                else
+                {
+                    MessageBox.Show("В настоящий момент в библиотеке нет доступных экземпляров данной книги!");
+                    new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
+                    Close();
+                }
+            }
             void CheckUserBooks() // функция для проверки наличия выбранной пользователем книги в списке забронированных пользователем книг и в списке книг, которые уже "на руках"
             {
                 bool check = true;
