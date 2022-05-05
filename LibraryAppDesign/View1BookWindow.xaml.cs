@@ -26,6 +26,8 @@ namespace LibraryAppDesign
             chosenbook = tag;
             userlogin = login;
 
+            _storage = new Storage();
+
             // текущий пользователь
             currentuser = GetCurrentUser(userlogin);
             // выбранная пользователем книга
@@ -47,8 +49,8 @@ namespace LibraryAppDesign
         //List<Admin> admins = _storage.Admins;
         //List<Notification> notifications = _storage.Notifications;
 
-        List<string> genres = new List<string> { };
-        List<string> ageRatings = new List<string> { };
+        //List<string> genres = new List<string> { };
+        //List<string> ageRatings = new List<string> { };
         //List<string> filters4Book;
         //List<BookInLibrary> filtersBooks = new List<BookInLibrary> { };
 

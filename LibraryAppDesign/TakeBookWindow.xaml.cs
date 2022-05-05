@@ -25,15 +25,17 @@ namespace LibraryAppDesign
             InitializeComponent();
             userlogin = login;
             filters4Book = filters;
+            _storage = new Storage();
+
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
         }
 
         static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
+        //List<User> users = _storage.Users;
         List<BookInLibrary> books = _storage.Books;
-        List<Admin> admins = _storage.Admins;
-        List<Notification> notifications = _storage.Notifications;
+        //List<Admin> admins = _storage.Admins;
+        //List<Notification> notifications = _storage.Notifications;
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
