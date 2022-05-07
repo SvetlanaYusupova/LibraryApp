@@ -39,6 +39,8 @@ namespace LibraryAppDesign
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
+        List<string> titlenames = new List<string> { };
+        List<string> authornames = new List<string> { };
         string userlogin;
         List<string> filters4Book;
         List<BookInLibrary> filtersBooks = new List<BookInLibrary> { };
@@ -105,7 +107,46 @@ namespace LibraryAppDesign
             Close();
         }
 
-        private void NameGenre_Initialized(object sender, EventArgs e)
+        private void TitleName_Initialized(object sender, EventArgs e)
+        {
+
+            ComboBox TitleName = sender as ComboBox;
+            foreach (var item in books)
+            {
+                if (!titlenames.Contains(item.GetName()))
+                {
+                    titlenames.Add(item.GetName());
+                }
+            }
+
+            foreach (var item in titlenames)
+            {
+                TitleName.Items.Add(item);
+            }
+        }
+
+        private void AuthorName_Initialized(object sender, EventArgs e)
+        {
+
+            ComboBox AuthorName = sender as ComboBox;
+            foreach (var item in books)
+            {
+                foreach (var author in item.GetAuthor())
+                {
+                    if (!authornames.Contains(author))
+                    {
+                        authornames.Add(author);
+                    }
+                }
+            }
+
+            foreach (var item in authornames)
+            {
+                AuthorName.Items.Add(item);
+            }
+        }
+
+        private void GenreName_Initialized(object sender, EventArgs e)
         {
 
             ComboBox GenreName = sender as ComboBox;

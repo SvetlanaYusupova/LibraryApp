@@ -29,11 +29,16 @@
         <Button Grid.Row ="0" Name="button1" Grid.Column="1" Click="Notification" Content="Уведомления" Width="105" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 5 75 5"></Button>
 
         <TextBlock  Grid.Row ="1" Name="Title" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите название книги</TextBlock>
-        <TextBox Grid.Row ="1" Name="TitleName" Grid.Column="1" Margin="5"></TextBox>
+        <!--<TextBox Grid.Row ="1" Name="TitleName" Grid.Column="1" Margin="5"></TextBox>--> <!--старый вариант, не разворачивающийся-->
+        <ComboBox Grid.Row="1" Name="TitleName" Grid.Column="1" Margin="5" Initialized="TitleName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
+        
         <TextBlock  Grid.Row ="2" Name="Author" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите автора книги</TextBlock>
-        <TextBox Grid.Row ="2" Name="AuthorName" Grid.Column="1" Margin="5"></TextBox>
+        <!--<TextBox Grid.Row ="2" Name="AuthorName" Grid.Column="1" Margin="5"></TextBox>--> <!--старый вариант, не разворачивающийся-->
+        <ComboBox Grid.Row="2" Name="AuthorName" Grid.Column="1" Margin="5" Initialized="AuthorName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
+        
 		<TextBlock Grid.Row="3" Name="Genre" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" >Выберите жанр книги</TextBlock>
-		<ComboBox Grid.Row="3" Name="GenreName" Grid.Column="1" Margin="5" Initialized="NameGenre_Initialized"></ComboBox>
+		<ComboBox Grid.Row="3" Name="GenreName" Grid.Column="1" Margin="5" Initialized="GenreName_Initialized"></ComboBox>
+        
 		<TextBlock Grid.Row="4" Name="Age" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Выберите возрастное ограничение книги</TextBlock>
         <ComboBox Grid.Row="4" Name="AgeName" Grid.Column="1" Margin="5" Initialized="AgeName_Initialized"></ComboBox>
 
