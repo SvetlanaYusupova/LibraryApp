@@ -189,12 +189,33 @@ namespace LibraryAppDesign
         {
             foreach (var item in books)
             {
-                if (new List<string> { null, "", item.GetName()}.Contains(filters4Book[0]) &&
-                    (item.GetAuthor().Contains(filters4Book[1]) || filters4Book[1] == null || filters4Book[1] =="") &&
-                    new List<string> { null, "",  item.GetGenre() }.Contains(filters4Book[2]) &&
-                    new List<string> { null, "", item.GetAgeRating() }.Contains(filters4Book[3]))
+                if ((item.GetName().ToLower().Contains(filters4Book[0].ToLower()) || filters4Book[0] == "") &&
+                    (CheckAuthor(item.GetAuthor(), filters4Book[1])) &&
+                    new List<string> { "",  item.GetGenre() }.Contains(filters4Book[2]) &&
+                    new List<string> { "", item.GetAgeRating() }.Contains(filters4Book[3]))
                 {
                     filtersBooks.Add(item);
+                }
+
+                bool CheckAuthor(List<string> authors, string author)
+                {
+                    bool answer = false;
+                    if (author == "")
+                    {
+                        answer = true;
+                    }
+                    else
+                    {
+                        foreach (var a in authors)
+                        {
+                            if (a.ToLower().Contains(author.ToLower()))
+                            {
+                                answer = true;
+                            }
+                        }
+                    }
+
+                    return answer;
                 }
             }
         }
