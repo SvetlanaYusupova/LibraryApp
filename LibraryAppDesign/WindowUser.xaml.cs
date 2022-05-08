@@ -19,10 +19,12 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class WindowUser : Window
     {
-        public WindowUser()
+        public WindowUser(string userlogin)
         {
             InitializeComponent();
+            login = userlogin;
         }
+        string login;
 
         private void Account(object sender, RoutedEventArgs e)
         {
@@ -47,6 +49,8 @@ namespace LibraryAppDesign
         private void LookPast(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра прошлых книг пользователя
+            new TakenBookWindow(login).Show();
+            Close();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)

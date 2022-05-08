@@ -50,5 +50,9 @@ namespace LibraryApp.Core
         {
             return Password;
         }
+        public List<TakenBook> GetTakenBook()
+        {
+            return UsersBook;
+        }
     }
 }
