@@ -54,5 +54,9 @@ namespace LibraryApp.Core
         {
             return UsersBook;
         }
+        public List<List<string>> GetPastBook()
+        {
+            return PastBooks;
+        }
     }
 }

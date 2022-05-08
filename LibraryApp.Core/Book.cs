@@ -36,7 +36,7 @@ namespace LibraryApp.Core
         {
             return Author;
         }
-        public string GetBookNamee()
+        public string GetBookName()
         {
             return BookName;
         }

@@ -72,7 +72,12 @@ namespace LibraryAppDesign
         //        GenreName.Items.Add(item);
         //    }
         //}
-
+        private void NameBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock BookName = sender as TextBlock;
+            Book book = BookName.DataContext as Book;
+            BookName.Text = book.GetBookName();
+        }
 
 
         private void AuthorBook_Initialized(object sender, EventArgs e)

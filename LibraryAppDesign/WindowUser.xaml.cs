@@ -44,12 +44,13 @@ namespace LibraryAppDesign
         private void LookPresent(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра текущих книг на руках пользователя
+
         }
 
         private void LookPast(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра прошлых книг пользователя
-            new TakenBookWindow(login).Show();
+            new PastBookWindow(login).Show();
             Close();
         }
 

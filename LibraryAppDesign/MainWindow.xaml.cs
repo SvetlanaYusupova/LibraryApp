@@ -53,7 +53,7 @@ namespace LibraryAppDesign
                     {
                         MessageBox.Show("Авторизация пройдена.");
                         Hide();
-                        new WindowUser().Show();
+                        new WindowUser(user.GetLogin()).Show();
                         Close();
                         doing = false;
                     }
