@@ -22,23 +22,23 @@ namespace LibraryAppDesign
     {
         public WindowSettings(string login)
         {
+
             InitializeComponent();
-            userlogin = login;
+            string userlogin = login;
             Storage storage = new Storage();
             foreach (var us in storage.Users)
             {
-                if (user.GetLogin() == userlogin)
+                if (us.GetLogin() == userlogin)
                 {
                     user = us;
                 }
             }
         }
-        string userlogin;
         User user;
 
         private void Return(object sender, RoutedEventArgs e)
         {
-            new WindowUser(userlogin).Show();
+            new WindowUser(user.GetLogin()).Show();
             Close();
         }
 
