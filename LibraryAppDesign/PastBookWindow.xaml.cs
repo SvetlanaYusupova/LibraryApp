@@ -37,7 +37,7 @@ namespace LibraryAppDesign
             List<List<string>> pastBook = new List<List<string>> { };
 
 
-
+            //получение списка прошлых книг конкретного юзера через логин
             private void PastUserBook()
             {
                 foreach (var us in users)
@@ -48,30 +48,15 @@ namespace LibraryAppDesign
                     }
                 }
             }
-
+            //выход в предыдущее окно
             private void LogOut(object sender, RoutedEventArgs e)
             {
                 new WindowUser(userlogin).Show();
                 Close();
             }
 
-            //private void NameGenre_Initialized(object sender, EventArgs e)
-            //{
 
-            //    ComboBox GenreName = sender as ComboBox;
-            //    foreach (var item in takenBook)
-            //    {
-            //        if (!genres.Contains(item.GetGenre()))
-            //        {
-            //            genres.Add(item.GetGenre());
-            //        }
-            //    }
-
-            //    foreach (var item in genres)
-            //    {
-            //        GenreName.Items.Add(item);
-            //    }
-            //}
+            //Инициализация названия книги в списке
             private void NameBook_Initialized(object sender, EventArgs e)
             {
                 TextBlock BookName = sender as TextBlock;
@@ -79,13 +64,15 @@ namespace LibraryAppDesign
                 BookName.Text = book[0];
             }
 
-
+            //Инициализация автора книги в списке
             private void AuthorBook_Initialized(object sender, EventArgs e)
             {
                 TextBlock AuthorName = sender as TextBlock;
                 List<string> book = AuthorName.DataContext as List<string>;
                 AuthorName.Text = book[1];
             }
+
+            //Инициализация жанра книги в списке
             private void GenreBook_Initialized(object sender, EventArgs e)
             {
                 TextBlock GenreName = sender as TextBlock;
@@ -93,13 +80,16 @@ namespace LibraryAppDesign
                 GenreName.Text = book[2];
             }
 
+
+            //Инициализация даты начала (бронирования книги)
             private void StartDate_Initialized(object sender, EventArgs e)
             {
                 TextBlock StartDate = sender as TextBlock;
                 List<string> book = StartDate.DataContext as List<string>;
                 StartDate.Text = book[3];
-            }
+        }
 
+            //Инициализация даты конца(бронирования книги)
             private void EndDate_Initialized(object sender, EventArgs e)
             {
                 TextBlock EndDate = sender as TextBlock;
