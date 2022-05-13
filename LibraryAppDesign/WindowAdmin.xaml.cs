@@ -23,5 +23,46 @@ namespace LibraryAppDesign
         {
             InitializeComponent();
         }
+
+        private void AddAdmin(object sender, RoutedEventArgs e)
+        {
+            //для создания новога админа при необходимости (права у них будут равные)
+        }
+
+        private void Account(object sender, RoutedEventArgs e)
+        {
+            //для редактирования логина и пароля админа
+        }
+
+        private void Notification(object sender, RoutedEventArgs e)
+        {
+            //для просмотра просроченный для возврата книг, запроса на продление срока пользования и запроса на продление срока брони
+        }
+
+        private void GiveBook(object sender, RoutedEventArgs e)
+        {
+            //выдача книги пользователю
+        }
+
+        private void GetBackBook(object sender, RoutedEventArgs e)
+        {
+            //принятие книги от пользователя
+        }
+
+        private void EditBook(object sender, RoutedEventArgs e)
+        {
+            //внести изменения в какую-то книгу
+        }
+
+        private void Analytics(object sender, RoutedEventArgs e)
+        {
+            //вывести аналитику по книгам
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            Close();
+        }
     }
 }
