@@ -68,7 +68,7 @@ namespace LibraryAppDesign
         {
             _storage.SaveBooks();
             _storage.SaveUsers();
-            new TakeBookWindow(userlogin, new List<string> { null, null, null, null}).Show();
+            new TakeBookWindow(userlogin, new List<string> { "", "", "", ""}).Show();
             Close();
         }
 
