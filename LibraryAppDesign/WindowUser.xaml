@@ -6,7 +6,30 @@
         xmlns:local="clr-namespace:LibraryAppDesign"
         mc:Ignorable="d"
         Title="WindowUser" Height="450" Width="800">
-    <Grid>
+    <Grid Background="BurlyWood" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <Button Grid.Row ="0" Name="button0" Grid.Column="1" Click="Account" Content="Аккаунт" Width="65" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"></Button>
+
+        <Button Grid.Row ="0" Name="button1" Grid.Column="1" Click="Notification" Content="Уведомления" Width="105" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 5 75 5"></Button>
+
         
+        <Button Grid.Row ="1" Grid.ColumnSpan="2" Name="button2" Click="TakeNew" Content="Взять новую книгу" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"></Button>
+        <Button Grid.Row ="2" Grid.ColumnSpan="2" Name="button3" Click="LookPresent" Content="Посмотреть текущии книги" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Grid.Row ="3" Grid.ColumnSpan="2" Name="button4" Click="LookPast" Content="Посмотреть прошлые книги" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+
+        <Button Grid.Row ="4" Grid.Column="1" Name="button5" Click="LogOut" Content="Завершить" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"></Button>
+
     </Grid>
 </Window>

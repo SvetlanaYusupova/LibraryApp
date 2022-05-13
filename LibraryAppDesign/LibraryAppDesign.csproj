@@ -67,6 +67,9 @@
     <Compile Include="WindowRegistration.xaml.cs">
       <DependentUpon>WindowRegistration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowSettings.xaml.cs">
+      <DependentUpon>WindowSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowUser.xaml.cs">
       <DependentUpon>WindowUser.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +124,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\Admin.json" />
     <None Include="Data\Users.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

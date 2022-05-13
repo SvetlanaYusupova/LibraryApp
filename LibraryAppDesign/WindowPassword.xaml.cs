@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryApp.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,6 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class WindowPassword : Window
     {
-        const string password = "qwerty";
         public WindowPassword()
         {
             InitializeComponent();
@@ -33,16 +33,31 @@ namespace LibraryAppDesign
 
         private void buttonCheck_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxPassword.Text == password)
+            Storage storage = new Storage();
+            bool doing = true;
+            List<Admin> admins = storage.Admins;
+            foreach (var adm in admins)
             {
-                MessageBox.Show("Авторизация пройдена.");
-                Hide();
-                new WindowAdmin().Show();
-                Close();
+                if (adm.GetLogin() == textBoxLogin.Text)
+                {
+                    if (adm.GetPassword() == textBoxPassword.Text)
+                    {
+                        MessageBox.Show("Авторизация пройдена.");
+                        Hide();
+                        new WindowAdmin().Show();
+                        Close();
+                        doing = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пароль неверный.");
+                        doing = false;
+                    }
+                }
             }
-            else
+            if (doing)
             {
-                MessageBox.Show("Пароль неверный.");
+                MessageBox.Show("Такого администратора нет.");
             }
         }
     }
