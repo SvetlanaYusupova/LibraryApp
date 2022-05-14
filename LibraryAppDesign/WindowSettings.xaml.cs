@@ -52,7 +52,7 @@ namespace LibraryAppDesign
                         try
                         {
                             int newAge = int.Parse(textBoxAge.Text);
-                            if (newAge > 0)
+                            if (newAge > 0 & newAge < 120)
                             {
                                 us.SetAge(newAge);
                             }
