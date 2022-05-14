@@ -20,82 +20,76 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class WindowSettings : Window
     {
+        string userLogin;
         public WindowSettings(string login)
         {
-
             InitializeComponent();
-            string userlogin = login;
-            Storage storage = new Storage();
-            foreach (var us in storage.Users)
-            {
-                if (us.GetLogin() == userlogin)
-                {
-                    user = us;
-                }
-            }
+            userLogin = login;
         }
-        User user;
 
         private void Return(object sender, RoutedEventArgs e)
         {
-            new WindowUser(user.GetLogin()).Show();
+
+            new WindowUser(userLogin).Show();
             Close();
         }
 
         private void ChangeInfo(object sender, RoutedEventArgs e)
         {
             Storage storage = new Storage();
-            User userChoose;
             bool doing = true;
-            foreach (var user in storage.Users)
+            foreach (var us in storage.Users)
             {
-                if (textBoxLogin.Text == user.GetLogin())
+                if (textBoxLogin.Text == us.GetLogin())
                 {
                     doing = false;
                     MessageBox.Show("Такой логин есть. Повторите попытку.");
                 }
-            }
-            if (doing)
-            {
-                if (textBoxAge.Text != "")
+                if (doing & us.GetLogin() == userLogin)
                 {
-                    try
+                    if (textBoxAge.Text != "")
                     {
-                        int newAge = int.Parse(textBoxAge.Text);
-                        if (newAge > 0)
+                        try
                         {
-                            user.SetAge(newAge);
+                            int newAge = int.Parse(textBoxAge.Text);
+                            if (newAge > 0)
+                            {
+                                us.SetAge(newAge);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Указан неверный возраст. Повторите попытку.");
+                                doing = false;
+                            }
                         }
-                        else
+                        catch
                         {
                             MessageBox.Show("Указан неверный возраст. Повторите попытку.");
                             doing = false;
                         }
                     }
-                    catch
+                }
+                if (doing & us.GetLogin() == userLogin)
+                {
+                    if (textBoxLogin.Text != "")
                     {
-                        MessageBox.Show("Указан неверный возраст. Повторите попытку.");
-                        doing = false;
+                        us.SetLogin(textBoxLogin.Text);
                     }
-                }
-            }
-            if (doing)
-            {
-                if (textBoxLogin.Text != "")
-                {
-                    user.SetLogin(textBoxLogin.Text);
-                }
-                if (textBoxPassword.Text != "")
-                {
-                    user.SetPassword(textBoxPassword.Text);
-                }
-                if (textBoxName.Text != "")
-                {
-                    user.SetName(textBoxName.Text);
-                }
-                if (textBoxSurname.Text != "")
-                {
-                    user.SetSurname(textBoxSurname.Text);
+                    if (textBoxPassword.Text != "")
+                    {
+                        us.SetPassword(textBoxPassword.Text);
+                    }
+                    if (textBoxName.Text != "")
+                    {
+                        us.SetName(textBoxName.Text);
+                    }
+                    if (textBoxSurname.Text != "")
+                    {
+                        us.SetSurname(textBoxSurname.Text);
+                    }
+                    storage.SaveUsers();
+                    new WindowUser(us.GetLogin()).Show();
+                    Close();
                 }
             }
         }
