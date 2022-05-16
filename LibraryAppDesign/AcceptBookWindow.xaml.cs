@@ -44,7 +44,7 @@ namespace LibraryAppDesign
         List<string> titlenames = new List<string> { };
         List<string> authornames = new List<string> { };
         List<string> filters4Book;
-        List<BookInLibrary> filtersBooks = new List<BookInLibrary> { };
+        List<TakenBook> filtersBooks = new List<TakenBook> { };
 
 
         private void Return(object sender, RoutedEventArgs e)
@@ -59,6 +59,7 @@ namespace LibraryAppDesign
             //для кнопки выбора книги
             Button ChooseBook = sender as Button;
             new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
+
             //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
             Close();
         }

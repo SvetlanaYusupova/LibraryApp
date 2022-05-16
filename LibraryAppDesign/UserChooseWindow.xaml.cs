@@ -34,7 +34,7 @@ namespace LibraryAppDesign
             //Для перехода к окну принятия книги
             if (UserList.Text.ToString() != "")
             {
-                new AcceptBookWindow(UserList.Text.ToString()).Show();
+                new AcceptBookWindow(UserList.Text.ToString(), new List<string> { "", "", "", "" }).Show();
                 Close();
             }
             else
