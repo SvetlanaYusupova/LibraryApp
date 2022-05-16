@@ -52,7 +52,8 @@ namespace LibraryAppDesign
         private void LookPresent(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра текущих книг на руках пользователя
-
+            new TakenBookWindow(userlogin, new List<string> { "", "" }).Show();
+            Close();
         }
 
         private void LookPast(object sender, RoutedEventArgs e)
