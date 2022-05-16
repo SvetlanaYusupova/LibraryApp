@@ -44,6 +44,11 @@ namespace LibraryAppDesign
             Close();
         }
 
+        private void LookBook(object sender, RoutedEventArgs e)
+        {
+            //для кнопки возможности просмотра бронированных книг пользователя
+        }
+
         private void LookPresent(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра текущих книг на руках пользователя
