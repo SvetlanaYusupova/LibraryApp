@@ -20,7 +20,7 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class AcceptBookWindow : Window
     {
-        public AcceptBookWindow(string userLg)
+        public AcceptBookWindow(string userLg, List<string> filt)
         {
             InitializeComponent();
             foreach (var us in _storage.Users)
@@ -30,7 +30,7 @@ namespace LibraryAppDesign
                     user = us;
                 }
             }
-            filters4Book = new List<string> { "", "", "", "" };
+            filters4Book = filt;
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
         }
@@ -50,7 +50,7 @@ namespace LibraryAppDesign
         private void Return(object sender, RoutedEventArgs e)
         {
             //для кнопки сброса фильтров
-            new AcceptBookWindow(user.GetLogin()).Show();
+            new AcceptBookWindow(user.GetLogin(), new List<string> { "", "", "", "" }).Show();
             Close();
         }
 
@@ -67,7 +67,6 @@ namespace LibraryAppDesign
         {
             //для кнопки применения фильтров
             List<string> fil = new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString() };
-
             AddFill(GenreName.SelectedItem);
             AddFill(AgeName.SelectedItem);
             void AddFill(object obj)
@@ -81,7 +80,7 @@ namespace LibraryAppDesign
                     fil.Add(obj.ToString());
                 }
             }
-            new TakeBookWindow(user.GetLogin(), fil).Show();
+            new AcceptBookWindow(user.GetLogin(), fil).Show();
             Close();
         }
 
@@ -181,7 +180,7 @@ namespace LibraryAppDesign
             TextBlock AuthorName = sender as TextBlock;
 
             TakenBook book = AuthorName.DataContext as TakenBook;
-            string authors = String.Join(", ", book.GetAuthor());
+            string authors = string.Join(", ", book.GetAuthor());
 
             AuthorName.Text = authors;
         }
@@ -214,7 +213,7 @@ namespace LibraryAppDesign
         {
             foreach (var item in books)
             {
-                if ((item.GetName().ToLower().Contains(filters4Book[0].ToLower()) || filters4Book[0] == "") &&
+                if ((item.GetBookName().ToLower().Contains(filters4Book[0].ToLower()) || filters4Book[0] == "") &&
                     (CheckAuthor(item.GetAuthor(), filters4Book[1])) &&
                     new List<string> { "", item.GetGenre() }.Contains(filters4Book[2]) &&
                     new List<string> { "", item.GetAgeRating() }.Contains(filters4Book[3]))
