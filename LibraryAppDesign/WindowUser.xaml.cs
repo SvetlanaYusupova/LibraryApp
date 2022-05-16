@@ -53,7 +53,7 @@ namespace LibraryAppDesign
         private void LookPast(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра прошлых книг пользователя
-            new PastBookWindow(login).Show();
+            new PastBookWindow(userlogin).Show();
             Close();
         }
 

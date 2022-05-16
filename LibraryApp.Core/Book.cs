@@ -41,8 +41,6 @@ namespace LibraryApp.Core
             return BookName;
         }
 
-        public string GetGenre()
-        { return Genre; }
 
         public string GetAgeRating()
         { return AgeRating; }
@@ -54,8 +52,7 @@ namespace LibraryApp.Core
         }
         public string GetName()
         { return BookName; }
-        public List<string> GetAuthor()
-        { return Author; }
+        
 
         public string GetDescription()
         {

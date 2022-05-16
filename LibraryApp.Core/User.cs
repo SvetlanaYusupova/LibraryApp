@@ -50,10 +50,7 @@ namespace LibraryApp.Core
         {
             return Password;
         }
-        public List<TakenBook> GetTakenBook()
-        {
-            return UsersBook;
-        }
+        
         public List<List<string>> GetPastBook()
         {
             return PastBooks;

@@ -44,7 +44,7 @@ namespace LibraryAppDesign
             {
                 if (us.GetLogin() == userlogin)
                 {
-                    takenBook = us.GetTakenBook();
+                    takenBook = us.GetTakenBooks();
                 }
             }
         }
