@@ -28,9 +28,19 @@ namespace LibraryApp.Core
             Description = description;
             Genre = genre;
         }
-
         public string GetGenre()
-        { return Genre; }
+        {
+            return Genre;
+        }
+        public List<string> GetAuthor()
+        {
+            return Author;
+        }
+        public string GetBookName()
+        {
+            return BookName;
+        }
+
 
         public string GetAgeRating()
         { return AgeRating; }
@@ -42,8 +52,7 @@ namespace LibraryApp.Core
         }
         public string GetName()
         { return BookName; }
-        public List<string> GetAuthor()
-        { return Author; }
+        
 
         public string GetDescription()
         {
@@ -93,6 +102,15 @@ namespace LibraryApp.Core
             StartDate = start;
             EndDate = end;
         }
+        public DateTime GetStartDate()
+        {
+            return StartDate;
+        }
+        public DateTime GetEndDate()
+        {
+            return EndDate;
+        }
+
     }
 
     public class OrderBook : Book

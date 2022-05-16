@@ -58,6 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PastBookWindow.xaml.cs">
+      <DependentUpon>PastBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TakenBookWindow.xaml.cs">
+      <DependentUpon>TakenBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TakeBookWindow.xaml.cs">
       <DependentUpon>TakeBookWindow.xaml</DependentUpon>
     </Compile>
@@ -93,6 +99,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View1BookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PastBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TakenBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
