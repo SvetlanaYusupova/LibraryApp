@@ -31,7 +31,7 @@ namespace LibraryAppDesign
             ChooseBooks();
             InitializeComponent();
             
-            TakenBooksListBox.ItemsSource = takenBook;
+            TakenBooksListBox.ItemsSource = filtersBooks;
         }
 
         string userlogin;
