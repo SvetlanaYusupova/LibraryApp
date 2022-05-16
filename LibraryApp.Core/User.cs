@@ -62,15 +62,17 @@ namespace LibraryApp.Core
         {
             Name = name;
         }
-
         public void SetSurname(string surname)
         {
             Surname = surname;
         }
-
         public void SetAge(int age)
         {
             Age = age;
+        }
+        public List<TakenBook> GetUsersBook()
+        {
+            return UsersBook;
         }
     }
 }

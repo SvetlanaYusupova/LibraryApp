@@ -20,23 +20,29 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class AcceptBookWindow : Window
     {
-        public AcceptBookWindow(string userLogin)
+        public AcceptBookWindow(string userLg)
         {
             InitializeComponent();
+            foreach (var us in _storage.Users)
+            {
+                if (us.GetLogin() == userLg)
+                {
+                    user = us;
+                }
+            }
             filters4Book = new List<string> { "", "", "", "" };
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
         }
 
-
+        User user;
         static Storage _storage = new Storage();
-        //List<BookInLibrary> books = _storage.Books;
+        List<TakenBook> books = user.GetUsersBook() ;  //книги на руках у пользователя
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
         //List<string> titlenames = new List<string> { };
         List<string> authornames = new List<string> { };
-        string userlogin;
         List<string> filters4Book;
         List<BookInLibrary> filtersBooks = new List<BookInLibrary> { };
 
@@ -44,7 +50,7 @@ namespace LibraryAppDesign
         private void Return(object sender, RoutedEventArgs e)
         {
             //для кнопки сброса фильтров
-            new AcceptBookWindow().Show();
+            new AcceptBookWindow(userLogin).Show();
             Close();
         }
 
@@ -52,7 +58,7 @@ namespace LibraryAppDesign
         {
             //для кнопки выбора книги
             Button ChooseBook = sender as Button;
-            new View1BookWindow(userlogin, ChooseBook.Tag.ToString()).Show();
+            new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
             //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
             Close();
         }
@@ -81,7 +87,7 @@ namespace LibraryAppDesign
                     fil.Add(obj.ToString());
                 }
             }
-            new TakeBookWindow(userlogin, fil).Show();
+            new TakeBookWindow(userLogin, fil).Show();
             Close();
         }
 

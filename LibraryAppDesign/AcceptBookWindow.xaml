@@ -14,7 +14,6 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -25,30 +24,27 @@
 
         <Button Grid.Row ="0" Grid.Column="0" Name="button5" Click="LogOut" Content="Вернуться" Width="85" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Button>
 
-        <TextBlock  Grid.Row ="1" Name="User" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите логин пользователя</TextBlock>
-        <ComboBox Grid.Row="1" Name="UserList" Grid.Column="1" Margin="5" Initialized="UserList_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
+        <TextBlock  Grid.Row ="1" Name="Title" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите название книги</TextBlock>
+        <ComboBox Grid.Row="1" Name="TitleName" Grid.Column="1" Margin="5" Initialized="TitleName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
 
-        <TextBlock  Grid.Row ="2" Name="Title" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите название книги</TextBlock>
-        <ComboBox Grid.Row="2" Name="TitleName" Grid.Column="1" Margin="5" Initialized="TitleName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
-
-        <TextBlock  Grid.Row ="3" Name="Author" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите автора книги</TextBlock>
+        <TextBlock  Grid.Row ="2" Name="Author" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите автора книги</TextBlock>
         <!--<TextBox Grid.Row ="2" Name="AuthorName" Grid.Column="1" Margin="5"></TextBox>-->
         <!--старый вариант, не разворачивающийся-->
-        <ComboBox Grid.Row="3" Name="AuthorName" Grid.Column="1" Margin="5" Initialized="AuthorName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
+        <ComboBox Grid.Row="2" Name="AuthorName" Grid.Column="1" Margin="5" Initialized="AuthorName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
 
-        <TextBlock Grid.Row="4" Name="Genre" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" >Выберите жанр книги</TextBlock>
-        <ComboBox Grid.Row="4" Name="GenreName" Grid.Column="1" Margin="5" Initialized="GenreName_Initialized"></ComboBox>
+        <TextBlock Grid.Row="3" Name="Genre" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" >Выберите жанр книги</TextBlock>
+        <ComboBox Grid.Row="3" Name="GenreName" Grid.Column="1" Margin="5" Initialized="GenreName_Initialized"></ComboBox>
 
-        <TextBlock Grid.Row="5" Name="Age" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Выберите возрастное ограничение книги</TextBlock>
-        <ComboBox Grid.Row="5" Name="AgeName" Grid.Column="1" Margin="5" Initialized="AgeName_Initialized"></ComboBox>
-
-
-        <Button Grid.Row ="6" Name="button9" Grid.Column="1" Click="Apply" Content="Применить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
-
-        <Button Grid.Row ="6" Name="button10" Grid.Column="0" Click="Return" Content="Отменит все фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
+        <TextBlock Grid.Row="4" Name="Age" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Выберите возрастное ограничение книги</TextBlock>
+        <ComboBox Grid.Row="4" Name="AgeName" Grid.Column="1" Margin="5" Initialized="AgeName_Initialized"></ComboBox>
 
 
-        <ListBox Name="BooksListBox" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Background="AliceBlue" HorizontalContentAlignment="Stretch">
+        <Button Grid.Row ="5" Name="button9" Grid.Column="1" Click="Apply" Content="Применить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
+
+        <Button Grid.Row ="5" Name="button10" Grid.Column="0" Click="Return" Content="Отменить все фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
+
+
+        <ListBox Name="BooksListBox" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Background="AliceBlue" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="10 15 0 15">
