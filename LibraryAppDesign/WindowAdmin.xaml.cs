@@ -47,7 +47,7 @@ namespace LibraryAppDesign
         private void GetBackBook(object sender, RoutedEventArgs e)
         {
             //принятие книги от пользователя
-            new AcceptBookWindow().Show();
+            new UserChooseWindow().Show();
             Close();
         }
 
