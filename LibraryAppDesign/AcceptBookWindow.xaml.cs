@@ -35,13 +35,13 @@ namespace LibraryAppDesign
             BooksListBox.ItemsSource = filtersBooks;
         }
 
-        User user;
+        static User user;
         static Storage _storage = new Storage();
         List<TakenBook> books = user.GetUsersBook() ;  //книги на руках у пользователя
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
-        //List<string> titlenames = new List<string> { };
+        List<string> titlenames = new List<string> { };
         List<string> authornames = new List<string> { };
         List<string> filters4Book;
         List<BookInLibrary> filtersBooks = new List<BookInLibrary> { };
@@ -50,7 +50,7 @@ namespace LibraryAppDesign
         private void Return(object sender, RoutedEventArgs e)
         {
             //для кнопки сброса фильтров
-            new AcceptBookWindow(userLogin).Show();
+            new AcceptBookWindow(user.GetLogin()).Show();
             Close();
         }
 
@@ -66,12 +66,6 @@ namespace LibraryAppDesign
         private void Apply(object sender, RoutedEventArgs e)
         {
             //для кнопки применения фильтров
-            /*TextBox TitleName = sender as TextBox;
-            TextBox AuthorName = sender as TextBox;*/
-
-            /*ComboBox GenreName = sender as ComboBox;
-            ComboBox AgeName = sender as ComboBox;*/
-
             List<string> fil = new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString() };
 
             AddFill(GenreName.SelectedItem);
@@ -87,7 +81,7 @@ namespace LibraryAppDesign
                     fil.Add(obj.ToString());
                 }
             }
-            new TakeBookWindow(userLogin, fil).Show();
+            new TakeBookWindow(user.GetLogin(), fil).Show();
             Close();
         }
 
@@ -103,9 +97,9 @@ namespace LibraryAppDesign
             ComboBox TitleName = sender as ComboBox;
             foreach (var item in books)
             {
-                if (!titlenames.Contains(item.GetName()))
+                if (!titlenames.Contains(item.GetBookName()))
                 {
-                    titlenames.Add(item.GetName());
+                    titlenames.Add(item.GetBookName());
                 }
             }
 
@@ -177,16 +171,16 @@ namespace LibraryAppDesign
         {
             TextBlock BookName = sender as TextBlock;
 
-            BookInLibrary book = BookName.DataContext as BookInLibrary;
+            TakenBook book = BookName.DataContext as TakenBook;
 
-            BookName.Text = book.GetName();
+            BookName.Text = book.GetBookName();
         }
 
         private void AuthorBook_Initialized(object sender, EventArgs e)
         {
             TextBlock AuthorName = sender as TextBlock;
 
-            BookInLibrary book = AuthorName.DataContext as BookInLibrary;
+            TakenBook book = AuthorName.DataContext as TakenBook;
             string authors = String.Join(", ", book.GetAuthor());
 
             AuthorName.Text = authors;
@@ -195,7 +189,7 @@ namespace LibraryAppDesign
         {
             TextBlock GenreName = sender as TextBlock;
 
-            BookInLibrary book = GenreName.DataContext as BookInLibrary;
+            TakenBook book = GenreName.DataContext as TakenBook;
 
             GenreName.Text = book.GetGenre();
         }
@@ -203,7 +197,7 @@ namespace LibraryAppDesign
         {
             TextBlock AgeName = sender as TextBlock;
 
-            BookInLibrary book = AgeName.DataContext as BookInLibrary;
+            TakenBook book = AgeName.DataContext as TakenBook;
 
             AgeName.Text = book.GetAgeRating();
         }
@@ -211,9 +205,9 @@ namespace LibraryAppDesign
         {
             Button ChooseBook = sender as Button;
 
-            BookInLibrary book = ChooseBook.DataContext as BookInLibrary;
+            TakenBook book = ChooseBook.DataContext as TakenBook;
 
-            ChooseBook.Tag = book.GetName();
+            ChooseBook.Tag = book.GetBookName();
         }
 
         private void ChoseBooks()

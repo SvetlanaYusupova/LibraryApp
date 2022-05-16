@@ -28,6 +28,22 @@ namespace LibraryApp.Core
             Description = description;
             Genre = genre;
         }
+        public string GetGenre()
+        {
+            return Genre;
+        }
+        public List<string> GetAuthor()
+        {
+            return Author;
+        }
+        public string GetBookName()
+        {
+            return BookName;
+        }
+        public string GetAgeRating()
+        { 
+            return AgeRating; 
+        }
 
     }
 
