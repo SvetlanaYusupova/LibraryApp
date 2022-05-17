@@ -42,12 +42,14 @@ namespace LibraryAppDesign
         private void GiveBook(object sender, RoutedEventArgs e)
         {
             //выдача книги пользователю
+            new UserChooseWindow(GiveBok.ContentStringFormat).Show();
+            Close();
         }
 
         private void GetBackBook(object sender, RoutedEventArgs e)
         {
             //принятие книги от пользователя
-            new UserChooseWindow().Show();
+            new UserChooseWindow(GetBackBok.ContentStringFormat).Show();
             Close();
         }
 

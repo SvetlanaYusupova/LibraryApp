@@ -20,7 +20,7 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class UserChooseWindow : Window
     {
-        public UserChooseWindow()
+        public UserChooseWindow(string action)
         {
             InitializeComponent();
         }
@@ -28,6 +28,7 @@ namespace LibraryAppDesign
         static Storage _storage = new Storage();
         List<User> users = _storage.Users;
         List<string> userLogins = new List<string> { };
+
 
         private void buttonNext_Click(object sender, RoutedEventArgs e)
         {
