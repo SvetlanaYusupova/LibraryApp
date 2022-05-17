@@ -58,7 +58,7 @@ namespace LibraryAppDesign
         {
             //для кнопки выбора книги
             Button ChooseBook = sender as Button;
-            new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
+            //new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
 
             //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
             Close();
