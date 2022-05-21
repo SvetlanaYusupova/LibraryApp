@@ -23,17 +23,67 @@ namespace LibraryAppDesign
         public UserChooseWindow(string action)
         {
             InitializeComponent();
+            
+            chosenaction = action;
         }
+
+        string chosenaction;
 
         static Storage _storage = new Storage();
         List<User> users = _storage.Users;
         List<string> userLogins = new List<string> { };
-
+        List<OrderBook> orderbooks = _storage.OrderBooks;
 
         private void buttonNext_Click(object sender, RoutedEventArgs e)
         {
+            //ComboBox UserList = sender as ComboBox;
+            Button buttonNext = sender as Button;
+
+            string login = UserList.Text.ToString();
+
+            if (!userLogins.Contains(login))
+            {
+                MessageBox.Show("Такого пользователя нет.");
+                new UserChooseWindow(chosenaction).Show();
+                Close();
+            }
+
+            // для перехода в окно выдачи книги
+            if (userLogins.Contains(login) && chosenaction == "Выдать книгу")
+            {
+                if (CheckUserOrderBooks())
+                {
+                    new GiveBookWindow(login, chosenaction, new List<string> { "", "", "", "" }).Show();
+                    Close();
+                }
+                
+            }
+
+            // для перехода в окно получения книги
+            if (userLogins.Contains(login) && chosenaction == "Принять книгу")
+            {
+                new AcceptBookWindow(login, new List<string> { "", "", "", "" }).Show();
+                Close();
+            }
+
+            /*else
+            {
+                if (chosenaction == "Выдать книгу")
+                {
+                    new GiveBookWindow(login, chosenaction, new List<string> { "", "", "", "" }).Show();
+                    Close();
+                }
+
+                //Для перехода к окну принятия книги
+                *//*if (chosenaction == "Принять книгу")
+                {
+
+                }*//*
+            }*/
+
             //Для перехода к окну принятия книги
-            if (UserList.Text.ToString() != "")
+
+            /*if (UserList.Text.ToString() != "")
             {
                 new AcceptBookWindow(UserList.Text.ToString(), new List<string> { "", "", "", "" }).Show();
                 Close();
@@ -41,7 +91,7 @@ namespace LibraryAppDesign
             else
             {
                 MessageBox.Show("Такого пользователя нет.");
-            }
+            }*/
         }
 
         private void UserList_Initialized(object sender, EventArgs e)
@@ -60,6 +110,21 @@ namespace LibraryAppDesign
             {
                 UserList.Items.Add(item);
             }
+        }
+
+        private bool CheckUserOrderBooks()
+        {
+            bool booksinorder = true;
+            if (orderbooks == null)
+            {
+                booksinorder = false;
+                MessageBox.Show("На данный момент у пользователя нет забронированных книг. Для получения книг пользователь должен забронировать их онлайн!");
+                new UserChooseWindow(chosenaction).Show();
+                Close();
+
+            }
+
+            return booksinorder;
         }
 
         private void LogOut(object sender, RoutedEventArgs e)

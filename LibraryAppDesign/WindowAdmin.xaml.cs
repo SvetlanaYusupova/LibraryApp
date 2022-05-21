@@ -39,17 +39,17 @@ namespace LibraryAppDesign
             //для просмотра просроченный для возврата книг, запроса на продление срока пользования и запроса на продление срока брони
         }
 
+        // выдача книги пользователю
         private void GiveBook(object sender, RoutedEventArgs e)
         {
-            //выдача книги пользователю
-            new UserChooseWindow(GiveBok.ContentStringFormat).Show();
+            new UserChooseWindow(Givebook.Content.ToString()).Show(); // не работало через .ContentStringFormat - выдавало null
             Close();
         }
 
         private void GetBackBook(object sender, RoutedEventArgs e)
         {
             //принятие книги от пользователя
-            new UserChooseWindow(GetBackBok.ContentStringFormat).Show();
+            new UserChooseWindow(GetBackBok.Content.ToString()).Show();
             Close();
         }
 

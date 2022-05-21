@@ -45,7 +45,7 @@ namespace LibraryAppDesign
         private void ChangeInfo(object sender, RoutedEventArgs e)
         {
             Storage storage = new Storage();
-            User userChoose;
+            //User userChoose; // закомментирована на время
             bool doing = true;
             foreach (var user in storage.Users)
             {

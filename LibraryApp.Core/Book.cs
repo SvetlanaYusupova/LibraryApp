@@ -45,6 +45,11 @@ namespace LibraryApp.Core
             return AgeRating; 
         }
 
+        public string GetDescription()
+        {
+            return Description;
+        }
+
     }
 
     public class BookInLibrary : Book

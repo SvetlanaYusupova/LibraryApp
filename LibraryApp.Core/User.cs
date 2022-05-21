@@ -74,5 +74,17 @@ namespace LibraryApp.Core
         {
             return UsersBook;
         }
+        public List<OrderBook> GetOrderBook()
+        {
+            return UsersOrderBook;
+        }
+        public void AddTakenBook(TakenBook takenbook)
+        {
+            UsersBook.Add(takenbook);
+        }
+        public void DicreaseOrderBook(OrderBook orderbook)
+        {
+            UsersOrderBook.Remove(orderbook);
+        }
     }
 }

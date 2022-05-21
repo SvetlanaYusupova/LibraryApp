@@ -61,8 +61,14 @@
     <Compile Include="AcceptBookWindow.xaml.cs">
       <DependentUpon>AcceptBookWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GiveBookWindow.xaml.cs">
+      <DependentUpon>GiveBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserChooseWindow.xaml.cs">
       <DependentUpon>UserChooseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View2BookWindow.xaml.cs">
+      <DependentUpon>View2BookWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowAdmin.xaml.cs">
       <DependentUpon>WindowAdmin.xaml</DependentUpon>
@@ -83,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GiveBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,6 +106,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserChooseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View2BookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
