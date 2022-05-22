@@ -52,7 +52,7 @@ namespace LibraryAppDesign
                     if (user.GetPassword() == textBoxPassword.Text)
                     {
                         MessageBox.Show("Авторизация пройдена.");
-                        Hide();
+                        //Hide();
                         new WindowUser(user.GetLogin()).Show();
                         Close();
                         doing = false;
@@ -78,10 +78,10 @@ namespace LibraryAppDesign
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            _storage.SaveUsers();
+            /*_storage.SaveUsers();
             _storage.SaveBooks();
             _storage.SaveAdmin();
-            _storage.SaveNotifications();
+            _storage.SaveNotifications();*/
             Close();
         }
     }

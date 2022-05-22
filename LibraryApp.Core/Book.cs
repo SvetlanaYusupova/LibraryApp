@@ -50,6 +50,27 @@ namespace LibraryApp.Core
             return Description;
         }
 
+        public string GetGenre()
+        { return Genre; }
+
+        public string GetAgeRating()
+        { return AgeRating; }
+        
+        public int GetIntBookAge() // целочисленное значение возрастного рейтинга книги для сравнения с возрастом пользователя
+        {
+            var bookage = int.Parse(AgeRating.Substring(0, AgeRating.Length - 1));
+            return bookage;
+        }
+        public string GetName()
+        { return BookName; }
+        public List<string> GetAuthor()
+        { return Author; }
+
+        public string GetDescription()
+        {
+            return Description;
+        }
+
     }
 
     public class BookInLibrary : Book
@@ -65,6 +86,18 @@ namespace LibraryApp.Core
             AllNumber = allnumber;
             AvailableNumber = availablenumber;
         }
+
+        public int GetAllNumber()
+        { return AllNumber; }
+
+        public int GetAvailableNumber()
+        { return AvailableNumber; }
+
+        public void Dicrease()
+        {
+            AvailableNumber--;
+        }
+
     }
 
 
