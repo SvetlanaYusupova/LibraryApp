@@ -59,10 +59,33 @@ namespace LibraryAppDesign
         {
             //для кнопки выбора книги
             Button ChooseBook = sender as Button;
+            string nameBook = ChooseBook.Tag.ToString();
+            foreach (TakenBook book in books)
+            {
+                if (book.GetBookName() == nameBook)
+                {
+                    user.AddPastBook(new List<string> { $"{nameBook}" }); //ЧТО ДОБАВЛЯТЬ?
+                    books.Remove(book);
+                    MessageBox.Show("Книга принята.");
+                    if (books.Count != 0)
+                    {
+                        new AcceptBookWindow(user.GetLogin(), new List<string> { "", "", "", "" }).Show();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("У данного пользователя больше нет взятых книг.");
+                        new UserChooseWindow().Show();
+                        Close();
+                    }
+                    break;
+                }
+            }
+            _storage.SaveUsers();
             //new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
 
             //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
-            Close();
+            //Close();
         }
 
         private void Apply(object sender, RoutedEventArgs e)

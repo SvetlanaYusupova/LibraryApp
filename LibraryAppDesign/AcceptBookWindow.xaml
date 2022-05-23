@@ -28,8 +28,6 @@
         <ComboBox Grid.Row="1" Name="TitleName" Grid.Column="1" Margin="5" Initialized="TitleName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
 
         <TextBlock  Grid.Row ="2" Name="Author" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите автора книги</TextBlock>
-        <!--<TextBox Grid.Row ="2" Name="AuthorName" Grid.Column="1" Margin="5"></TextBox>-->
-        <!--старый вариант, не разворачивающийся-->
         <ComboBox Grid.Row="2" Name="AuthorName" Grid.Column="1" Margin="5" Initialized="AuthorName_Initialized" IsEditable="True" StaysOpenOnEdit="False"></ComboBox>
 
         <TextBlock Grid.Row="3" Name="Genre" Grid.Column="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" >Выберите жанр книги</TextBlock>
