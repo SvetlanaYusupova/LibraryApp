@@ -5,9 +5,9 @@
     "Age": 19,
     "Login": "kate",
     "Password": "123",
-    "UsersBook": null,
-    "UsersOrderBook": null,
-    "PastBooks": null
+    "UsersBook": [],
+    "UsersOrderBook": [],
+    "PastBooks": []
   },
   {
     "Name": "qwe",
@@ -38,5 +38,15 @@
     "UsersBook": null,
     "UsersOrderBook": null,
     "PastBooks": null
+  },
+  {
+    "Name": "test",
+    "Surname": "test",
+    "Age": 20,
+    "Login": "test",
+    "Password": "test",
+    "UsersBook": [],
+    "UsersOrderBook": [],
+    "PastBooks": []
   }
 ]

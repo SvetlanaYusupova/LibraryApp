@@ -22,22 +22,32 @@ namespace LibraryAppDesign
     {
         public AcceptBookWindow(string userLg, List<string> filt)
         {
-            InitializeComponent();
             foreach (var us in _storage.Users)
             {
                 if (us.GetLogin() == userLg)
                 {
                     user = us;
+                    books = us.GetUsersBook();
                 }
             }
-            filters4Book = filt;
-            ChoseBooks();
-            BooksListBox.ItemsSource = filtersBooks;
+            if (books == null || books.Count == 0)  //Это неправильно
+            {
+                MessageBox.Show("У пользователя нет взятых книг.");
+                new WindowAdmin().Show();
+                Close();
+            }
+            else
+            {
+                InitializeComponent();
+                filters4Book = filt;
+                ChoseBooks();
+                BooksListBox.ItemsSource = filtersBooks;
+            }
         }
 
-        static User user;
+        User user;
         static Storage _storage = new Storage();
-        List<TakenBook> books = user.GetUsersBook() ;  //книги на руках у пользователя
+        List<TakenBook> books;  //книги на руках у пользователя
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
