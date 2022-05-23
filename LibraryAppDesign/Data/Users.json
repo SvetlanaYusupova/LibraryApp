@@ -15,9 +15,9 @@
     "Age": 20,
     "Login": "qwe",
     "Password": "124",
-    "UsersBook": null,
-    "UsersOrderBook": null,
-    "PastBooks": null
+    "UsersBook": [],
+    "UsersOrderBook": [],
+    "PastBooks": []
   },
   {
     "Name": "11",
@@ -25,9 +25,9 @@
     "Age": 11,
     "Login": "11",
     "Password": "11",
-    "UsersBook": null,
-    "UsersOrderBook": null,
-    "PastBooks": null
+    "UsersBook": [],
+    "UsersOrderBook": [],
+    "PastBooks": []
   },
   {
     "Name": "111",
@@ -35,9 +35,9 @@
     "Age": 4,
     "Login": "111",
     "Password": "111",
-    "UsersBook": null,
-    "UsersOrderBook": null,
-    "PastBooks": null
+    "UsersBook": [],
+    "UsersOrderBook": [],
+    "PastBooks": []
   },
   {
     "Name": "test",

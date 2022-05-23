@@ -30,19 +30,10 @@ namespace LibraryAppDesign
                     books = us.GetUsersBook();
                 }
             }
-            if (books == null || books.Count == 0)  //Это неправильно
-            {
-                MessageBox.Show("У пользователя нет взятых книг.");
-                new WindowAdmin().Show();
-                Close();
-            }
-            else
-            {
-                InitializeComponent();
-                filters4Book = filt;
-                ChoseBooks();
-                BooksListBox.ItemsSource = filtersBooks;
-            }
+            InitializeComponent();
+            filters4Book = filt;
+            ChoseBooks();
+            BooksListBox.ItemsSource = filtersBooks;
         }
 
         User user;

@@ -32,12 +32,24 @@ namespace LibraryAppDesign
         private void buttonNext_Click(object sender, RoutedEventArgs e)
         {
             //Для перехода к окну принятия книги
-            if (UserList.Text.ToString() != "")
+            bool doing = true;
+            foreach (var us in _storage.Users)
             {
-                new AcceptBookWindow(UserList.Text, new List<string> { "", "", "", "" }).Show();
-                Close();
+                if (us.GetLogin() == UserList.Text)
+                {
+                    if (us.GetUsersBook().Count != 0)
+                    {
+                        new AcceptBookWindow(UserList.Text, new List<string> { "", "", "", "" }).Show();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("У пользователя нет взятых книг.");
+                        doing = false;
+                    }
+                }
             }
-            else
+            if (doing)
             {
                 MessageBox.Show("Такого пользователя нет.");
             }
