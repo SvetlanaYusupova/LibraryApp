@@ -60,6 +60,11 @@ namespace LibraryApp.Core
             AllNumber = allnumber;
             AvailableNumber = availablenumber;
         }
+
+        public void AddOneBook()
+        {
+            AvailableNumber = AvailableNumber + 1;
+        }
     }
 
 

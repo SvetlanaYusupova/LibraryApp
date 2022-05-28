@@ -139,6 +139,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Data\Admin.json" />
+    <None Include="Data\Books.json" />
     <None Include="Data\Users.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
