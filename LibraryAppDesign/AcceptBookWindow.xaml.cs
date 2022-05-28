@@ -64,7 +64,7 @@ namespace LibraryAppDesign
             {
                 if (book.GetBookName() == nameBook)
                 {
-                    user.AddPastBook(new List<string> { $"{nameBook}" }); //ЧТО ДОБАВЛЯТЬ?
+                    user.AddPastBook(new List<string> { $"{nameBook}", $"{string.Join(", ", book.GetAuthor())}", $"{book.GetAgeRating()}", $"{book.GetGenre()}" }); 
                     books.Remove(book);
                     MessageBox.Show("Книга принята.");
                     if (books.Count != 0)
