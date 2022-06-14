@@ -13,12 +13,16 @@ namespace LibraryApp.Core
         private string Login { get; set; }
         [JsonProperty]
         private string BookName { get; set; }
-        
+        [JsonProperty]
+        private string Type { get; set; }
 
-        public Notification(string login, string bookName)
+
+
+        public Notification(string login, string bookName, string type)
         {
             Login = login;
             BookName = bookName;
+            Type = type;
         }
     }
 }

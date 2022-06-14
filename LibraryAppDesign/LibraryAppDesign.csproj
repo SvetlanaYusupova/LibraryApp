@@ -58,50 +58,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="PastBookWindow.xaml.cs">
+    <Compile Include="User\PastBookWindow.xaml.cs">
       <DependentUpon>PastBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TakenBookWindow.xaml.cs">
+    <Compile Include="User\TakenBookWindow.xaml.cs">
       <DependentUpon>TakenBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TakeBookWindow.xaml.cs">
+    <Compile Include="User\TakeBookWindow.xaml.cs">
       <DependentUpon>TakeBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View1BookWindow.xaml.cs">
+    <Compile Include="User\View1BookWindow.xaml.cs">
       <DependentUpon>View1BookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AcceptBookWindow.xaml.cs">
+    <Compile Include="Admin\AcceptBookWindow.xaml.cs">
       <DependentUpon>AcceptBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GiveBookWindow.xaml.cs">
+    <Compile Include="Admin\GiveBookWindow.xaml.cs">
       <DependentUpon>GiveBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserChooseWindow.xaml.cs">
+    <Compile Include="Admin\UserChooseWindow.xaml.cs">
       <DependentUpon>UserChooseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View2BookWindow.xaml.cs">
+    <Compile Include="Admin\View2BookWindow.xaml.cs">
       <DependentUpon>View2BookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowAdmin.xaml.cs">
+    <Compile Include="Admin\WindowAdmin.xaml.cs">
       <DependentUpon>WindowAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowPassword.xaml.cs">
+    <Compile Include="Admin\WindowPassword.xaml.cs">
       <DependentUpon>WindowPassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowRegistration.xaml.cs">
+    <Compile Include="User\WindowRegistration.xaml.cs">
       <DependentUpon>WindowRegistration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowSettings.xaml.cs">
+    <Compile Include="User\WindowSettings.xaml.cs">
       <DependentUpon>WindowSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowUser.xaml.cs">
+    <Compile Include="User\WindowUser.xaml.cs">
       <DependentUpon>WindowUser.xaml</DependentUpon>
     </Compile>
-    <Page Include="AcceptBookWindow.xaml">
+    <Page Include="Admin\AcceptBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GiveBookWindow.xaml">
+    <Page Include="Admin\GiveBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,47 +117,47 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserChooseWindow.xaml">
+    <Page Include="Admin\UserChooseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View2BookWindow.xaml">
+    <Page Include="Admin\View2BookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TakeBookWindow.xaml">
+    <Page Include="User\TakeBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View1BookWindow.xaml">
+    <Page Include="User\View1BookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PastBookWindow.xaml">
+    <Page Include="User\PastBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TakenBookWindow.xaml">
+    <Page Include="User\TakenBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowAdmin.xaml">
+    <Page Include="Admin\WindowAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowPassword.xaml">
+    <Page Include="Admin\WindowPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowRegistration.xaml">
+    <Page Include="User\WindowRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowSettings.xaml">
+    <Page Include="User\WindowSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowUser.xaml">
+    <Page Include="User\WindowUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
