@@ -119,6 +119,16 @@ namespace LibraryApp.Core
             StartDate = start;
             EndDate = end;
         }
+
+        public DateTime GetStartDate()
+        {
+            return StartDate;
+        }
+
+        public DateTime GetEndDate()
+        {
+            return EndDate;
+        }
     }
 
     public class OrderBook : Book

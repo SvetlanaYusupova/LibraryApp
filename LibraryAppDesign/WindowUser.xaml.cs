@@ -47,14 +47,23 @@ namespace LibraryAppDesign
             Close();
         }
 
+        private void LookBook(object sender, RoutedEventArgs e)
+        {
+            //для кнопки возможности просмотра бронированных книг пользователя
+        }
+
         private void LookPresent(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра текущих книг на руках пользователя
+            new TakenBookWindow(userlogin, new List<string> { "", "" }).Show();
+            Close();
         }
 
         private void LookPast(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра прошлых книг пользователя
+            new PastBookWindow(userlogin).Show();
+            Close();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
