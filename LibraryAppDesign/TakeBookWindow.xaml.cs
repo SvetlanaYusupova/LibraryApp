@@ -45,18 +45,7 @@ namespace LibraryAppDesign
         List<string> filters4Book;
         List<BookInLibrary> filtersBooks = new List<BookInLibrary> { };
 
-        
-
-        private void Account(object sender, RoutedEventArgs e)
-        {
-            //для кнопки внесения изменений в данные пользователя
-        }
-
-        private void Notification(object sender, RoutedEventArgs e)
-        {
-            //для кнопки показа уведомлений пользователя
-        }
-
+       
         private void Return(object sender, RoutedEventArgs e)
         {
             //для кнопки сброса фильтров
