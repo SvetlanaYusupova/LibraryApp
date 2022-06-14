@@ -22,9 +22,7 @@
 
 
         <Button Grid.Row ="0" Grid.Column="0" Name="button5" Click="LogOut" Content="Вернуться" Width="85" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0 "></Button>
-        <Button Grid.Row ="0" Name="button0" Grid.Column="1" Click="Account" Content="Аккаунт" Width="65" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"></Button>
-        <Button Grid.Row ="0" Name="button1" Grid.Column="1" Click="Notification" Content="Уведомления" Width="105" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 5 75 5"></Button>
-
+        
         <TextBlock Grid.Row="1"  Name="PastBooks" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="15">Текущие книги в пользовании</TextBlock>
 
         <TextBlock  Grid.Row ="2" Name="Title" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите название книги</TextBlock>

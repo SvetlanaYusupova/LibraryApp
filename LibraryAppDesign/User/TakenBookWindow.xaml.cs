@@ -44,15 +44,6 @@ namespace LibraryAppDesign
 
         List<TakenBook> filtersBooks = new List<TakenBook> { };
 
-        private void Account(object sender, RoutedEventArgs e)
-        {
-            //для кнопки внесения изменений в данные пользователя
-        }
-
-        private void Notification(object sender, RoutedEventArgs e)
-        {
-            //для кнопки показа уведомлений пользователя
-        }
 
         private void PresentUserBook()
         {
@@ -104,7 +95,7 @@ namespace LibraryAppDesign
         {
             TextBlock StartDate = sender as TextBlock;
             TakenBook book = StartDate.DataContext as TakenBook;
-            string start = book.GetStartDate().ToString("dd/mm/yyyy");
+            string start = book.GetStartDate().ToShortDateString().ToString();
             StartDate.Text = start;
         }
 
@@ -112,7 +103,7 @@ namespace LibraryAppDesign
         {
             TextBlock EndDate = sender as TextBlock;
             TakenBook book = EndDate.DataContext as TakenBook;
-            string end = book.GetEndDate().ToString("dd/mm/yyyy");
+            string end = book.GetEndDate().ToShortDateString().ToString();
             EndDate.Text = end;
         }
 
