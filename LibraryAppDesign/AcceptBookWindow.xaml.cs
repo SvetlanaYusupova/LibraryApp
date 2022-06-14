@@ -22,22 +22,25 @@ namespace LibraryAppDesign
     {
         public AcceptBookWindow(string userLg, List<string> filt)
         {
-            InitializeComponent();
             foreach (var us in _storage.Users)
             {
                 if (us.GetLogin() == userLg)
                 {
                     user = us;
+                    books = us.GetUsersBook();
                 }
             }
+            allBooks = _storage.Books;
+            InitializeComponent();
             filters4Book = filt;
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
         }
 
-        static User user;
+        User user;
         static Storage _storage = new Storage();
-        List<TakenBook> books = user.GetUsersBook() ;  //книги на руках у пользователя
+        List<TakenBook> books;  //книги на руках у пользователя
+        List<BookInLibrary> allBooks; //все книги в библиотеке
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
@@ -58,10 +61,40 @@ namespace LibraryAppDesign
         {
             //для кнопки выбора книги
             Button ChooseBook = sender as Button;
+            string nameBook = ChooseBook.Tag.ToString();
+            foreach (TakenBook book in books)
+            {
+                if (book.GetBookName() == nameBook)
+                {
+                    user.AddPastBook(new List<string> { $"{nameBook}", $"{string.Join(", ", book.GetAuthor())}", $"{book.GetAgeRating()}", $"{book.GetGenre()}" });
+                    foreach (BookInLibrary book2 in allBooks)
+                    {
+                        if (book2.GetBookName() == nameBook)
+                        {
+                            book2.AddOneBook();
+                        }
+                    }
+                    books.Remove(book);
+                    MessageBox.Show("Книга принята.");
+                    if (books.Count != 0)
+                    {
+                        new AcceptBookWindow(user.GetLogin(), new List<string> { "", "", "", "" }).Show();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("У данного пользователя больше нет взятых книг.");
+                        new UserChooseWindow().Show();
+                        Close();
+                    }
+                    break;
+                }
+            }
+            _storage.SaveUsers();
             //new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
 
             //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
-            Close();
+            //Close();
         }
 
         private void Apply(object sender, RoutedEventArgs e)

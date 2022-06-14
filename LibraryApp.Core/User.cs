@@ -74,6 +74,11 @@ namespace LibraryApp.Core
         {
             return UsersBook;
         }
+
+        public void AddPastBook(List<string> pastBook)
+        {
+            PastBooks.Add(pastBook);
+        }
         public List<OrderBook> GetOrderBook()
         {
             return UsersOrderBook;

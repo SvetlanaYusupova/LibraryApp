@@ -87,6 +87,11 @@ namespace LibraryApp.Core
             AvailableNumber = availablenumber;
         }
 
+        public void AddOneBook()
+        {
+            AvailableNumber = AvailableNumber + 1;
+        }
+
         public int GetAllNumber()
         { return AllNumber; }
 
