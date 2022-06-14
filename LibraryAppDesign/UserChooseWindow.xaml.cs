@@ -22,6 +22,8 @@ namespace LibraryAppDesign
     {
         public UserChooseWindow(string action)
         {
+            _storage = new Storage();
+            users = _storage.Users;
             InitializeComponent();
             
             chosenaction = action;
@@ -29,10 +31,9 @@ namespace LibraryAppDesign
 
         string chosenaction;
 
-        static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
+        static Storage _storage;
+        List<User> users;
         List<string> userLogins = new List<string> { };
-        List<OrderBook> orderbooks = _storage.OrderBooks;
 
         private void buttonNext_Click(object sender, RoutedEventArgs e)
         {
@@ -51,7 +52,7 @@ namespace LibraryAppDesign
             // для перехода в окно выдачи книги
             if (userLogins.Contains(login) && chosenaction == "Выдать книгу")
             {
-                if (CheckUserOrderBooks())
+                if (CheckUserOrderBooks(login))
                 {
                     new GiveBookWindow(login, chosenaction, new List<string> { "", "", "", "" }).Show();
                     Close();
@@ -62,24 +63,13 @@ namespace LibraryAppDesign
             // для перехода в окно получения книги
             if (userLogins.Contains(login) && chosenaction == "Принять книгу")
             {
-                new AcceptBookWindow(login, new List<string> { "", "", "", "" }).Show();
-                Close();
-            }
-
-            /*else
-            {
-                if (chosenaction == "Выдать книгу")
+                if (CheckUserTakenBooks(login))
                 {
-                    new GiveBookWindow(login, chosenaction, new List<string> { "", "", "", "" }).Show();
+                    new AcceptBookWindow(login, new List<string> { "", "", "", "" }).Show();
                     Close();
                 }
-
-                //Для перехода к окну принятия книги
-                *//*if (chosenaction == "Принять книгу")
-                {
-
-                }*//*
-            }*/
+                    
+            }
 
             //Для перехода к окну принятия книги
 
@@ -128,19 +118,43 @@ namespace LibraryAppDesign
             }
         }
 
-        private bool CheckUserOrderBooks()
+        private bool CheckUserOrderBooks(string login)
         {
             bool booksinorder = true;
-            if (orderbooks == null)
+            foreach (var user in _storage.Users)
             {
-                booksinorder = false;
-                MessageBox.Show("На данный момент у пользователя нет забронированных книг. Для получения книг пользователь должен забронировать их онлайн!");
-                new UserChooseWindow(chosenaction).Show();
-                Close();
-
+                if (user.GetLogin() == login)
+                {
+                    if (user.GetOrderBook().Count() == 0)
+                    {
+                        booksinorder = false;
+                        MessageBox.Show("На данный момент у пользователя нет забронированных книг. Для получения книг пользователь должен забронировать их онлайн!");
+                        new UserChooseWindow(chosenaction).Show();
+                        Close();
+                    }
+                }
             }
 
             return booksinorder;
+        }
+
+        private bool CheckUserTakenBooks(string login)
+        {
+            bool bookstaken = true;
+            foreach (var user in _storage.Users)
+            {
+                if (user.GetLogin() == login)
+                {
+                    if (user.GetTakenBooks().Count() == 0)
+                    {
+                        bookstaken = false;
+                        MessageBox.Show("На данный момент у пользователя нет взятых книг!");
+                        new UserChooseWindow(chosenaction).Show();
+                        Close();
+                    }
+                }
+            }
+            return bookstaken;
         }
 
         private void LogOut(object sender, RoutedEventArgs e)

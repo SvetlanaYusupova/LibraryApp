@@ -22,19 +22,24 @@ namespace LibraryAppDesign
     {
         public GiveBookWindow(string login, string action, List<string> filters)
         {
-            InitializeComponent();
+            _storage = new Storage();
+            users = _storage.Users;
+
             currentuser = login;
             currentaction = action;
 
             filters4Book = filters;
-            _storage = new Storage();
+
+            InitializeComponent();
+            ChoseBooks();
+            BooksListBox.ItemsSource = filtersBooks;
         }
 
         string currentuser;
         string currentaction;
 
-        static Storage _storage = new Storage();
-        List<OrderBook> orderbooks = _storage.OrderBooks;
+        static Storage _storage;
+        List<User> users;
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
@@ -44,6 +49,7 @@ namespace LibraryAppDesign
         List<string> filters4Book;
 
         List<OrderBook> filtersBooks = new List<OrderBook> { };
+        
 
         private void Return(object sender, RoutedEventArgs e)
         {
@@ -87,7 +93,8 @@ namespace LibraryAppDesign
         {
 
             ComboBox TitleName = sender as ComboBox;
-            foreach (var item in orderbooks)
+
+            foreach (var item in GetUser(currentuser))
             {
                 if (!titlenames.Contains(item.GetBookName()))
                 {
@@ -104,7 +111,7 @@ namespace LibraryAppDesign
         private void AuthorName_Initialized(object sender, EventArgs e)
         {
             ComboBox AuthorName = sender as ComboBox;
-            foreach (var item in orderbooks)
+            foreach (var item in GetUser(currentuser))
             {
                 foreach (var author in item.GetAuthor())
                 {
@@ -124,7 +131,7 @@ namespace LibraryAppDesign
         private void GenreName_Initialized(object sender, EventArgs e)
         {
             ComboBox GenreName = sender as ComboBox;
-            foreach (var item in orderbooks)
+            foreach (var item in GetUser(currentuser))
             {
                 if (!genres.Contains(item.GetGenre()))
                 {
@@ -142,7 +149,7 @@ namespace LibraryAppDesign
         private void AgeName_Initialized(object sender, EventArgs e)
         {
             ComboBox AgeName = sender as ComboBox;
-            foreach (var item in orderbooks)
+            foreach (var item in GetUser(currentuser))
             {
                 if (!ageRatings.Contains(item.GetAgeRating()))
                 {
@@ -205,7 +212,7 @@ namespace LibraryAppDesign
 
         private void ChoseBooks()
         {
-            foreach (var item in orderbooks)
+            foreach (var item in GetUser(currentuser))
             {
                 if ((item.GetBookName().ToLower().Contains(filters4Book[0].ToLower()) || filters4Book[0] == "") &&
                     (CheckAuthor(item.GetAuthor(), filters4Book[1])) &&
@@ -242,6 +249,21 @@ namespace LibraryAppDesign
         {
             new UserChooseWindow(currentaction).Show();
             Close();
+        }
+
+        public List<OrderBook> GetUser(string currentuser)
+        {
+            List<OrderBook> orderbooks = new List<OrderBook>();
+
+            foreach (var user in users)
+            {
+                if (user.GetLogin() == currentuser)
+                {
+                    orderbooks = user.GetOrderBook();
+                }
+            }
+
+            return orderbooks;
         }
     }
 }

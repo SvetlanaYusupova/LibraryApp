@@ -27,6 +27,7 @@ namespace LibraryAppDesign
             userlogin = login;
 
             _storage = new Storage();
+            books = _storage.Books;
        
             // текущий пользователь
             currentuser = GetCurrentUser(userlogin);
@@ -43,9 +44,8 @@ namespace LibraryAppDesign
         User currentuser;
         OrderBook currentbook;
 
-        static Storage _storage = new Storage();
-        List<OrderBook> orderbooks = _storage.OrderBooks;
-        List<TakenBook> takenbooks = _storage.TakenBooks;
+        static Storage _storage;
+        List<BookInLibrary> books;
 
         private void GoOut(object sender, RoutedEventArgs e)
         {
@@ -95,7 +95,7 @@ namespace LibraryAppDesign
         // функция для получения экземпляра книги, выбранной пользователем, по названию
         private OrderBook GetCurrentBook(string chosenbook)
         {
-            foreach (var book in _storage.OrderBooks)
+            foreach (var book in currentuser.GetOrderBook())
             {
                 if (book.GetBookName() == chosenbook)
                 {
@@ -137,7 +137,7 @@ namespace LibraryAppDesign
             _storage.SaveUsers();
 
             MessageBox.Show("Книга успешно выдана!");
-            new View2BookWindow(userlogin, currentaction, chosenbook);
+            new WindowAdmin().Show();
             Close();
 
 

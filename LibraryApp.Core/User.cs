@@ -63,10 +63,10 @@ namespace LibraryApp.Core
         {
             return UsersBook;
         }
-        public List<OrderBook> GetOrderedBooks()
+        /*public List<OrderBook> GetOrderedBooks() поменять на GetOrderBook()
         {
             return UsersOrderBook;
-        }
+        }*/
 
         public void AddOrderBook(OrderBook orderedbook)
         {

@@ -1,7 +1,7 @@
 [
   {
     "AllNumber": 7,
-    "AvailableNumber": 7,
+    "AvailableNumber": 6,
     "BookName": "Пикник на обочине",
     "Author": [
       "Борис Стругацкий",
@@ -24,7 +24,7 @@
   },
   {
     "AllNumber": 14,
-    "AvailableNumber": 14,
+    "AvailableNumber": 13,
     "BookName": "Дюна",
     "Author": [
       "Фрэнк Герберт"
@@ -112,7 +112,7 @@
   },
   {
     "AllNumber": 2,
-    "AvailableNumber": 2,
+    "AvailableNumber": 1,
     "BookName": "Эмма",
     "Author": [
       "Джейн Остин"
@@ -123,7 +123,7 @@
   },
   {
     "AllNumber": 1,
-    "AvailableNumber": 1,
+    "AvailableNumber": 0,
     "BookName": "Мартин Иден",
     "Author": [
       "Джек Лондон"
