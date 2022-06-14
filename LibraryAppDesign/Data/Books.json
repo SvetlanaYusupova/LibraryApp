@@ -1,7 +1,7 @@
 [
   {
     "AllNumber": 7,
-    "AvailableNumber": 6,
+    "AvailableNumber": 7,
     "BookName": "Пикник на обочине",
     "Author": [
       "Борис Стругацкий",
@@ -68,7 +68,7 @@
   },
   {
     "AllNumber": 1,
-    "AvailableNumber": 0,
+    "AvailableNumber": 1,
     "BookName": "Система вещей",
     "Author": [
       "Жан Бодрийяр"

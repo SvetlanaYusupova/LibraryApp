@@ -84,8 +84,7 @@ namespace LibraryAppDesign
                     else
                     {
                         MessageBox.Show("У данного пользователя больше нет взятых книг.");
-                        //
-                        new UserChooseWindow().Show();
+                        //new UserChooseWindow().Show();
                         Close();
                     }
                     break;
