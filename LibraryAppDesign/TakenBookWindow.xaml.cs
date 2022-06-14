@@ -26,6 +26,7 @@ namespace LibraryAppDesign
             
             userlogin = login;
             _storage = new Storage();
+            users = _storage.Users;
             filters4Book = filters;
             PresentUserBook();
             ChooseBooks();
@@ -36,7 +37,7 @@ namespace LibraryAppDesign
 
         string userlogin;
         static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
+        List<User> users;
         List<TakenBook> takenBook = new List<TakenBook> { };
         List<string> filters4Book;
         List<string> titlenames = new List<string> { };

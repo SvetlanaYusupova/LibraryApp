@@ -59,7 +59,7 @@
         "Genre": "Фантастика"
       },
       {
-        "StartDate": "2022-05-4T00:00:00+03:00",
+        "StartDate": "2022-05-04T00:00:00+03:00",
         "EndDate": "2022-05-23T00:00:00+03:00",
         "BookName": "Система вещей",
         "Author": [
@@ -93,6 +93,16 @@
         "Genre": "Философия"
       }
     ],
+    "PastBooks": []
+  },
+  {
+    "Name": "sonia",
+    "Surname": "ermakova",
+    "Age": 19,
+    "Login": "sonia",
+    "Password": "7",
+    "UsersBook": [],
+    "UsersOrderBook": [],
     "PastBooks": []
   }
 ]
