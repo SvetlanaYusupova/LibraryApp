@@ -19,8 +19,7 @@ namespace LibraryApp.Core
         public List<BookInLibrary> Books { get; private set; }
         public List<Admin> Admins { get; private set; }
         public List<Notification> Notifications { get; private set; }
-        public List<OrderBook> OrderBooks { get; private set; }
-        public List<TakenBook> TakenBooks { get; private set; }
+        //public List<TakenBook> TakenBooks { get; private set; }
 
         public Storage()
         {

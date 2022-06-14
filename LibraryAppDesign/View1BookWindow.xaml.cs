@@ -191,7 +191,7 @@ namespace LibraryAppDesign
 
                 if (check)
                 {
-                    foreach (var book in currentuser.GetOrderedBooks())
+                    foreach (var book in currentuser.GetOrderBook())
                     {
                         if (book.GetName() == chosenbook)
                         {
