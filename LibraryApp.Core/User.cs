@@ -72,5 +72,27 @@ namespace LibraryApp.Core
         {
             UsersOrderBook.Add(orderedbook);
         }
+        public void SetLogin(string login)
+        {
+            Login = login;
+        }
+        public void SetPassword(string password)
+        {
+            Password = password;
+        }
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+
+        public void SetSurname(string surname)
+        {
+            Surname = surname;
+        }
+
+        public void SetAge(int age)
+        {
+            Age = age;
+        }
     }
 }
