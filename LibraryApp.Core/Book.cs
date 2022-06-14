@@ -50,11 +50,6 @@ namespace LibraryApp.Core
             return Description;
         }
 
-        public string GetGenre()
-        { return Genre; }
-
-        public string GetAgeRating()
-        { return AgeRating; }
         
         public int GetIntBookAge() // целочисленное значение возрастного рейтинга книги для сравнения с возрастом пользователя
         {
@@ -63,13 +58,7 @@ namespace LibraryApp.Core
         }
         public string GetName()
         { return BookName; }
-        public List<string> GetAuthor()
-        { return Author; }
-
-        public string GetDescription()
-        {
-            return Description;
-        }
+       
 
     }
 

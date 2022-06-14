@@ -113,22 +113,6 @@ namespace LibraryApp.Core
         {
             UsersOrderBook.Remove(orderbook);
         }
-        public int GetAge()
-        {
-            return Age;
-        }
-        public List<TakenBook> GetTakenBooks()
-        {
-            return UsersBook;
-        }
-        public List<OrderBook> GetOrderedBooks()
-        {
-            return UsersOrderBook;
-        }
-
-        public void AddOrderBook(OrderBook orderedbook)
-        {
-            UsersOrderBook.Add(orderedbook);
-        }
+       
     }
 }
