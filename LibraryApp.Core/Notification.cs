@@ -24,5 +24,18 @@ namespace LibraryApp.Core
             BookName = bookName;
             Type = type;
         }
+
+        public string GetLogin()
+        {
+            return Login;
+        }
+        public string GetBookName()
+        {
+            return BookName;
+        }
+        public string GetTypeNotification()
+        {
+            return Type;
+        }
     }
 }

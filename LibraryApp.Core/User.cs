@@ -25,7 +25,7 @@ namespace LibraryApp.Core
         private List<OrderBook> UsersOrderBook { get; set; }
         [JsonProperty]
         private List<List<string>> PastBooks { get; set; }
-        [JsonIgnore]
+        [JsonProperty]
         private List<string> Messages { get; set; }
 
         public User(string name, string surname, int age, string login, string password, List<TakenBook> usersBook, List<OrderBook> usersorderBook,
@@ -39,7 +39,7 @@ namespace LibraryApp.Core
             UsersBook = usersBook;
             UsersOrderBook = usersorderBook;
             PastBooks = pastBook;
-            // Messages = messages;
+            Messages = messages;
         }
 
         public string GetLogin()
@@ -113,6 +113,25 @@ namespace LibraryApp.Core
         {
             UsersOrderBook.Remove(orderbook);
         }
-       
+
+        public void AddBookingMessage(OrderBook book)
+        {
+            Messages.Add("У вас истекает срок бронирования книги: " + book.GetBookName() + ". Осталось менее 3 дней.");
+        }
+
+        public void AddTakenMessage(TakenBook book)
+        {
+            Messages.Add("У вас истекает срок пользования книгой: " + book.GetBookName() + ". Осталось менее недели.");
+        }
+
+        public List<string> GetMessages()
+        {
+            return Messages;
+        }
+
+        public void DeleteMessages()
+        {
+            Messages = new List<string> { };
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace LibraryApp.Core
         public Storage()
         {
             /*Users = new List<User> { };
-            Books = new List<BookInLibrary> 
+            Books = new List<BookInLibrary>
             {
                 // книги жанра "Фантастика"
                 new BookInLibrary("Пикник на обочине", new List<string>() {"Борис Стругацкий", "Аркадий Стругацкий"}, "16+", "«Пикник на обочине» – одно из самых прославленных произведений братьев Стругацких, увлекательная история сталкеров – отчаянно смелых людей, на свой страх и риск снова и снова отправляющихся в место высадки пришельцев – аномальную Зону, полную опасностей и смертельных ловушек...", "Фантастика", 7, 7),
@@ -53,6 +53,47 @@ namespace LibraryApp.Core
             ReadAdmin();
             ReadBooks();
             ReadNotifications();
+
+            //стереть бронирование с датой, когда срок взятия вышел
+            //заполнить уведомления для пользователей
+            foreach (var user in Users)
+            {
+                user.DeleteMessages();
+                foreach (var booking in user.GetOrderBook())
+                {
+                    if (booking.GetEndDate() < DateTime.Today)
+                    {
+                        user.DicreaseOrderBook(booking);
+                        foreach (var book in Books)
+                        {
+                            if (book.GetBookName() == booking.GetBookName())
+                            {
+                                book.AddOneBook();
+                                break;
+                            }
+                        }
+                        foreach (var item in Notifications)
+                        {
+                            if (item.GetLogin() == user.GetLogin() && item.GetBookName() == booking.GetBookName() && item.GetTypeNotification() == "booking")
+                            {
+                                Notifications.Remove(item);
+                            }
+                        }
+                    }
+                    else if ((DateTime.Today - booking.GetEndDate()).Days < 3)
+                    {
+                        user.AddBookingMessage(booking);
+                    }
+                }
+
+                foreach (var taken in user.GetTakenBooks())
+                {
+                    if ((DateTime.Today - taken.GetEndDate()).Days < 7)
+                    {
+                        user.AddTakenMessage(taken);
+                    }
+                }
+            }
         }
 
         public void SaveNotifications()
