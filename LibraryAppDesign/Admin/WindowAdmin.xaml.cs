@@ -36,6 +36,7 @@ namespace LibraryAppDesign
         {
             //для редактирования логина и пароля админа
             new WindowPassword("edit", login).Show();
+            Close();
         }
 
         private void Notification(object sender, RoutedEventArgs e)

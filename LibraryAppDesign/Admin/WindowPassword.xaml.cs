@@ -1,17 +1,6 @@
 ﻿using LibraryApp.Core;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LibraryAppDesign
 {
@@ -25,9 +14,24 @@ namespace LibraryAppDesign
             InitializeComponent();
             action = whatDo;
             login = account;
+            if (action == "edit")
+            {
+                foreach (var adm in _storage.Admins)
+                {
+                    if (adm.GetLogin() == login)
+                    {
+                        admin = adm;
+                    }
+                }
+                textBoxLogin.Text = admin.GetLogin();
+                textBoxPassword.Text = admin.GetPassword();
+                buttonCheck.Content = "Изменить";
+            }
         }
 
+        Storage _storage = new Storage();
         string action;
+        Admin admin;
         string login;
 
         private void buttonReturn_Click(object sender, RoutedEventArgs e)
@@ -40,14 +44,14 @@ namespace LibraryAppDesign
             if (action == "edit")
             {
                 new WindowAdmin(login).Show();
+                Close();
             }
         }
 
         private void buttonCheck_Click(object sender, RoutedEventArgs e)
         {
-            Storage storage = new Storage();
             bool doing = true;
-            List<Admin> admins = storage.Admins;
+            List<Admin> admins = _storage.Admins;
             if (action == "authorization")
             {
                 foreach (var adm in admins)
@@ -76,7 +80,17 @@ namespace LibraryAppDesign
             }
             if (action == "edit")
             {
-
+                if (textBoxLogin.Text != "" & textBoxPassword.Text != "")
+                {
+                    admin.SetLogin(textBoxLogin.Text);
+                    login = textBoxLogin.Text;
+                    admin.SetPassword(textBoxPassword.Text);
+                    _storage.SaveAdmin();
+                }
+                else
+                {
+                    MessageBox.Show("Логин или пароль не могут быть пустыми. Повторите попытку.");
+                }
             }
         }
     }

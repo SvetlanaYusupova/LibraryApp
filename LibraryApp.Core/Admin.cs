@@ -29,5 +29,15 @@ namespace LibraryApp.Core
         {
             return Password;
         }
+
+        public void SetLogin(string login)
+        {
+            Login = login;
+        }
+
+        public void SetPassword(string password)
+        {
+            Password = password;
+        }
     }
 }
