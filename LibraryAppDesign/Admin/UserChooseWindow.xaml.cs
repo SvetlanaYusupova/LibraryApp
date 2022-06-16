@@ -20,12 +20,12 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class UserChooseWindow : Window
     {
-        public UserChooseWindow(string action)
+        public UserChooseWindow(string action, string admLogin)
         {
             _storage = new Storage();
             users = _storage.Users;
             InitializeComponent();
-            
+            admin = admLogin;
             chosenaction = action;
         }
 
@@ -33,6 +33,7 @@ namespace LibraryAppDesign
 
         static Storage _storage;
         List<User> users;
+        string admin;
         List<string> userLogins = new List<string> { };
 
         private void buttonNext_Click(object sender, RoutedEventArgs e)
@@ -45,7 +46,7 @@ namespace LibraryAppDesign
             if (!userLogins.Contains(login))
             {
                 MessageBox.Show("Такого пользователя нет.");
-                new UserChooseWindow(chosenaction).Show();
+                new UserChooseWindow(chosenaction, admin).Show();
                 Close();
             }
 
@@ -54,7 +55,7 @@ namespace LibraryAppDesign
             {
                 if (CheckUserOrderBooks(login))
                 {
-                    new GiveBookWindow(login, chosenaction, new List<string> { "", "", "", "" }).Show();
+                    new GiveBookWindow(login, chosenaction, new List<string> { "", "", "", "" }, admin).Show();
                     Close();
                 }
                 
@@ -65,7 +66,7 @@ namespace LibraryAppDesign
             {
                 if (CheckUserTakenBooks(login))
                 {
-                    new AcceptBookWindow(login, new List<string> { "", "", "", "" }).Show();
+                    new AcceptBookWindow(login, new List<string> { "", "", "", "" }, admin).Show();
                     Close();
                 }
                     
@@ -129,7 +130,7 @@ namespace LibraryAppDesign
                     {
                         booksinorder = false;
                         MessageBox.Show("На данный момент у пользователя нет забронированных книг. Для получения книг пользователь должен забронировать их онлайн!");
-                        new UserChooseWindow(chosenaction).Show();
+                        new UserChooseWindow(chosenaction, admin).Show();
                         Close();
                     }
                 }
@@ -149,7 +150,7 @@ namespace LibraryAppDesign
                     {
                         bookstaken = false;
                         MessageBox.Show("На данный момент у пользователя нет взятых книг!");
-                        new UserChooseWindow(chosenaction).Show();
+                        new UserChooseWindow(chosenaction, admin).Show();
                         Close();
                     }
                 }
@@ -159,7 +160,7 @@ namespace LibraryAppDesign
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            new WindowAdmin().Show();
+            new WindowAdmin(admin).Show();
             Close();
         }
     }

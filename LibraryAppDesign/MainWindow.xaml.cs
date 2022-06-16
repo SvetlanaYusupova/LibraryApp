@@ -35,7 +35,7 @@ namespace LibraryAppDesign
         private void Admin(object sender, RoutedEventArgs e)
         {
             //для кнопки входа в админа и дальнейшие действия (в новом окне)
-            new WindowPassword().Show();
+            new WindowPassword("authorization", null).Show();
             Close();
         }
 

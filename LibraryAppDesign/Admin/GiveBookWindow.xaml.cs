@@ -20,7 +20,7 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class GiveBookWindow : Window
     {
-        public GiveBookWindow(string login, string action, List<string> filters)
+        public GiveBookWindow(string login, string action, List<string> filters, string admLogin)
         {
             _storage = new Storage();
             users = _storage.Users;
@@ -37,6 +37,7 @@ namespace LibraryAppDesign
 
         string currentuser;
         string currentaction;
+        string admin;
 
         static Storage _storage;
         List<User> users;
@@ -54,7 +55,7 @@ namespace LibraryAppDesign
         private void Return(object sender, RoutedEventArgs e)
         {
             //для кнопки сброса фильтров
-            new GiveBookWindow(currentuser, currentaction, new List<string> { "", "", "", "" }).Show();
+            new GiveBookWindow(currentuser, currentaction, new List<string> { "", "", "", "" }, admin).Show();
             Close();
         }
 
@@ -77,7 +78,7 @@ namespace LibraryAppDesign
                     fil.Add(obj.ToString());
                 }
             }
-            new GiveBookWindow(currentuser, currentaction, fil).Show();
+            new GiveBookWindow(currentuser, currentaction, fil, admin).Show();
             Close();
         }
 
@@ -85,7 +86,7 @@ namespace LibraryAppDesign
         {
             //для кнопки выбора книги
             Button ChooseBook = sender as Button;
-            new View2BookWindow(currentuser, currentaction, ChooseBook.Tag.ToString()).Show();
+            new View2BookWindow(currentuser, currentaction, ChooseBook.Tag.ToString(), admin).Show();
             Close();
         }
 
@@ -247,7 +248,7 @@ namespace LibraryAppDesign
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            new UserChooseWindow(currentaction).Show();
+            new UserChooseWindow(currentaction, admin).Show();
             Close();
         }
 
