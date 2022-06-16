@@ -27,6 +27,7 @@ namespace LibraryAppDesign
 
             currentuser = login;
             currentaction = action;
+            admin = admLogin;
 
             filters4Book = filters;
 
