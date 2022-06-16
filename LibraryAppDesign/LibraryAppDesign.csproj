@@ -58,16 +58,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="User\PastBookWindow.xaml.cs">
+    <Compile Include="UserG\MessagesWindow.xaml.cs">
+      <DependentUpon>MessagesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserG\PastBookWindow.xaml.cs">
       <DependentUpon>PastBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\TakenBookWindow.xaml.cs">
+    <Compile Include="UserG\TakenBookWindow.xaml.cs">
       <DependentUpon>TakenBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\TakeBookWindow.xaml.cs">
+    <Compile Include="UserG\TakeBookWindow.xaml.cs">
       <DependentUpon>TakeBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\View1BookWindow.xaml.cs">
+    <Compile Include="UserG\View1BookWindow.xaml.cs">
       <DependentUpon>View1BookWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Admin\AcceptBookWindow.xaml.cs">
@@ -88,13 +91,13 @@
     <Compile Include="Admin\WindowPassword.xaml.cs">
       <DependentUpon>WindowPassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\WindowRegistration.xaml.cs">
+    <Compile Include="UserG\WindowRegistration.xaml.cs">
       <DependentUpon>WindowRegistration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\WindowSettings.xaml.cs">
+    <Compile Include="UserG\WindowSettings.xaml.cs">
       <DependentUpon>WindowSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\WindowUser.xaml.cs">
+    <Compile Include="UserG\WindowUser.xaml.cs">
       <DependentUpon>WindowUser.xaml</DependentUpon>
     </Compile>
     <Page Include="Admin\AcceptBookWindow.xaml">
@@ -125,19 +128,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\TakeBookWindow.xaml">
+    <Page Include="UserG\MessagesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\View1BookWindow.xaml">
+    <Page Include="UserG\TakeBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\PastBookWindow.xaml">
+    <Page Include="UserG\View1BookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\TakenBookWindow.xaml">
+    <Page Include="UserG\PastBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserG\TakenBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,15 +156,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\WindowRegistration.xaml">
+    <Page Include="UserG\WindowRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\WindowSettings.xaml">
+    <Page Include="UserG\WindowSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\WindowUser.xaml">
+    <Page Include="UserG\WindowUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
