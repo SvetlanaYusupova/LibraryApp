@@ -27,6 +27,10 @@ namespace LibraryAppDesign
                 textBoxPassword.Text = admin.GetPassword();
                 buttonCheck.Content = "Изменить";
             }
+            if (action == "newadmin")
+            {
+                buttonCheck.Content = "Создать";
+            }
         }
 
         Storage _storage = new Storage();
@@ -41,7 +45,7 @@ namespace LibraryAppDesign
                 new MainWindow().Show();
                 Close();
             }
-            if (action == "edit")
+            if (action == "edit" | action == "newadmin")
             {
                 new WindowAdmin(login).Show();
                 Close();
@@ -90,6 +94,33 @@ namespace LibraryAppDesign
                 else
                 {
                     MessageBox.Show("Логин или пароль не могут быть пустыми. Повторите попытку.");
+                }
+            }
+            if (action == "newadmin")
+            {
+                foreach (var adm in admins)
+                {
+                    if (adm.GetLogin() == textBoxLogin.Text)
+                    {
+                        doing = false;
+                    }
+                }
+                if (doing)
+                {
+                    if (textBoxLogin.Text != "" & textBoxPassword.Text != "")
+                    {
+                        Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Text);
+                        _storage.Admins.Add(newAdmin);
+                        _storage.SaveAdmin();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Логин или пароль не могут быть пустыми. Повторите попытку.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Такой логин уже есть! Повторите попытку.");
                 }
             }
         }

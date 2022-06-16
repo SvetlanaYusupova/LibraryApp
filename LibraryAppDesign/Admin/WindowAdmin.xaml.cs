@@ -30,6 +30,8 @@ namespace LibraryAppDesign
         private void AddAdmin(object sender, RoutedEventArgs e)
         {
             //для создания новога админа при необходимости (права у них будут равные)
+            new WindowPassword("newadmin", login).Show();
+            Close();
         }
 
         private void Account(object sender, RoutedEventArgs e)
