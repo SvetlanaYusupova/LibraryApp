@@ -53,6 +53,46 @@ namespace LibraryApp.Core
             ReadAdmin();
             ReadBooks();
             ReadNotifications();
+
+
+            foreach (var user in Users)
+            {
+                foreach (var booking in user.GetOrderBook())
+                {
+                    if (booking.GetEndDate() < DateTime.Today)
+                    {
+                        user.DicreaseOrderBook(booking);
+                        foreach (var book in Books)
+                        {
+                            if (book.GetBookName() == booking.GetBookName())
+                            {
+                                book.AddOneBook();
+                                break;
+                            }
+                        }
+                        foreach (var item in Notifications)
+                        {
+                            if (item.GetLogin() == user.GetLogin() && item.GetBookName() == booking.GetBookName() && item.GetTypeNotification() == "booking")
+                            {
+                                Notifications.Remove(item);
+                            }
+                        }
+                    }
+                    else if ((DateTime.Today - booking.GetEndDate()).Days < 3)
+                    {
+                        user.AddBookingMessage(booking);
+                    }
+                }
+
+                foreach (var taken in user.GetTakenBooks())
+                {
+                    if ((DateTime.Today - taken.GetEndDate()).Days < 7)
+                    {
+                        user.AddTakenMessage(taken);
+                    }
+                }
+            }
+
         }
 
         public void SaveNotifications()

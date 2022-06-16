@@ -113,6 +113,15 @@ namespace LibraryApp.Core
         {
             UsersOrderBook.Remove(orderbook);
         }
-       
+
+        public void AddBookingMessage(OrderBook book)
+        {
+            Messages.Add("У вас истекает срок бронирования книги: " + book.GetBookName() + ". Осталось менее 3 дней.");
+        }
+
+        public void AddTakenMessage(TakenBook book)
+        {
+            Messages.Add("У вас истекает срок пользования книгой: " + book.GetBookName() + ". Осталось менее недели.");
+        }
     }
 }

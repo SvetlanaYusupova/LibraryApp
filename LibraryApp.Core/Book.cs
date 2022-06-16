@@ -58,7 +58,9 @@ namespace LibraryApp.Core
         }
         public string GetName()
         { return BookName; }
-       
+
+        public virtual DateTime GetEndDate()
+        { return default; }
 
     }
 
@@ -114,7 +116,7 @@ namespace LibraryApp.Core
             return StartDate;
         }
 
-        public DateTime GetEndDate()
+        public override DateTime GetEndDate()
         {
             return EndDate;
         }
@@ -130,6 +132,9 @@ namespace LibraryApp.Core
         {
             EndDate = end;
         }
+
+        public override DateTime GetEndDate()
+        { return EndDate; }
     }
 
 }
