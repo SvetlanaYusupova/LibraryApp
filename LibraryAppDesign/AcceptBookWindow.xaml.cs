@@ -20,7 +20,7 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class AcceptBookWindow : Window
     {
-        public AcceptBookWindow(string userLg, List<string> filt)
+        public AcceptBookWindow(string userLg, List<string> filt, string logAdmin)
         {
             foreach (var us in _storage.Users)
             {
@@ -35,13 +35,15 @@ namespace LibraryAppDesign
             filters4Book = filt;
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
+            admin = logAdmin;
+            
         }
 
         User user;
         static Storage _storage = new Storage();
         List<TakenBook> books;  //книги на руках у пользователя
         List<BookInLibrary> allBooks; //все книги в библиотеке
-
+        string admin;
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
         List<string> titlenames = new List<string> { };
@@ -53,7 +55,7 @@ namespace LibraryAppDesign
         private void Return(object sender, RoutedEventArgs e)
         {
             //для кнопки сброса фильтров
-            new AcceptBookWindow(user.GetLogin(), new List<string> { "", "", "", "" }).Show();
+            new AcceptBookWindow(user.GetLogin(), new List<string> { "", "", "", "" }, admin).Show();
             Close();
         }
 
@@ -78,13 +80,13 @@ namespace LibraryAppDesign
                     MessageBox.Show("Книга принята.");
                     if (books.Count != 0)
                     {
-                        new AcceptBookWindow(user.GetLogin(), new List<string> { "", "", "", "" }).Show();
+                        new AcceptBookWindow(user.GetLogin(), new List<string> { "", "", "", "" }, admin).Show();
                         Close();
                     }
                     else
                     {
                         MessageBox.Show("У данного пользователя больше нет взятых книг.");
-                        new WindowAdmin().Show();
+                        new WindowAdmin(admin).Show();
                         Close();
                     }
                     break;
@@ -114,13 +116,13 @@ namespace LibraryAppDesign
                     fil.Add(obj.ToString());
                 }
             }
-            new AcceptBookWindow(user.GetLogin(), fil).Show();
+            new AcceptBookWindow(user.GetLogin(), fil, admin).Show();
             Close();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            new WindowAdmin().Show();
+            new WindowAdmin(admin).Show();
             Close();
         }
 

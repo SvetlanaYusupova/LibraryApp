@@ -20,11 +20,12 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class View2BookWindow : Window
     {
-        public View2BookWindow(string login, string action, string tag)
+        public View2BookWindow(string login, string action, string tag, string logAdmin)
         {
             chosenbook = tag;
             currentaction = action;
             userlogin = login;
+            admin = logAdmin;
 
             _storage = new Storage();
             books = _storage.Books;
@@ -40,6 +41,7 @@ namespace LibraryAppDesign
         string currentaction;
         string chosenbook;
         string userlogin;
+        string admin;
 
         User currentuser;
         OrderBook currentbook;
@@ -51,7 +53,7 @@ namespace LibraryAppDesign
         {
             _storage.SaveBooks();
             _storage.SaveUsers();
-            new GiveBookWindow(userlogin, currentaction, new List<string> { "", "", "", "" }).Show();
+            new GiveBookWindow(userlogin, currentaction, new List<string> { "", "", "", "" }, admin).Show();
             Close();
         }
 
@@ -137,7 +139,7 @@ namespace LibraryAppDesign
             _storage.SaveUsers();
 
             MessageBox.Show("Книга успешно выдана!");
-            new WindowAdmin().Show();
+            new WindowAdmin(admin).Show();
             Close();
 
 

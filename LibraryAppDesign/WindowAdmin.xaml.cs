@@ -19,19 +19,25 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class WindowAdmin : Window
     {
-        public WindowAdmin()
+        public WindowAdmin(string login)
         {
             InitializeComponent();
+            admin = login;
         }
+
+        string admin;
 
         private void AddAdmin(object sender, RoutedEventArgs e)
         {
             //для создания новога админа при необходимости (права у них будут равные)
+            new WindowPassword("newadmin", admin).Show();
+            Close();
         }
 
         private void Account(object sender, RoutedEventArgs e)
         {
             //для редактирования логина и пароля админа
+            
         }
 
         private void Notification(object sender, RoutedEventArgs e)
@@ -42,14 +48,14 @@ namespace LibraryAppDesign
         // выдача книги пользователю
         private void GiveBook(object sender, RoutedEventArgs e)
         {
-            new UserChooseWindow(Givebook.Content.ToString()).Show(); // не работало через .ContentStringFormat - выдавало null
+            new UserChooseWindow(Givebook.Content.ToString(), admin).Show(); // не работало через .ContentStringFormat - выдавало null
             Close();
         }
 
         private void GetBackBook(object sender, RoutedEventArgs e)
         {
             //принятие книги от пользователя
-            new UserChooseWindow(GetBackBok.Content.ToString()).Show();
+            new UserChooseWindow(GetBackBok.Content.ToString(), admin).Show();
             Close();
         }
 
