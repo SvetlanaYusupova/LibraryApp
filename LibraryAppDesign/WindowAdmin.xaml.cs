@@ -37,7 +37,8 @@ namespace LibraryAppDesign
         private void Account(object sender, RoutedEventArgs e)
         {
             //для редактирования логина и пароля админа
-            
+            new WindowPassword("edit", admin).Show();
+            Close();
         }
 
         private void Notification(object sender, RoutedEventArgs e)
