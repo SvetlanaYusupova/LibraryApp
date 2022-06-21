@@ -64,7 +64,7 @@
                         <TextBlock Name="AgeName"  Grid.Row="3" Grid.Column="0" Margin="10 5" FontSize="15" FontFamily="Monsterrat" Initialized="AgeBook_Initialized"></TextBlock>
                         <TextBlock Name="StarDate"  Grid.Row="4" Grid.Column="0" Width="75" Height="40" FontSize="15" FontFamily="Monsterrat" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 5" Initialized="StartDate_Initialized"></TextBlock>
                         <TextBlock Name="EndDate"  Grid.Row="5" Grid.Column="0" Width="75" Height="40" FontSize="15" FontFamily="Monsterrat" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 5" Initialized="EndDate_Initialized"></TextBlock>
-                        <Button Name="ChooseBook"  Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Click="ChooseBook" Content="Выбрать" Width="75" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 5" Initialized="ButtonBook_Initialized"></Button>
+                        <Button Name="ChooseBook"  Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Click="ChooseBook" Content="Продлить" Width="75" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 5" Initialized="ButtonBook_Initialized"></Button>
 
                     </Grid>
                 </DataTemplate>

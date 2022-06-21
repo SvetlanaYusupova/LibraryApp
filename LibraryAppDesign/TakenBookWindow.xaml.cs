@@ -119,7 +119,7 @@ namespace LibraryAppDesign
             // для кнопки выбора книги
             Button ChooseBook = sender as Button;
             // new View1BookWindow(userlogin, ChooseBook.Tag.ToString()).Show();
-            new ExtendBookingWindow().Show();
+            new ExtendBookingWindow(userlogin, ChooseBook.Tag.ToString()).Show();
             //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
             Close();
         }

@@ -16,8 +16,6 @@ namespace LibraryApp.Core
         [JsonProperty]
         private string Type { get; set; }
 
-
-
         public Notification(string login, string bookName, string type)
         {
             Login = login;

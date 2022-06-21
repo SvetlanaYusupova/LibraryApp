@@ -23,7 +23,7 @@
 
         <TextBlock Grid.Row="1"  Name="ExtendBooking" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="19">Продлить срок бронирования?</TextBlock>
 
-        <Button Grid.Row ="2" Name="YesButton"  Grid.ColumnSpan="2" Click="Yes" Content="Да" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
+        <Button Grid.Row ="2" Name="YesButton"  Grid.ColumnSpan="2" Click="YesButton_Click" Content="Да" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
 
 
     </Grid>
