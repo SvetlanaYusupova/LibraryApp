@@ -25,6 +25,7 @@ namespace LibraryAppDesign
             userLogin = user;
             _storage = new Storage();
             users = _storage.Users;
+            InitializeComponent();
             foreach (var userl in users)
             {
                 if (userl.GetLogin() == user)
@@ -32,8 +33,6 @@ namespace LibraryAppDesign
                     MessagesListBox.ItemsSource = userl.GetMessages();
                 }
             }
-            
-            InitializeComponent();
         }
 
         Storage _storage;
