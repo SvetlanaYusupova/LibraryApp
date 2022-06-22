@@ -85,6 +85,9 @@
     <Compile Include="View2BookWindow.xaml.cs">
       <DependentUpon>View2BookWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewNotificationWindow.xaml.cs">
+      <DependentUpon>ViewNotificationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowAdmin.xaml.cs">
       <DependentUpon>WindowAdmin.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TakenBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewNotificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

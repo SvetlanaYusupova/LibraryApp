@@ -110,7 +110,7 @@ namespace LibraryAppDesign
         private void ChooseNotification_Click(object sender, RoutedEventArgs e)
         {
             Button ChooseNotification = sender as Button;
-            new ViewNotificationWindow(Int32.Parse(ChooseNotification.Tag.ToString())).Show();
+            new ViewNotificationWindow(ChooseNotification.Tag.ToString()).Show();
             Close();
         }
 
