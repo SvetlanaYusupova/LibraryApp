@@ -118,6 +118,11 @@ namespace LibraryApp.Core
         {
             return EndDate;
         }
+
+        public void Prolong()
+        {
+            EndDate.AddDays(30);
+        }
     }
 
     public class OrderBook : Book
@@ -129,6 +134,10 @@ namespace LibraryApp.Core
         : base(bookname, author, age, description, genre)
         {
             EndDate = end;
+        }
+        public void Prolong()
+        {
+            EndDate.AddDays(7);
         }
     }
 
