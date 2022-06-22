@@ -126,7 +126,7 @@ namespace LibraryAppDesign
             {
                 if (item.GetLogin().ToLower().Contains(filterUsers[0].ToLower()) || filterUsers[0] == "")
                 {
-                    filterNotifications.AddRange(item.GetNotifications());
+                    filterNotifications.AddRange((IEnumerable<Notification>)item.GetMessages()); // добавлено преобразование типов, надо проверить, что работает
                 }
             }
         }

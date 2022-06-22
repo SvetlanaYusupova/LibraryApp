@@ -113,6 +113,9 @@ namespace LibraryApp.Core
         {
             UsersOrderBook.Remove(orderbook);
         }
-       
+        public List<string> GetMessages()
+        {
+            return Messages;
+        }
     }
 }
