@@ -37,6 +37,8 @@ namespace LibraryAppDesign
         private void Notification(object sender, RoutedEventArgs e)
         {
             //для просмотра просроченный для возврата книг, запроса на продление срока пользования и запроса на продление срока брони
+            new AdminNotificatiosWindow(new List<string> { "" }).Show();
+            Close();
         }
 
         // выдача книги пользователю
