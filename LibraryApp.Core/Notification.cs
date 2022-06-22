@@ -17,12 +17,25 @@ namespace LibraryApp.Core
         private string Type { get; set; }
 
 
-
         public Notification(string login, string bookName, string type)
         {
             Login = login;
             BookName = bookName;
             Type = type;
+        }
+
+        public string GetNotType()
+        {
+            return Type;
+        }
+
+        public string GetLogin()
+        {
+            return Login;
+        }
+        public string GetBookName()
+        {
+            return BookName;
         }
     }
 }
