@@ -44,7 +44,7 @@ namespace LibraryAppDesign
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_storage.Notifications.Contains(new Notification(userlogin, bookN, "booking")))
+            if (_storage.Notifications.Contains(new Notification(userlogin, bookN, "taking")))
             {
                 MessageBox.Show("Заявка на продление данной книги уже была отправлена.");
                 new WindowUser(userlogin).Show();
@@ -56,8 +56,8 @@ namespace LibraryAppDesign
 
                 List<Notification> noooooo = _storage.Notifications;
 
-                noooooo.Add(new Notification(userlogin, bookN, "booking"));
-                //_storage.Notifications.Add(new Notification(userlogin, bookN, "booking"));
+                noooooo.Add(new Notification(userlogin, bookN, "taking"));
+                //_storage.Notifications.Add(new Notification(userlogin, bookN, "taking"));
                 _storage.SaveNotifications();
 
 
