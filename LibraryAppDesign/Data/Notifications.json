@@ -48,5 +48,40 @@
     "Login": "1",
     "BookName": "Дюна",
     "Type": "taking"
+  },
+  {
+    "Login": "1",
+    "BookName": "Дюна",
+    "Type": "requestTaken"
+  },
+  {
+    "Login": "1",
+    "BookName": "Дюна",
+    "Type": "requestTaken"
+  },
+  {
+    "Login": "1",
+    "BookName": "Детективное агенство Дирка Джентли",
+    "Type": "requestBooked"
+  },
+  {
+    "Login": "1",
+    "BookName": "Дюна",
+    "Type": "requestTaken"
+  },
+  {
+    "Login": "1",
+    "BookName": "Дюна",
+    "Type": "requestTaken"
+  },
+  {
+    "Login": "1",
+    "BookName": "Дюна",
+    "Type": "requestTaken"
+  },
+  {
+    "Login": "1",
+    "BookName": "Детективное агенство Дирка Джентли",
+    "Type": "requestBooked"
   }
 ]

@@ -19,8 +19,8 @@
 
 
         <Button Grid.Row ="0" Grid.Column="0" Name="button5" Click="LogOut" Content="Вернуться" Width="85" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Button>
-        <TextBlock Grid.Row="1" Name="PastBooks" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2">Прошлые книги</TextBlock>
-
+        <TextBlock Grid.Row="1" Name="PastBooks" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="15">Прошлые книги</TextBlock>
+       
 
 
         <ListBox Name="PastBooksListBox" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Background="AliceBlue">
