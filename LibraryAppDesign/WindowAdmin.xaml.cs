@@ -63,6 +63,8 @@ namespace LibraryAppDesign
         private void EditBook(object sender, RoutedEventArgs e)
         {
             //внести изменения в какую-то книгу
+            new EditBookWindow(admin).Show();
+            Close();
         }
 
         private void Analytics(object sender, RoutedEventArgs e)
