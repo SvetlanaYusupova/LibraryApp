@@ -50,6 +50,8 @@ namespace LibraryAppDesign
         private void LookBook(object sender, RoutedEventArgs e)
         {
             //для кнопки возможности просмотра бронированных книг пользователя
+            new OrderedBookWindow(userlogin, new List<string> { "", "" }).Show();
+            Close();
         }
 
         private void LookPresent(object sender, RoutedEventArgs e)

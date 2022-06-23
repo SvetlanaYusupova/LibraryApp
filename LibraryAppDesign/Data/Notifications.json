@@ -43,5 +43,10 @@
     "Login": "1",
     "BookName": "Дюна",
     "Type": "booking"
+  },
+  {
+    "Login": "1",
+    "BookName": "Дюна",
+    "Type": "taking"
   }
 ]

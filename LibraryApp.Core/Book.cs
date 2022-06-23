@@ -130,6 +130,10 @@ namespace LibraryApp.Core
         {
             EndDate = end;
         }
+        public DateTime GetEndDate()
+        {
+            return EndDate;
+        }
     }
 
 }
