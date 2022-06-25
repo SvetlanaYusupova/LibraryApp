@@ -119,6 +119,11 @@ namespace LibraryApp.Core
         {
             return EndDate;
         }
+
+        public void Prolong()
+        {
+            EndDate.AddDays(30);
+        }
     }
 
     public class OrderBook : Book
@@ -134,6 +139,10 @@ namespace LibraryApp.Core
 
         public override DateTime GetEndDate()
         { return EndDate; }
+        public void Prolong()
+        {
+            EndDate.AddDays(7);
+        }
     }
 
 }

@@ -73,6 +73,9 @@
     <Compile Include="OrderedBookWindow.xaml.cs">
       <DependentUpon>OrderedBookWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminNotificationsWindow.xaml.cs">
+      <DependentUpon>AdminNotificationsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PastBookWindow.xaml.cs">
       <DependentUpon>PastBookWindow.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,9 @@
     </Compile>
     <Compile Include="View2BookWindow.xaml.cs">
       <DependentUpon>View2BookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewNotificationWindow.xaml.cs">
+      <DependentUpon>ViewNotificationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowAdmin.xaml.cs">
       <DependentUpon>WindowAdmin.xaml</DependentUpon>
@@ -129,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OrderedBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminNotificationsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -173,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TakenBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewNotificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
