@@ -16,8 +16,6 @@ namespace LibraryApp.Core
         [JsonProperty]
         private string Type { get; set; }
 
-
-
         public Notification(string login, string bookName, string type)
         {
             Login = login;
@@ -25,15 +23,17 @@ namespace LibraryApp.Core
             Type = type;
         }
 
+
         public string GetLogin()
         {
             return Login;
         }
+
         public string GetBookName()
         {
             return BookName;
         }
-        public string GetTypeNotification()
+        public string GetType()
         {
             return Type;
         }

@@ -20,92 +20,106 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class PastBookWindow : Window
     {
-            public PastBookWindow(string login)
+        public PastBookWindow(string login)
+        {
+            PastUserBook();
+            _storage = new Storage();
+            InitializeComponent();
+            userlogin = login;
+            PastUserBook();
+            PastBooksListBox.ItemsSource = pastBook;
+        }
+
+        string userlogin;
+
+        static Storage _storage = new Storage();
+        List<User> users = _storage.Users;
+        List<List<string>> pastBook = new List<List<string>> { };
+
+
+
+        private void PastUserBook()
+        {
+            foreach (var us in users)
             {
-                PastUserBook();
-                _storage = new Storage();
-                InitializeComponent();
-                userlogin = login;
-                PastUserBook();
-                PastBooksListBox.ItemsSource = pastBook;
-            }
-
-            string userlogin;
-
-            static Storage _storage = new Storage();
-            List<User> users = _storage.Users;
-            List<List<string>> pastBook = new List<List<string>> { };
-
-
-
-            private void PastUserBook()
-            {
-                foreach (var us in users)
+                if (us.GetLogin() == userlogin)
                 {
-                    if (us.GetLogin() == userlogin)
-                    {
-                        pastBook = us.GetPastBook();
-                    }
+                    pastBook = us.GetPastBook();
                 }
             }
+        }
 
-            private void LogOut(object sender, RoutedEventArgs e)
-            {
-                new WindowUser(userlogin).Show();
-                Close();
-            }
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            new WindowUser(userlogin).Show();
+            Close();
+        }
 
-            //private void NameGenre_Initialized(object sender, EventArgs e)
-            //{
+        //private void NameGenre_Initialized(object sender, EventArgs e)
+        //{
 
-            //    ComboBox GenreName = sender as ComboBox;
-            //    foreach (var item in takenBook)
-            //    {
-            //        if (!genres.Contains(item.GetGenre()))
-            //        {
-            //            genres.Add(item.GetGenre());
-            //        }
-            //    }
+        //    ComboBox GenreName = sender as ComboBox;
+        //    foreach (var item in takenBook)
+        //    {
+        //        if (!genres.Contains(item.GetGenre()))
+        //        {
+        //            genres.Add(item.GetGenre());
+        //        }
+        //    }
 
-            //    foreach (var item in genres)
-            //    {
-            //        GenreName.Items.Add(item);
-            //    }
-            //}
-            private void NameBook_Initialized(object sender, EventArgs e)
-            {
-                TextBlock BookName = sender as TextBlock;
-                List<string> book = BookName.DataContext as List<string>;
-                BookName.Text = book[0];
-            }
+        //    foreach (var item in genres)
+        //    {
+        //        GenreName.Items.Add(item);
+        //    }
+        //}
+        private void NameBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock BookName = sender as TextBlock;
+            List<string> book = BookName.DataContext as List<string>;
+            BookName.Text = book[0];
+        }
+
+        // user.AddPastBook(new List<string> { $"{nameBook}", $"{string.Join(", ", book.GetAuthor())}", $"{book.GetAgeRating()}", $"{book.GetGenre()}"});
 
 
-            private void AuthorBook_Initialized(object sender, EventArgs e)
-            {
-                TextBlock AuthorName = sender as TextBlock;
-                List<string> book = AuthorName.DataContext as List<string>;
-                AuthorName.Text = book[1];
-            }
-            private void GenreBook_Initialized(object sender, EventArgs e)
-            {
-                TextBlock GenreName = sender as TextBlock;
-                List<string> book = GenreName.DataContext as List<string>;
-                GenreName.Text = book[2];
-            }
 
-            private void StartDate_Initialized(object sender, EventArgs e)
-            {
-                TextBlock StartDate = sender as TextBlock;
-                List<string> book = StartDate.DataContext as List<string>;
-                StartDate.Text = book[3];
-            }
+        private void AgeRating_Initialized(object sender, EventArgs e)
+        {
+            TextBlock AgeRating = sender as TextBlock;
+            List<string> book = AgeRating.DataContext as List<string>;
+            AgeRating.Text = book[2];
+        }
 
-            private void EndDate_Initialized(object sender, EventArgs e)
-            {
-                TextBlock EndDate = sender as TextBlock;
-                List<string> book = EndDate.DataContext as List<string>;
-                EndDate.Text = book[4];
-            }
+
+
+        private void AuthorBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock AuthorName = sender as TextBlock;
+            List<string> book = AuthorName.DataContext as List<string>;
+            AuthorName.Text = book[1];
+        }
+
+
+        private void GenreBook_Initialized(object sender, EventArgs e)
+        {
+            TextBlock GenreName = sender as TextBlock;
+            List<string> book = GenreName.DataContext as List<string>;
+            GenreName.Text = book[3];
+        }
+
+        //private void StartDate_Initialized(object sender, EventArgs e)
+        //{
+        //    TextBlock StartDate = sender as TextBlock;
+        //    List<string> book = StartDate.DataContext as List<string>;
+        //    StartDate.Text = book[3];
+        //}
+
+        //private void EndDate_Initialized(object sender, EventArgs e)
+        //{
+        //    TextBlock EndDate = sender as TextBlock;
+        //    List<string> book = EndDate.DataContext as List<string>;
+        //    EndDate.Text = book[4];
+        //}
 
     }
 }
