@@ -106,7 +106,7 @@ namespace LibraryAppDesign
 
             Notification type = NotificationType.DataContext as Notification;
 
-            NotificationType.Text = type.GetTypeNotification();
+            NotificationType.Text = type.GetType();
 
         }
 

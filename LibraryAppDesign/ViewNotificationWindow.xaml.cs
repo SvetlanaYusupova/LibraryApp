@@ -51,14 +51,14 @@ namespace LibraryAppDesign
         private void NotificationType_Initialized(object sender, EventArgs e)
         {
             TextBlock NotificationType = sender as TextBlock;
-            NotificationType.Text = notification.GetTypeNotification();
+            NotificationType.Text = notification.GetType();
         }
 
         private void NoProlong(object sender, RoutedEventArgs e)
         {
             foreach (var item in _storage.Notifications)
             {
-                if (item.GetTypeNotification() == chosennotification)
+                if (item.GetType() == chosennotification)
                 {
                     _storage.Notifications.Remove(item);
                 }
@@ -70,7 +70,7 @@ namespace LibraryAppDesign
 
         private void Prolong(object sender, RoutedEventArgs e)
         {
-            if (notification.GetTypeNotification() == "Продлить бронирование")
+            if (notification.GetType() == "Продлить бронирование")
             {
                 foreach (var book in user.GetOrderBook())
                 {
@@ -91,7 +91,7 @@ namespace LibraryAppDesign
                 }
             }
 
-            if (notification.GetTypeNotification() == "Продлить пользование")
+            if (notification.GetType() == "Продлить пользование")
             {
                 foreach (var book in user.GetTakenBooks())
                 {
@@ -124,7 +124,7 @@ namespace LibraryAppDesign
         {
             foreach (var item in _storage.Notifications)
             {
-                if (item.GetTypeNotification() == chosennotification)
+                if (item.GetType() == chosennotification)
                 {
                     return item;
                 }

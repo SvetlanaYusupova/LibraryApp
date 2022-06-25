@@ -12,7 +12,6 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
-            <RowDefinition Height="3*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -21,19 +20,19 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row ="0" Grid.Column="0" Name="Logout" Click="LogOut" Content="Вернуться" Width="85" FontSize="15" Background="Sienna" HorizontalAlignment="Left" Margin="5,13,0,14"/>
+        <Button Grid.Row ="0" Grid.Column="0" Name="Logout" Click="LogOut" Content="Вернуться" Width="100" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Left" Margin="5"/>
 
-        <TextBlock Name="Login" Grid.ColumnSpan="2"  Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat">Логин пользователя:</TextBlock>
-        <TextBlock Name="UserLogin" Grid.ColumnSpan="2"  Grid.Row="1" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="UserLogin_Initialized" >qwerty</TextBlock>
+        <TextBlock Name="Login" Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat"  HorizontalAlignment="Center" VerticalAlignment="Center">Логин пользователя:</TextBlock>
+        <TextBlock Name="UserLogin" Grid.ColumnSpan="2"  Grid.Row="1" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="UserLogin_Initialized"  HorizontalAlignment="Left" VerticalAlignment="Center">qwerty</TextBlock>
 
-        <TextBlock Name="Bookname" Grid.ColumnSpan="2"  Grid.Row="2" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat">Название книги:</TextBlock>
-        <TextBlock Name="BookName" Grid.ColumnSpan="2"  Grid.Row="2" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="BookName_Initialized" >qwerty</TextBlock>
+        <TextBlock Name="Bookname"   Grid.Row="2" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat"  HorizontalAlignment="Center" VerticalAlignment="Center">Название книги:</TextBlock>
+        <TextBlock Name="BookName" Grid.ColumnSpan="2"  Grid.Row="2" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="BookName_Initialized" HorizontalAlignment="Left" VerticalAlignment="Center" >qwerty</TextBlock>
 
-        <TextBlock Name="Notification" Grid.ColumnSpan="2"  Grid.Row="3" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat">Уведомление:</TextBlock>
-        <TextBlock Name="NotificationType" Grid.ColumnSpan="2"  Grid.Row="3" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="NotificationType_Initialized" >qwerty</TextBlock>
+        <TextBlock Name="Notification"   Grid.Row="3" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat"  HorizontalAlignment="Center" VerticalAlignment="Center">Уведомление:</TextBlock>
+        <TextBlock Name="NotificationType" Grid.ColumnSpan="2"  Grid.Row="3" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="NotificationType_Initialized"  HorizontalAlignment="Left" VerticalAlignment="Center">qwerty</TextBlock>
 
-        <Button Grid.Row ="5" Name="Donotprolong" Grid.Column="1" Click="NoProlong" Content="Не продлевать" Width="120" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" ></Button>
-        <Button Grid.Row ="5" Name="ProlongBook" Grid.Column="2" Click="Prolong" Content="Продлить" Width="120" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,6,0,0" ></Button>
+        <Button Grid.Row ="5" Name="Donotprolong" Grid.Column="1" Click="NoProlong" Content="Не продлевать" Width="120" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Button>
+        <Button Grid.Row ="5" Name="ProlongBook" Grid.Column="2" Click="Prolong" Content="Продлить" Width="120" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Button>
 
     </Grid>
 </Window>
