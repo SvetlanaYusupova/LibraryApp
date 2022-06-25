@@ -24,7 +24,7 @@ namespace LibraryApp.Core
             Type = type;
         }
 
-        public string GetNotType()
+        public string GetTypeNotification()
         {
             return Type;
         }

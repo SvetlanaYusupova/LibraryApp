@@ -51,14 +51,14 @@ namespace LibraryAppDesign
         private void NotificationType_Initialized(object sender, EventArgs e)
         {
             TextBlock NotificationType = sender as TextBlock;
-            NotificationType.Text = notification.GetNotType();
+            NotificationType.Text = notification.GetTypeNotification();
         }
 
         private void NoProlong(object sender, RoutedEventArgs e)
         {
             foreach (var item in _storage.Notifications)
             {
-                if (item.GetNotType() == chosennotification)
+                if (item.GetTypeNotification() == chosennotification)
                 {
                     _storage.Notifications.Remove(item);
                 }
@@ -70,7 +70,7 @@ namespace LibraryAppDesign
 
         private void Prolong(object sender, RoutedEventArgs e)
         {
-            if (notification.GetNotType() == "Продлить бронирование")
+            if (notification.GetTypeNotification() == "Продлить бронирование")
             {
                 foreach (var book in user.GetOrderBook())
                 {
@@ -83,14 +83,15 @@ namespace LibraryAppDesign
                         _storage.SaveNotifications();
 
                         MessageBox.Show("Бронирование книги продлено на 30 дней!");
-                        new AdminNotificationsWindow(new List<string> { "" });
+                        string filter = "";
+                        new AdminNotificationsWindow(filter);
                         Close();
 
                     }
                 }
             }
 
-            if (notification.GetNotType() == "Продлить пользование")
+            if (notification.GetTypeNotification() == "Продлить пользование")
             {
                 foreach (var book in user.GetTakenBooks())
                 {
@@ -103,7 +104,8 @@ namespace LibraryAppDesign
                         _storage.SaveNotifications();
 
                         MessageBox.Show("Книга продлена на 30 дней!");
-                        new AdminNotificationsWindow(new List<string> { "" });
+                        string filter = "";
+                        new AdminNotificationsWindow(filter);
                         Close();
 
                     }
@@ -114,14 +116,15 @@ namespace LibraryAppDesign
         private void LogOut(object sender, RoutedEventArgs e)
         {
             // надо что-то сохранить?
-            new AdminNotificationsWindow(new List<string> { "" }).Show();
+            string filter = "";
+            new AdminNotificationsWindow(filter).Show();
             Close();
         }
         private Notification GetNotification(string chosennotification)
         {
             foreach (var item in _storage.Notifications)
             {
-                if (item.GetNotType() == chosennotification)
+                if (item.GetTypeNotification() == chosennotification)
                 {
                     return item;
                 }
@@ -141,6 +144,5 @@ namespace LibraryAppDesign
 
             return default;
         }
-
     }
 }

@@ -43,7 +43,7 @@
 
                         <TextBlock Name="UserLogin" Grid.Row="0" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="UserLogin_Initialized" ></TextBlock>
                         <TextBlock Name="UserBook" Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="UserBook_Initialized" ></TextBlock>
-                        <TextBlock Name="NotificationType" Grid.Row="2" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="NotType_Initialized" ></TextBlock>
+                        <TextBlock Name="NotificationType" Grid.Row="2" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="NotificationType_Initialized" ></TextBlock>
                         <Button Grid.Row ="2" Name="ChooseNotification" Grid.Column="1" Click="ChooseNotification_Click" Content="Посмотреть" Width="75" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"></Button>
 
                     </Grid>

@@ -20,13 +20,15 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class AdminNotificationsWindow : Window
     {
-        public AdminNotificationsWindow(List<string> filter)
+        public AdminNotificationsWindow(string filter)
         {
-            _storage = new Storage();
-            filterUsers = filter;
-            NotificationsListBox.ItemsSource = filterNotifications;
-
             InitializeComponent();
+            _storage = new Storage();
+            user = filter;
+
+            ChooseUser();
+            NotificationsListBox.ItemsSource = filterNotifications;
+            
         }
 
         static Storage _storage = new Storage();
@@ -34,8 +36,8 @@ namespace LibraryAppDesign
 
         List<string> userslogins = new List<string> { };
 
-        List<User> users;
-        List<string> filterUsers;
+        List<User> users = _storage.Users;
+        string user;
         List<Notification> filterNotifications = new List<Notification> { };
 
         private void UserList_Initialized(object sender, EventArgs e)
@@ -57,7 +59,8 @@ namespace LibraryAppDesign
         private void Clear(object sender, RoutedEventArgs e)
         {
             // кнопка для сброса фильтра
-            new AdminNotificationsWindow(new List<string> { "" }).Show();
+            string filter = "";
+            new AdminNotificationsWindow(filter).Show();
             Close();
         }
 
@@ -76,7 +79,7 @@ namespace LibraryAppDesign
                     fil.Add(obj.ToString());
                 }
             }
-            new AdminNotificationsWindow(fil).Show();
+            new AdminNotificationsWindow(fil[0]).Show();
             Close();
         }
         private void UserLogin_Initialized(object sender, EventArgs e)
@@ -103,7 +106,7 @@ namespace LibraryAppDesign
 
             Notification type = NotificationType.DataContext as Notification;
 
-            NotificationType.Text = type.GetNotType();
+            NotificationType.Text = type.GetTypeNotification();
 
         }
 
@@ -122,11 +125,24 @@ namespace LibraryAppDesign
 
         private void ChooseUser()
         {
-            foreach (var item in users)
+            if (user == "")
             {
-                if (item.GetLogin().ToLower().Contains(filterUsers[0].ToLower()) || filterUsers[0] == "")
+                foreach (var item in users)
                 {
-                    filterNotifications.AddRange((IEnumerable<Notification>)item.GetMessages()); // добавлено преобразование типов, надо проверить, что работает
+                    if (item.GetMessages() != null)
+                    {
+                        filterNotifications.AddRange((IEnumerable<Notification>)item.GetMessages());
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in users)
+                {
+                    if (item.GetMessages() != null && item.GetLogin() == user)
+                    {
+                        filterNotifications.AddRange((IEnumerable<Notification>)item.GetMessages());
+                    }
                 }
             }
         }
