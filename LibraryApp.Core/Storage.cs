@@ -80,7 +80,7 @@ namespace LibraryApp.Core
                             }
                         }
                     }
-                    else if ((DateTime.Today - booking.GetEndDate()).Days < 3)
+                    else if ((DateTime.Today - booking.GetEndDate()).Duration().Days < 3)
                     {
                         user.AddBookingMessage(booking);
                     }
@@ -88,12 +88,13 @@ namespace LibraryApp.Core
 
                 foreach (var taken in user.GetTakenBooks())
                 {
-                    if ((DateTime.Today - taken.GetEndDate()).Days < 7)
+                    if ((DateTime.Today - taken.GetEndDate()).Duration().Days < 7)
                     {
                         user.AddTakenMessage(taken);
                     }
                 }
             }
+            SaveUsers();
         }
 
         public void SaveNotifications()
