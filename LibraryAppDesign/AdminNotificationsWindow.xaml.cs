@@ -26,7 +26,7 @@ namespace LibraryAppDesign
             _storage = new Storage();
             user = filter;
 
-            ChooseUser();
+            ChooseNotifications();
             NotificationsListBox.ItemsSource = filterNotifications;
             
         }
@@ -66,20 +66,20 @@ namespace LibraryAppDesign
 
         private void Apply(object sender, RoutedEventArgs e)
         {
-            List<string> fil = new List<string> { };
+            string fil = "";
             AddFill(UserList.SelectedItem);
             void AddFill(object obj)
             {
                 if (obj == null)
                 {
-                    fil.Add("");
+                    fil = "";
                 }
                 else
                 {
-                    fil.Add(obj.ToString());
+                    fil = obj.ToString();
                 }
             }
-            new AdminNotificationsWindow(fil[0]).Show();
+            new AdminNotificationsWindow(fil).Show();
             Close();
         }
         private void UserLogin_Initialized(object sender, EventArgs e)
@@ -110,7 +110,26 @@ namespace LibraryAppDesign
 
         }
 
-        private void ChooseNotification_Click(object sender, RoutedEventArgs e)
+
+        private void ChooseNotification_Initialized(object sender, EventArgs e)
+        {
+            Button ChooseNotification = sender as Button;
+            Notification notification = ChooseNotification.DataContext as Notification;
+
+            string chosennotification = "";
+
+            foreach (var not in notifications)
+            {
+                if (not == notification)
+                {
+                    chosennotification = notification.GetLogin() + ";" + notification.GetBookName() + ";" + notification.GetType();
+                }
+            }
+
+            ChooseNotification.Tag = chosennotification;
+        }
+
+        private void ChooseNotification(object sender, RoutedEventArgs e)
         {
             Button ChooseNotification = sender as Button;
             new ViewNotificationWindow(ChooseNotification.Tag.ToString()).Show();
@@ -123,28 +142,26 @@ namespace LibraryAppDesign
             Close();
         }
 
-        private void ChooseUser()
+        private void ChooseNotifications()
         {
             if (user == "")
             {
-                foreach (var item in users)
+                foreach (var notes in notifications)
                 {
-                    if (item.GetMessages() != null)
-                    {
-                        filterNotifications.AddRange((IEnumerable<Notification>)item.GetMessages());
-                    }
+                    filterNotifications.Add(notes);
                 }
             }
             else
             {
-                foreach (var item in users)
+                foreach (var notes in notifications)
                 {
-                    if (item.GetMessages() != null && item.GetLogin() == user)
+                    if (notes.GetLogin() == user)
                     {
-                        filterNotifications.AddRange((IEnumerable<Notification>)item.GetMessages());
+                        filterNotifications.Add(notes);
                     }
                 }
             }
         }
+
     }
 }

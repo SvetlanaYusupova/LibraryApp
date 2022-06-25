@@ -22,17 +22,24 @@ namespace LibraryAppDesign
     {
         public ViewNotificationWindow(string tag)
         {
-            chosennotification = tag;
+            string[] information = tag.Split(';');
+
+            login = information[0];
+            book = information[1];
+            typenot = information[2];
 
             _storage = new Storage();
 
-            notification = GetNotification(tag);
-            user = GetUser(notification);
+            notification = GetNotification(login, book, typenot);
+            user = GetUser(login);
 
             InitializeComponent();
         }
 
-        string chosennotification;
+        string login;
+        string book;
+        string typenot;
+
         Notification notification;
         User user;
 
@@ -56,30 +63,27 @@ namespace LibraryAppDesign
 
         private void NoProlong(object sender, RoutedEventArgs e)
         {
-            foreach (var item in _storage.Notifications)
-            {
-                if (item.GetType() == chosennotification)
-                {
-                    _storage.Notifications.Remove(item);
-                }
-            }
+            _storage.Notifications.Remove(notification);
+            _storage.SaveNotifications();
 
             MessageBox.Show("Уведомление удалено!");
-            _storage.SaveNotifications();
+            string filter = "";
+            new AdminNotificationsWindow(filter).Show();
+            Close();
         }
 
         private void Prolong(object sender, RoutedEventArgs e)
         {
-            if (notification.GetType() == "Продлить бронирование")
+            if (notification.GetType() == "Booked")
             {
                 foreach (var book in user.GetOrderBook())
                 {
                     if (book.GetBookName() == notification.GetBookName())
                     {
                         book.Prolong();
-                        _storage.Notifications.Remove(notification);
 
-                        _storage.SaveBooks();
+                        _storage.SaveUsers();
+                        _storage.Notifications.Remove(notification);
                         _storage.SaveNotifications();
 
                         MessageBox.Show("Бронирование книги продлено на 30 дней!");
@@ -91,16 +95,16 @@ namespace LibraryAppDesign
                 }
             }
 
-            if (notification.GetType() == "Продлить пользование")
+            if (notification.GetType() == "Taken")
             {
                 foreach (var book in user.GetTakenBooks())
                 {
                     if (book.GetBookName() == notification.GetBookName())
                     {
                         book.Prolong();
-                        _storage.Notifications.Remove(notification);
 
-                        _storage.SaveBooks();
+                        _storage.SaveUsers();
+                        _storage.Notifications.Remove(notification);
                         _storage.SaveNotifications();
 
                         MessageBox.Show("Книга продлена на 30 дней!");
@@ -120,11 +124,11 @@ namespace LibraryAppDesign
             new AdminNotificationsWindow(filter).Show();
             Close();
         }
-        private Notification GetNotification(string chosennotification)
+        private Notification GetNotification(string login, string book, string typenot)
         {
             foreach (var item in _storage.Notifications)
             {
-                if (item.GetType() == chosennotification)
+                if (item.GetLogin() == login && item.GetBookName() == book && item.GetType() == typenot)
                 {
                     return item;
                 }
@@ -132,13 +136,13 @@ namespace LibraryAppDesign
 
             return default;
         }
-        private User GetUser(Notification notification)
+        private User GetUser(string login)
         {
             foreach (var item in _storage.Users)
             {
-                if (item.GetLogin() == notification.GetLogin())
+                if (user.GetLogin() == login)
                 {
-                    return item;
+                    return user;
                 }
             }
 
