@@ -20,30 +20,32 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class ViewNotificationWindow : Window
     {
-        public ViewNotificationWindow(string tag)
+        public ViewNotificationWindow(string tag, string adminlog)
         {
+            admin = adminlog;
             string[] information = tag.Split(';');
 
             login = information[0];
-            book = information[1];
+            bookname = information[1];
             typenot = information[2];
 
             _storage = new Storage();
 
-            notification = GetNotification(login, book, typenot);
+            notification = GetNotification(login, bookname, typenot);
             user = GetUser(login);
 
             InitializeComponent();
         }
 
+        string admin;
         string login;
-        string book;
+        string bookname;
         string typenot;
 
         Notification notification;
         User user;
 
-        static Storage _storage = new Storage();
+        static Storage _storage;
 
         private void UserLogin_Initialized(object sender, EventArgs e)
         {
@@ -68,38 +70,45 @@ namespace LibraryAppDesign
 
             MessageBox.Show("Уведомление удалено!");
             string filter = "";
-            new AdminNotificationsWindow(filter).Show();
+            new AdminNotificationsWindow(filter, admin).Show();
             Close();
         }
 
         private void Prolong(object sender, RoutedEventArgs e)
         {
-            if (notification.GetType() == "Booked")
+            if (notification.GetType() == "Продление бронирования")
             {
-                foreach (var book in user.GetOrderBook())
+                foreach (var user in _storage.Users)
                 {
-                    if (book.GetBookName() == notification.GetBookName())
+                    if (user.GetLogin() == login)
                     {
-                        book.Prolong();
+                        foreach (var book in user.GetOrderBook())
+                        {
+                            if (book.GetBookName() == bookname)
+                            {
+                                book.Prolong();
 
-                        _storage.SaveUsers();
-                        _storage.Notifications.Remove(notification);
-                        _storage.SaveNotifications();
+                                _storage.SaveUsers();
+                                _storage.Notifications.Remove(notification);
+                                _storage.SaveNotifications();
 
-                        MessageBox.Show("Бронирование книги продлено на 30 дней!");
-                        string filter = "";
-                        new AdminNotificationsWindow(filter);
-                        Close();
+                                MessageBox.Show("Бронирование книги продлено на 7 дней!");
+                                string filter = "";
+                                new AdminNotificationsWindow(filter, admin).Show();
+                                Close();
 
+                            }
+                        }
                     }
                 }
+                
             }
 
-            if (notification.GetType() == "Taken")
+            if (notification.GetType() == "Продление пользования")
             {
                 foreach (var book in user.GetTakenBooks())
                 {
-                    if (book.GetBookName() == notification.GetBookName())
+                    if (book.GetBookName() == bookname)
                     {
                         book.Prolong();
 
@@ -109,7 +118,7 @@ namespace LibraryAppDesign
 
                         MessageBox.Show("Книга продлена на 30 дней!");
                         string filter = "";
-                        new AdminNotificationsWindow(filter);
+                        new AdminNotificationsWindow(filter, admin).Show();
                         Close();
 
                     }
@@ -121,7 +130,7 @@ namespace LibraryAppDesign
         {
             // надо что-то сохранить?
             string filter = "";
-            new AdminNotificationsWindow(filter).Show();
+            new AdminNotificationsWindow(filter, admin).Show();
             Close();
         }
         private Notification GetNotification(string login, string book, string typenot)
@@ -138,7 +147,7 @@ namespace LibraryAppDesign
         }
         private User GetUser(string login)
         {
-            foreach (var item in _storage.Users)
+            foreach (var user in _storage.Users)
             {
                 if (user.GetLogin() == login)
                 {

@@ -45,7 +45,7 @@ namespace LibraryAppDesign
         {
             //для просмотра просроченный для возврата книг, запроса на продление срока пользования и запроса на продление срока брони
             string filter = "";
-            new AdminNotificationsWindow(filter).Show();
+            new AdminNotificationsWindow(filter, admin).Show();
             Close();
         }
 

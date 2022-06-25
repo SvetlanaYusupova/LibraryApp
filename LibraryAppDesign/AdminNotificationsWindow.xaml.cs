@@ -20,24 +20,32 @@ namespace LibraryAppDesign
     /// </summary>
     public partial class AdminNotificationsWindow : Window
     {
-        public AdminNotificationsWindow(string filter)
+        public AdminNotificationsWindow(string filter, string login)
         {
-            InitializeComponent();
+            
             _storage = new Storage();
+            notifications = _storage.Notifications;
+            users = _storage.Users;
+
+            InitializeComponent();
+
             user = filter;
+            admin = login;
 
             ChooseNotifications();
             NotificationsListBox.ItemsSource = filterNotifications;
             
         }
 
-        static Storage _storage = new Storage();
-        List<Notification> notifications = _storage.Notifications;
+        string user;
+        string admin;
+
+        static Storage _storage;
+        List<Notification> notifications;
 
         List<string> userslogins = new List<string> { };
 
-        List<User> users = _storage.Users;
-        string user;
+        List<User> users;
         List<Notification> filterNotifications = new List<Notification> { };
 
         private void UserList_Initialized(object sender, EventArgs e)
@@ -60,7 +68,7 @@ namespace LibraryAppDesign
         {
             // кнопка для сброса фильтра
             string filter = "";
-            new AdminNotificationsWindow(filter).Show();
+            new AdminNotificationsWindow(filter, admin).Show();
             Close();
         }
 
@@ -79,7 +87,7 @@ namespace LibraryAppDesign
                     fil = obj.ToString();
                 }
             }
-            new AdminNotificationsWindow(fil).Show();
+            new AdminNotificationsWindow(fil, admin).Show();
             Close();
         }
         private void UserLogin_Initialized(object sender, EventArgs e)
@@ -132,13 +140,13 @@ namespace LibraryAppDesign
         private void ChooseNotification(object sender, RoutedEventArgs e)
         {
             Button ChooseNotification = sender as Button;
-            new ViewNotificationWindow(ChooseNotification.Tag.ToString()).Show();
+            new ViewNotificationWindow(ChooseNotification.Tag.ToString(), admin).Show();
             Close();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            new WindowAdmin().Show();
+            new WindowAdmin(admin).Show();
             Close();
         }
 
