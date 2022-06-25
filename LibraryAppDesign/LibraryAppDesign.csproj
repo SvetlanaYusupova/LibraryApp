@@ -64,9 +64,6 @@
     <Compile Include="OrderedBookWindow.xaml.cs">
       <DependentUpon>OrderedBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExtendBookingWindow.xaml.cs">
-      <DependentUpon>ExtendBookingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PastBookWindow.xaml.cs">
       <DependentUpon>PastBookWindow.xaml</DependentUpon>
     </Compile>
@@ -115,10 +112,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OrderedBookWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ExtendBookingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
