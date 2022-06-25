@@ -83,5 +83,15 @@
     "Login": "1",
     "BookName": "Детективное агенство Дирка Джентли",
     "Type": "requestBooked"
+  },
+  {
+    "Login": "1",
+    "BookName": "Дюна",
+    "Type": "Taken"
+  },
+  {
+    "Login": "1",
+    "BookName": "Детективное агенство Дирка Джентли",
+    "Type": "Booked"
   }
 ]
