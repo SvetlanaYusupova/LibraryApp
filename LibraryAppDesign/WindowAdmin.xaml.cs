@@ -70,6 +70,8 @@ namespace LibraryAppDesign
         private void Analytics(object sender, RoutedEventArgs e)
         {
             //вывести аналитику по книгам
+            new AnaliticsWindow(admin, new List<string> { "", "" }).Show();
+            Close();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
