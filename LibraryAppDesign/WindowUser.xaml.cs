@@ -36,6 +36,8 @@ namespace LibraryAppDesign
         private void Notification(object sender, RoutedEventArgs e)
         {
             //для кнопки показа уведомлений пользователя
+            new MessagesWindow(userlogin).Show();
+            Close();
         }
 
         private void TakeNew(object sender, RoutedEventArgs e)
