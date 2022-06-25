@@ -19,7 +19,7 @@ namespace LibraryApp.Core
         public List<BookInLibrary> Books { get; private set; }
         public List<Admin> Admins { get; private set; }
         public List<Notification> Notifications { get; private set; }
-        //public List<TakenBook> TakenBooks { get; private set; }
+       
 
         public Storage()
         {
@@ -74,7 +74,7 @@ namespace LibraryApp.Core
                         }
                         foreach (var item in Notifications)
                         {
-                            if (item.GetLogin() == user.GetLogin() && item.GetBookName() == booking.GetBookName() && item.GetTypeNotification() == "booking")
+                            if (item.GetLogin() == user.GetLogin() && item.GetBookName() == booking.GetBookName() && item.GetType() == "booking")
                             {
                                 Notifications.Remove(item);
                             }

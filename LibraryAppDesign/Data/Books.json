@@ -1,7 +1,7 @@
 [
   {
     "AllNumber": 7,
-    "AvailableNumber": 7,
+    "AvailableNumber": 6,
     "BookName": "Пикник на обочине",
     "Author": [
       "Борис Стругацкий",
@@ -101,7 +101,7 @@
   },
   {
     "AllNumber": 5,
-    "AvailableNumber": 5,
+    "AvailableNumber": 4,
     "BookName": "Преступление и наказание",
     "Author": [
       "Фёдор Достоевский"
