@@ -27,20 +27,27 @@ namespace LibraryAppDesign
 
         string admin;
 
-        private void AddBook(object sender, RoutedEventArgs e)
+
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            // для добавления новой книги
+            new WindowAdmin(admin).Show();
+            Close();
         }
 
-        private void DeleteBook(object sender, RoutedEventArgs e)
+        private void Deletebook_Click(object sender, RoutedEventArgs e)
         {
             // для удаления книги
         }
 
-        private void LogOut(object sender, RoutedEventArgs e)
+        private void Addbook_Click(object sender, RoutedEventArgs e)
         {
-            new WindowAdmin(admin).Show();
-            Close();
+            // для добавления новой книги
+        }
+
+        private void Changebook_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
