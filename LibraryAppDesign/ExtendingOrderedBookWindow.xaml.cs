@@ -22,10 +22,10 @@ namespace LibraryAppDesign
     {
         public ExtendingOrderedBookWindow(string userLogin, string bookName, string whatDo)
         {
+            _storage = Factory.GetInstance().Storage;
+
             userlogin = userLogin;
             bookN = bookName;
-
-            _storage = new Storage();
 
             InitializeComponent();
             action = whatDo;
@@ -50,7 +50,7 @@ namespace LibraryAppDesign
 
         }
         string userlogin;
-        static Storage _storage;
+        static IStorage _storage;
         string bookN;
         string action;
 
@@ -67,7 +67,7 @@ namespace LibraryAppDesign
             bool a = false;
 
 
-            foreach (var item in _storage.Notifications)
+            foreach (var item in _storage.GetNotifications)
             {
                 if (item.GetLogin() == userlogin & item.GetBookName() == bookN & item.GetType() == action)
                 {
@@ -86,11 +86,11 @@ namespace LibraryAppDesign
             {
                 MessageBox.Show("Заявка на продление отправлена.");
 
-                List<Notification> noooooo = _storage.Notifications;
+                List<Notification> noooooo = _storage.GetNotifications;
 
                 noooooo.Add(new Notification(userlogin, bookN, action));
                 //_storage.Notifications.Add(new Notification(userlogin, bookN, "taking"));
-                _storage.SaveNotifications();
+                _storage.Save();
 
 
                 new WindowUser(userlogin).Show();

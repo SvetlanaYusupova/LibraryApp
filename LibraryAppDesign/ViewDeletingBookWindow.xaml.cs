@@ -22,7 +22,7 @@ namespace LibraryAppDesign
     {
         public ViewDeletingBookWindow(string tag, string login)
         {
-            _storage = new Storage();
+            _storage = Factory.GetInstance().Storage;
 
             admin = login;
             bookname = tag;
@@ -35,7 +35,7 @@ namespace LibraryAppDesign
         string admin;
         string bookname;
 
-        static Storage _storage;
+        static IStorage _storage;
 
         BookInLibrary currentbook;
 
@@ -72,7 +72,7 @@ namespace LibraryAppDesign
 
         BookInLibrary GetCurrentBook(string chosenbook)
         {
-            foreach (var book in _storage.Books)
+            foreach (var book in _storage.GetBooks)
             {
                 if (book.GetName() == chosenbook)
                 {

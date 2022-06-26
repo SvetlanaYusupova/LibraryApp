@@ -22,8 +22,9 @@ namespace LibraryAppDesign
     {
         public GiveBookWindow(string login, string action, List<string> filters, string logAdmin)
         {
-            _storage = new Storage();
-            users = _storage.Users;
+            _storage = Factory.GetInstance().Storage;
+
+            users = _storage.GetUsers;
             admin = logAdmin;
             currentuser = login;
             currentaction = action;
@@ -39,7 +40,7 @@ namespace LibraryAppDesign
         string currentuser;
         string currentaction;
         string admin;
-        static Storage _storage;
+        static IStorage _storage;
         List<User> users;
 
         List<string> genres = new List<string> { };

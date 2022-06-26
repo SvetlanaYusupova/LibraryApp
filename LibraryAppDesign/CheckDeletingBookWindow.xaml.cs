@@ -22,7 +22,7 @@ namespace LibraryAppDesign
     {
         public CheckDeletingBookWindow(string tag, string login)
         {
-            _storage = new Storage();
+            _storage = Factory.GetInstance().Storage;
             bookname = tag;
             admin = login;
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace LibraryAppDesign
         string bookname;
         string admin;
 
-        static Storage _storage;
+        static IStorage _storage;
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
@@ -49,8 +49,8 @@ namespace LibraryAppDesign
             }
             else
             {
-                _storage.Books.Remove(GetCurrentBook(bookname));
-                _storage.SaveBooks();
+                _storage.GetBooks.Remove(GetCurrentBook(bookname));
+                _storage.Save();
 
                 MessageBox.Show("Книга удалена из библиотеки!");
                 new DeletingBookWindow(new List<string> { "", "" }, admin).Show();
@@ -64,7 +64,7 @@ namespace LibraryAppDesign
         {
             bool canbedeleted = false;
 
-            foreach (var book in _storage.Books)
+            foreach (var book in _storage.GetBooks)
             {
                 if (book.GetName() == bookName)
                 {
@@ -86,7 +86,7 @@ namespace LibraryAppDesign
 
         BookInLibrary GetCurrentBook(string chosenbook)
         {
-            foreach (var book in _storage.Books)
+            foreach (var book in _storage.GetBooks)
             {
                 if (book.GetName() == chosenbook)
                 {

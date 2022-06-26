@@ -22,7 +22,7 @@ namespace LibraryAppDesign
     {
         public RatingBookWindow(string tag, string login)
         {
-            _storage = new Storage();
+            _storage = Factory.GetInstance().Storage;
 
             bookname = tag;
             userlogin = login;
@@ -33,8 +33,9 @@ namespace LibraryAppDesign
         string bookname;
         string userlogin;
 
+        static IStorage _storage;
         List<double> rates = new List<double> { 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0 };
-        Storage _storage;
+        
 
         private void RateValue_Initialized(object sender, EventArgs e)
         {
@@ -48,7 +49,7 @@ namespace LibraryAppDesign
         private void Rate_Click(object sender, RoutedEventArgs e)
         {
             string idx = RateValue.Text.ToString();
-            foreach (var user in _storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (user.GetLogin() == userlogin)
                 {
@@ -62,7 +63,7 @@ namespace LibraryAppDesign
                 }
             }
 
-            _storage.SaveUsers();
+            _storage.Save();
             MessageBox.Show("Книга успешно оценена!");
             new PastBookWindow(userlogin).Show();
             Close();

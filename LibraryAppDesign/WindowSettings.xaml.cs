@@ -36,10 +36,10 @@ namespace LibraryAppDesign
 
         private void ChangeInfo(object sender, RoutedEventArgs e)
         {
-            Storage storage = new Storage();
+            IStorage _storage = Factory.GetInstance().Storage;
             //User userChoose; // закомментирована на время
             bool doing = true;
-            foreach (var us in storage.Users)
+            foreach (var us in _storage.GetUsers)
             {
                 if (textBoxLogin.Text == us.GetLogin())
                 {
@@ -88,7 +88,7 @@ namespace LibraryAppDesign
                     {
                         us.SetSurname(textBoxSurname.Text);
                     }
-                    storage.SaveUsers();
+                    _storage.Save();
                     new WindowUser(us.GetLogin()).Show();
                     Close();
                 }

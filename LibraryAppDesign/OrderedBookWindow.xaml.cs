@@ -22,10 +22,9 @@ namespace LibraryAppDesign
     {
         public OrderedBookWindow(string login, List<string> filters)
         {
-
+            _storage = Factory.GetInstance().Storage;
 
             userlogin = login;
-            _storage = new Storage();
             filters4Book = filters;
             PresentUserBook();
             ChooseBooks();
@@ -37,8 +36,8 @@ namespace LibraryAppDesign
         }
 
         string userlogin;
-        static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
+        static IStorage _storage;
+        List<User> users = _storage.GetUsers;
         List<OrderBook> orderedBook = new List<OrderBook> { };
         List<string> filters4Book;
         List<string> titlenames = new List<string> { };

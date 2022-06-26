@@ -22,7 +22,7 @@ namespace LibraryAppDesign
     {
         public AcceptBookWindow(string userLg, List<string> filt, string logAdmin)
         {
-            foreach (var us in _storage.Users)
+            foreach (var us in _storage.GetUsers)
             {
                 if (us.GetLogin() == userLg)
                 {
@@ -30,7 +30,7 @@ namespace LibraryAppDesign
                     books = us.GetUsersBook();
                 }
             }
-            allBooks = _storage.Books;
+            allBooks = _storage.GetBooks;
             InitializeComponent();
             filters4Book = filt;
             ChoseBooks();
@@ -40,7 +40,7 @@ namespace LibraryAppDesign
         }
 
         User user;
-        static Storage _storage = new Storage();
+        static IStorage _storage = Factory.GetInstance().Storage;
         List<TakenBook> books;  //книги на руках у пользователя
         List<BookInLibrary> allBooks; //все книги в библиотеке
         string admin;
@@ -98,8 +98,8 @@ namespace LibraryAppDesign
                     break;
                 }
             }
-            _storage.SaveBooks();
-            _storage.SaveUsers();
+            _storage.Save();
+            _storage.Save();
             //new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
 
             //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();

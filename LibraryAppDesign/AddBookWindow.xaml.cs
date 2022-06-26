@@ -22,18 +22,19 @@ namespace LibraryAppDesign
     {
         public AddBookWindow(string adm)
         {
-            InitializeComponent();
             admin = adm;
-            _storage = new Storage();
+            _storage = Factory.GetInstance().Storage;
+
+            InitializeComponent();
         }
 
         string admin;
-        readonly Storage _storage;
+        readonly IStorage _storage;
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             bool doing = true;
-            foreach (var book in _storage.Books)
+            foreach (var book in _storage.GetBooks)
             {
                 if (textBoxName.Text == book.GetName())
                 {
@@ -55,8 +56,8 @@ namespace LibraryAppDesign
                                 {
                                     if (int.Parse(textBoxNumberBook.Text) > 0 & double.Parse(textBoxRaiting.Text) >= 0 & double.Parse(textBoxRaiting.Text) <= 5 & int.Parse(textBoxYear.Text) > 0 & int.Parse(textBoxYear.Text) <= DateTime.Now.Year & int.Parse(textBoxPage.Text) > 0)
                                     {
-                                        _storage.Books.Add(new BookInLibrary(textBoxName.Text, textBoxAuthors.Text.Split(new string[] { ", " }, StringSplitOptions.None).ToList(), ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, int.Parse(textBoxYear.Text), double.Parse(textBoxRaiting.Text), int.Parse(textBoxPage.Text), int.Parse(textBoxNumberBook.Text), int.Parse(textBoxNumberBook.Text)));
-                                        _storage.SaveBooks();
+                                        _storage.GetBooks.Add(new BookInLibrary(textBoxName.Text, textBoxAuthors.Text.Split(new string[] { ", " }, StringSplitOptions.None).ToList(), ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, int.Parse(textBoxYear.Text), double.Parse(textBoxRaiting.Text), int.Parse(textBoxPage.Text), int.Parse(textBoxNumberBook.Text), int.Parse(textBoxNumberBook.Text)));
+                                        _storage.Save();
                                         MessageBox.Show("Книга создана!");
                                     }
                                     else

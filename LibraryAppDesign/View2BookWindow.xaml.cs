@@ -22,13 +22,14 @@ namespace LibraryAppDesign
     {
         public View2BookWindow(string login, string action, string tag, string logAdmin)
         {
+            _storage = Factory.GetInstance().Storage;
+
             chosenbook = tag;
             currentaction = action;
             userlogin = login;
             admin = logAdmin;
 
-            _storage = new Storage();
-            books = _storage.Books;
+            books = _storage.GetBooks;
        
             // текущий пользователь
             currentuser = GetCurrentUser(userlogin);
@@ -46,13 +47,12 @@ namespace LibraryAppDesign
         User currentuser;
         OrderBook currentbook;
 
-        static Storage _storage;
+        static IStorage _storage;
         List<BookInLibrary> books;
 
         private void GoOut(object sender, RoutedEventArgs e)
         {
-            _storage.SaveBooks();
-            _storage.SaveUsers();
+            _storage.Save();
             new GiveBookWindow(userlogin, currentaction, new List<string> { "", "", "", "" }, admin).Show();
             Close();
         }
@@ -111,7 +111,7 @@ namespace LibraryAppDesign
         // функция для получения определённого пользователя
         private User GetCurrentUser(string ulogin)
         {
-            foreach (var user in _storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (user.GetLogin() == ulogin)
                 {
@@ -126,7 +126,7 @@ namespace LibraryAppDesign
         {
             Button Givebook = sender as Button;
 
-            foreach (var user in _storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (user == currentuser)
                 {
@@ -135,8 +135,7 @@ namespace LibraryAppDesign
                 }
             }
 
-            _storage.SaveBooks();
-            _storage.SaveUsers();
+            _storage.Save();
 
             MessageBox.Show("Книга успешно выдана!");
             new WindowAdmin(admin).Show();

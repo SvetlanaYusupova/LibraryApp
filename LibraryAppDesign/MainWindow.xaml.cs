@@ -23,14 +23,16 @@ namespace LibraryAppDesign
     {
         public MainWindow()
         {
+            _storage = Factory.GetInstance().Storage;
             InitializeComponent();
+
         }
 
-        static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
-        List<BookInLibrary> books = _storage.Books;
-        List<Admin> admins = _storage.Admins;
-        List<Notification> notifications = _storage.Notifications;
+        static IStorage _storage;
+        List<User> users = _storage.GetUsers;
+        List<BookInLibrary> books = _storage.GetBooks;
+        List<Admin> admins = _storage.GetAdmins;
+        List<Notification> notifications = _storage.GetNotifications;
 
         private void Admin(object sender, RoutedEventArgs e)
         {
@@ -42,9 +44,9 @@ namespace LibraryAppDesign
         private void Login(object sender, RoutedEventArgs e)
         {
             //для кнопки входа в пользователя и дальнейшие действия (в новом окне)
-            Storage storage = new Storage();
+            _storage = Factory.GetInstance().Storage;
             bool doing = true;
-            List<User> users = storage.Users;
+            List<User> users = _storage.GetUsers;
             foreach (var user in users)
             {
                 if (user.GetLogin() == textBoxName.Text)
@@ -52,7 +54,7 @@ namespace LibraryAppDesign
                     if (user.GetPassword() == textBoxPassword.Text)
                     {
                         MessageBox.Show("Авторизация пройдена.");
-                        //Hide();
+                        
                         new WindowUser(user.GetLogin()).Show();
                         Close();
                         doing = false;

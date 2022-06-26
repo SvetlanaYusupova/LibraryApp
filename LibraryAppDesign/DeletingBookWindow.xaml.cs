@@ -22,8 +22,8 @@ namespace LibraryAppDesign
     {
         public DeletingBookWindow(List<string> filters, string login)
         {
-            _storage = new Storage();
-            books = _storage.Books;
+            _storage = Factory.GetInstance().Storage;
+            books = _storage.GetBooks;
 
             InitializeComponent();
             admin = login;
@@ -34,7 +34,7 @@ namespace LibraryAppDesign
         }
 
         string admin;
-        static Storage _storage;
+        static IStorage _storage;
         List<BookInLibrary> books;
 
         List<string> filters4Book;

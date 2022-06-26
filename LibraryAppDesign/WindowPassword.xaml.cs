@@ -27,7 +27,7 @@ namespace LibraryAppDesign
             login = account;
             if (action == "edit")
             {
-                foreach (var adm in _storage.Admins)
+                foreach (var adm in _storage.GetAdmins)
                 {
                     if (adm.GetLogin() == login)
                     {
@@ -44,7 +44,7 @@ namespace LibraryAppDesign
             }
         }
 
-        Storage _storage = new Storage();
+        static IStorage _storage = Factory.GetInstance().Storage;
         string action;
         Admin admin;
         string login;
@@ -66,7 +66,7 @@ namespace LibraryAppDesign
         private void buttonCheck_Click(object sender, RoutedEventArgs e)
         {
             bool doing = true;
-            List<Admin> admins = _storage.Admins;
+            List<Admin> admins = _storage.GetAdmins;
             if (action == "authorization")
             {
                 foreach (var adm in admins)
@@ -100,7 +100,7 @@ namespace LibraryAppDesign
                     admin.SetLogin(textBoxLogin.Text);
                     login = textBoxLogin.Text;
                     admin.SetPassword(textBoxPassword.Text);
-                    _storage.SaveAdmin();
+                    _storage.Save();
                 }
                 else
                 {
@@ -121,8 +121,8 @@ namespace LibraryAppDesign
                     if (textBoxLogin.Text != "" & textBoxPassword.Text != "")
                     {
                         Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Text);
-                        _storage.Admins.Add(newAdmin);
-                        _storage.SaveAdmin();
+                        _storage.GetAdmins.Add(newAdmin);
+                        _storage.Save();
                     }
                     else
                     {

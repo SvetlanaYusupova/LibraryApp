@@ -22,10 +22,10 @@ namespace LibraryAppDesign
     {
         public AdminNotificationsWindow(string filter, string login)
         {
-            
-            _storage = new Storage();
-            notifications = _storage.Notifications;
-            users = _storage.Users;
+
+            _storage = Factory.GetInstance().Storage;
+            notifications = _storage.GetNotifications;
+            users = _storage.GetUsers;
 
             InitializeComponent();
 
@@ -40,7 +40,7 @@ namespace LibraryAppDesign
         string user;
         string admin;
 
-        static Storage _storage;
+        static IStorage _storage;
         List<Notification> notifications;
 
         List<string> userslogins = new List<string> { };

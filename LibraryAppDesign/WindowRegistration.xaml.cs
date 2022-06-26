@@ -32,9 +32,9 @@ namespace LibraryAppDesign
 
         private void Registration(object sender, RoutedEventArgs e)
         {
-            Storage storage = new Storage();
+            IStorage _storage = Factory.GetInstance().Storage;
             bool doing = true;
-            foreach (var user in storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (textBoxLogin.Text == user.GetLogin())
                 {
@@ -52,9 +52,9 @@ namespace LibraryAppDesign
                         return;
                     }
                     User userNew = new User(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxAge.Text), textBoxLogin.Text, textBoxPassword.Text, new List<TakenBook>() { }, new List<OrderBook>() { }, new List<List<string>>() { }, new List<string>() { });
-                    storage.Users.Add(userNew);
+                    _storage.GetUsers.Add(userNew);
                     MessageBox.Show("Регистрация пройдена.");
-                    storage.SaveUsers();
+                    _storage.Save();
                     Close();
                 }
                 catch

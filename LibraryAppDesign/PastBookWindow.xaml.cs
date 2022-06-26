@@ -23,7 +23,7 @@ namespace LibraryAppDesign
         public PastBookWindow(string login)
         {
             PastUserBook();
-            _storage = new Storage();
+            _storage = Factory.GetInstance().Storage;
             InitializeComponent();
             userlogin = login;
             PastUserBook();
@@ -32,8 +32,8 @@ namespace LibraryAppDesign
 
         string userlogin;
 
-        static Storage _storage = new Storage();
-        List<User> users = _storage.Users;
+        static IStorage _storage;
+        List<User> users = _storage.GetUsers;
         List<List<string>> pastBook = new List<List<string>> { };
 
         private void PastUserBook()

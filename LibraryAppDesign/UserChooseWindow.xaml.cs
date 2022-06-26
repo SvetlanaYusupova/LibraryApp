@@ -22,8 +22,8 @@ namespace LibraryAppDesign
     {
         public UserChooseWindow(string action, string logAdmin)
         {
-            _storage = new Storage();
-            users = _storage.Users;
+            _storage = Factory.GetInstance().Storage;
+            users = _storage.GetUsers;
             InitializeComponent();
             admin = logAdmin;
             chosenaction = action;
@@ -32,7 +32,7 @@ namespace LibraryAppDesign
         string chosenaction;
         string admin;
 
-        static Storage _storage;
+        static IStorage _storage;
         List<User> users;
         List<string> userLogins = new List<string> { };
 
@@ -122,7 +122,7 @@ namespace LibraryAppDesign
         private bool CheckUserOrderBooks(string login)
         {
             bool booksinorder = true;
-            foreach (var user in _storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (user.GetLogin() == login)
                 {
@@ -142,7 +142,7 @@ namespace LibraryAppDesign
         private bool CheckUserTakenBooks(string login)
         {
             bool bookstaken = true;
-            foreach (var user in _storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (user.GetLogin() == login)
                 {

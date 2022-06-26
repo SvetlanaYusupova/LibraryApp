@@ -81,6 +81,11 @@ namespace LibraryApp.Core
 
         public virtual void Prolong()
         {  }
+        public virtual int GetAllNumber()
+        { return default; }
+
+        public virtual int GetAvailableNumber()
+        { return default; }
     }
 
     public class BookInLibrary : Book
@@ -102,10 +107,10 @@ namespace LibraryApp.Core
             AvailableNumber = AvailableNumber + 1;
         }
 
-        public int GetAllNumber()
+        public override int GetAllNumber()
         { return AllNumber; }
 
-        public int GetAvailableNumber()
+        public override int GetAvailableNumber()
         { return AvailableNumber; }
 
         public void Dicrease()

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LibraryApp.Core
 {
-    public class Storage
+    class Storage
     {
         private const string filePathUsers = "../../Data/Users.json";
         private const string filePathAdmin = "../../Data/Admin.json";

@@ -22,9 +22,11 @@ namespace LibraryAppDesign
     {
         public AnaliticsWindow(string admin, List<string> filters)
         {
+            _storage = Factory.GetInstance().Storage;
+
             adminLogin = admin;
             analiticFilters = filters;
-            _storage = new Storage();
+
             FilterData();
             
             InitializeComponent();
@@ -37,7 +39,7 @@ namespace LibraryAppDesign
         List<string> analiticFilters;
         List<string> subjects = new List<string> { "Читатели", "Книги" };
         List<int> top = new List<int> { 1, 3, 5, 10 };
-        Storage _storage;
+        static IStorage _storage;
         List<List<string>> data = new List<List<string>> { };
 
 
@@ -97,7 +99,7 @@ namespace LibraryAppDesign
         {
             if (analiticFilters[0] == "Читатели")
             {
-                List<User> users = _storage.Users;
+                List<User> users = _storage.GetUsers;
                 for (int j = 0; j < users.Count; j++)
                 {
                     for (int i = 0; i < users.Count -1; i++)
@@ -120,8 +122,8 @@ namespace LibraryAppDesign
             }
             else if (analiticFilters[0] == "Книги")
             {
-                List<User> users = _storage.Users;
-                List<BookInLibrary> books = _storage.Books;
+                List<User> users = _storage.GetUsers;
+                List<BookInLibrary> books = _storage.GetBooks;
                 List<List<string>> preData = new List<List<string>> { };
 
                 foreach (var book in books)

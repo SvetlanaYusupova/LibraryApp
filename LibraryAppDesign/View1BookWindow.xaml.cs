@@ -23,10 +23,10 @@ namespace LibraryAppDesign
         // передаём логин пользователя и название книги
         public View1BookWindow(string login, string tag) 
         {
+            _storage = Factory.GetInstance().Storage;
+
             chosenbook = tag;
             userlogin = login;
-
-            _storage = new Storage();
 
             // текущий пользователь
             currentuser = GetCurrentUser(userlogin);
@@ -43,7 +43,7 @@ namespace LibraryAppDesign
         User currentuser;
         BookInLibrary currentbook;
 
-        static Storage _storage = new Storage();
+        static IStorage _storage;
         //List<User> users = _storage.Users;
         //List<BookInLibrary> books = _storage.Books;
         //List<Admin> admins = _storage.Admins;
@@ -66,8 +66,8 @@ namespace LibraryAppDesign
 
         private void GoOut(object sender, RoutedEventArgs e)
         {
-            _storage.SaveBooks();
-            _storage.SaveUsers();
+            _storage.Save();
+            _storage.Save();
             new TakeBookWindow(userlogin, new List<string> { "", "", "", ""}).Show();
             Close();
         }
@@ -110,7 +110,7 @@ namespace LibraryAppDesign
         // функция для получения экземпляра книги, выбранной пользователем, по названию
         BookInLibrary GetCurrentBook(string chosenbook) 
         {
-            foreach (var book in _storage.Books)
+            foreach (var book in _storage.GetBooks)
             {
                 if (book.GetName() == chosenbook)
                 {
@@ -124,7 +124,7 @@ namespace LibraryAppDesign
         // функция для получения определённого пользователя
         User GetCurrentUser(string ulogin) 
         {
-            foreach (var user in _storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (user.GetLogin() == ulogin)
                 {
@@ -205,7 +205,7 @@ namespace LibraryAppDesign
                     {
                         //currentuser.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
 
-                        foreach (var user in _storage.Users)
+                        foreach (var user in _storage.GetUsers)
                         {
                             if (user == currentuser)
                             {
@@ -214,7 +214,7 @@ namespace LibraryAppDesign
                             }
                         }
 
-                        foreach (var book in _storage.Books)
+                        foreach (var book in _storage.GetBooks)
                         {
                             if (book == currentbook)
                             {
@@ -223,14 +223,13 @@ namespace LibraryAppDesign
                             }
                         }
 
-                        _storage.SaveBooks();
-                        _storage.SaveUsers();
+                        _storage.Save();
+                        _storage.Save();
 
                         MessageBox.Show("Книга забронирована! Вы можете получить её в течении 7 дней!");
                         new TakeBookWindow(userlogin, new List<string> { "", "", "", "" }).Show();
                         Close();
                     }
-                    
                 }
             }
         }

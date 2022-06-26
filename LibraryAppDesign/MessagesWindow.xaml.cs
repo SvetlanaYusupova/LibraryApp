@@ -22,10 +22,13 @@ namespace LibraryAppDesign
     {
         public MessagesWindow(string user)
         {
+            _storage = Factory.GetInstance().Storage;
+
             userLogin = user;
-            _storage = new Storage();
-            users = _storage.Users;
+            users = _storage.GetUsers;
+
             InitializeComponent();
+
             foreach (var userl in users)
             {
                 if (userl.GetLogin() == user)
@@ -35,7 +38,7 @@ namespace LibraryAppDesign
             }
         }
 
-        Storage _storage;
+        static IStorage _storage;
         List<User> users;
         string userLogin;
 

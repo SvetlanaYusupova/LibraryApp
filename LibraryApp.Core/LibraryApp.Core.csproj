@@ -46,8 +46,12 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="IStorage.cs" />
+    <Compile Include="JSONStorage.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="Storage.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

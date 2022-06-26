@@ -22,14 +22,14 @@ namespace LibraryAppDesign
     {
         public ViewNotificationWindow(string tag, string adminlog)
         {
+            _storage = Factory.GetInstance().Storage;
+
             admin = adminlog;
             string[] information = tag.Split(';');
 
             login = information[0];
             bookname = information[1];
             typenot = information[2];
-
-            _storage = new Storage();
 
             notification = GetNotification(login, bookname, typenot);
             user = GetUser(login);
@@ -45,7 +45,7 @@ namespace LibraryAppDesign
         Notification notification;
         User user;
 
-        static Storage _storage;
+        static IStorage _storage;
 
         private void UserLogin_Initialized(object sender, EventArgs e)
         {
@@ -65,8 +65,8 @@ namespace LibraryAppDesign
 
         private void NoProlong(object sender, RoutedEventArgs e)
         {
-            _storage.Notifications.Remove(notification);
-            _storage.SaveNotifications();
+            _storage.GetNotifications.Remove(notification);
+            _storage.Save();
 
             MessageBox.Show("Уведомление удалено!");
             string filter = "";
@@ -78,7 +78,7 @@ namespace LibraryAppDesign
         {
             if (notification.GetType() == "Продление бронирования")
             {
-                foreach (var user in _storage.Users)
+                foreach (var user in _storage.GetUsers)
                 {
                     if (user.GetLogin() == login)
                     {
@@ -88,9 +88,9 @@ namespace LibraryAppDesign
                             {
                                 book.Prolong();
 
-                                _storage.SaveUsers();
-                                _storage.Notifications.Remove(notification);
-                                _storage.SaveNotifications();
+                                _storage.Save();
+                                _storage.GetNotifications.Remove(notification);
+                                _storage.Save();
 
                                 MessageBox.Show("Бронирование книги продлено на 7 дней!");
                                 string filter = "";
@@ -112,9 +112,9 @@ namespace LibraryAppDesign
                     {
                         book.Prolong();
 
-                        _storage.SaveUsers();
-                        _storage.Notifications.Remove(notification);
-                        _storage.SaveNotifications();
+                        _storage.Save();
+                        _storage.GetNotifications.Remove(notification);
+                        _storage.Save();
 
                         MessageBox.Show("Книга продлена на 30 дней!");
                         string filter = "";
@@ -135,7 +135,7 @@ namespace LibraryAppDesign
         }
         private Notification GetNotification(string login, string book, string typenot)
         {
-            foreach (var item in _storage.Notifications)
+            foreach (var item in _storage.GetNotifications)
             {
                 if (item.GetLogin() == login && item.GetBookName() == book && item.GetType() == typenot)
                 {
@@ -147,7 +147,7 @@ namespace LibraryAppDesign
         }
         private User GetUser(string login)
         {
-            foreach (var user in _storage.Users)
+            foreach (var user in _storage.GetUsers)
             {
                 if (user.GetLogin() == login)
                 {
