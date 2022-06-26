@@ -23,6 +23,7 @@ namespace LibraryAppDesign
         public TakeBookWindow(string login, List<string> filters)
         {
             _storage = Factory.GetInstance().Storage;
+            books = _storage.GetBooks;
 
             InitializeComponent();
             userlogin = login;
@@ -34,7 +35,7 @@ namespace LibraryAppDesign
 
         static IStorage _storage;
         //List<User> users = _storage.Users;
-        List<BookInLibrary> books = _storage.GetBooks;
+        List<BookInLibrary> books;
         //List<Admin> admins = _storage.Admins;
         //List<Notification> notifications = _storage.Notifications;
 
