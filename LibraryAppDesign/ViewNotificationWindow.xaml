@@ -1,0 +1,38 @@
+﻿<Window x:Class="LibraryAppDesign.ViewNotificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAppDesign"
+        mc:Ignorable="d"
+        Title="ViewNotificationWindow" Height="450" Width="800">
+    <Grid Background="BurlyWood" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row ="0" Grid.Column="0" Name="Logout" Click="LogOut" Content="Вернуться" Width="100" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Left" Margin="5"/>
+
+        <TextBlock Name="Login" Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat"  HorizontalAlignment="Center" VerticalAlignment="Center">Логин пользователя:</TextBlock>
+        <TextBlock Name="UserLogin" Grid.ColumnSpan="2"  Grid.Row="1" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="UserLogin_Initialized"  HorizontalAlignment="Left" VerticalAlignment="Center">qwerty</TextBlock>
+
+        <TextBlock Name="Bookname"   Grid.Row="2" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat"  HorizontalAlignment="Center" VerticalAlignment="Center">Название книги:</TextBlock>
+        <TextBlock Name="BookName" Grid.ColumnSpan="2"  Grid.Row="2" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="BookName_Initialized" HorizontalAlignment="Left" VerticalAlignment="Center" >qwerty</TextBlock>
+
+        <TextBlock Name="Notification"   Grid.Row="3" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat"  HorizontalAlignment="Center" VerticalAlignment="Center">Уведомление:</TextBlock>
+        <TextBlock Name="NotificationType" Grid.ColumnSpan="2"  Grid.Row="3" Grid.Column="1" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="NotificationType_Initialized"  HorizontalAlignment="Left" VerticalAlignment="Center">qwerty</TextBlock>
+
+        <Button Grid.Row ="5" Name="Donotprolong" Grid.Column="1" Click="NoProlong" Content="Не продлевать" Width="120" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Button>
+        <Button Grid.Row ="5" Name="ProlongBook" Grid.Column="2" Click="Prolong" Content="Продлить" Width="120" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Button>
+
+    </Grid>
+</Window>

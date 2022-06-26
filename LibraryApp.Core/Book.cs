@@ -61,6 +61,9 @@ namespace LibraryApp.Core
 
         public virtual DateTime GetEndDate()
         { return default; }
+
+        public virtual void Prolong()
+        {  }
     }
 
     public class BookInLibrary : Book
@@ -93,6 +96,7 @@ namespace LibraryApp.Core
             AvailableNumber--;
         }
 
+
     }
 
 
@@ -119,6 +123,11 @@ namespace LibraryApp.Core
         {
             return EndDate;
         }
+
+        public override void Prolong()
+        {
+            EndDate = EndDate.AddDays(30);
+        }
     }
 
     public class OrderBook : Book
@@ -134,6 +143,10 @@ namespace LibraryApp.Core
 
         public override DateTime GetEndDate()
         { return EndDate; }
+        public override void Prolong()
+        {
+            EndDate = EndDate.AddDays(7);
+        }
     }
 
 }

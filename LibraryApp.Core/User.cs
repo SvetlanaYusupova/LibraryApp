@@ -133,5 +133,15 @@ namespace LibraryApp.Core
         {
             Messages = new List<string> { };
         }
+
+        public int CountHistory()
+        {
+            return PastBooks.Count;
+        }
+
+        public string GetName()
+        {
+            return Name + " " + Surname;
+        }
     }
 }

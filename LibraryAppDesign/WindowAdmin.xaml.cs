@@ -44,6 +44,9 @@ namespace LibraryAppDesign
         private void Notification(object sender, RoutedEventArgs e)
         {
             //для просмотра просроченный для возврата книг, запроса на продление срока пользования и запроса на продление срока брони
+            string filter = "";
+            new AdminNotificationsWindow(filter, admin).Show();
+            Close();
         }
 
         // выдача книги пользователю
@@ -70,6 +73,8 @@ namespace LibraryAppDesign
         private void Analytics(object sender, RoutedEventArgs e)
         {
             //вывести аналитику по книгам
+            new AnaliticsWindow(admin, new List<string> { "", "" }).Show();
+            Close();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
