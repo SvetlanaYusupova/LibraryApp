@@ -27,7 +27,7 @@ namespace LibraryAppDesign
             books = _storage.Books;
 
             chosenbook = tag;
-            // filters4Book = filters;
+            //filters4Book = filters;
             // PresentUserBook();
             // ChooseBooks();
             currentbook = GetCurrentBook(chosenbook);
@@ -40,7 +40,7 @@ namespace LibraryAppDesign
             GenretextBox.Text = currentbook.GetGenre();
 
             AuthorsListBox.ItemsSource = currentbook.GetAuthor();
-            //TakenBooksListBox.ItemsSource = filtersBooks;
+
 
             foreach (var it in AuthorsListBox.Items)
             {
@@ -112,7 +112,7 @@ namespace LibraryAppDesign
                     bk.SetAgeRating(AgeRatingtextBox.Text);
                     bk.SetDescription(DescriptiontextBox.Text);
                     bk.SetGenre(GenretextBox.Text);
-                    //bk.SetAuthor(AuthorsListBox.ItemStringFormat);
+                  //  bk.SetAuthor(AuthorsListBox.ItemStringFormat);
                     bk.SetAuthor(authorsList);
 
                     _storage.SaveBooks();
