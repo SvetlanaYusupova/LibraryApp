@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryAppDesign"
         mc:Ignorable="d"
-        Title="AddBookWindow" Height="600" Width="800">
+        Title="AddBookWindow" Height="900" Width="900">
     <Grid Background="BurlyWood">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -37,12 +40,21 @@
         <TextBlock  Grid.Row ="4" Name="authorTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите ФИО авторов через запятую</TextBlock>
         <TextBox Name="textBoxAuthors" Grid.Row="4" Grid.Column="1" Margin="20"></TextBox>
 
-        <TextBlock  Grid.Row ="5" Name="numbTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите число книг в библиотеке</TextBlock>
-        <TextBox Name="textBoxNumberBook" Grid.Row="5" Grid.Column="1" Margin="20"></TextBox>
+        <TextBlock  Grid.Row ="5" Name="yearTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите год публикации книги</TextBlock>
+        <TextBox Name="textBoxYear" Grid.Row="5" Grid.Column="1" Margin="20"></TextBox>
 
-        <Button Name="buttonAdd" Grid.ColumnSpan="2" Grid.Row="6" Margin="20" Background="Sienna" Click="ButtonAdd_Click">Добавить</Button>
+        <TextBlock  Grid.Row ="6" Name="raitingTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите средний рейтинг книги</TextBlock>
+        <TextBox Name="textBoxRaiting" Grid.Row="6" Grid.Column="1" Margin="20"></TextBox>
 
-        <Button Name="buttonReturn" Grid.Column="0" Grid.Row="7" Margin="20" Background="Sienna" Click="ButtonReturn_Click">Вернуться назад</Button>
-        <Button Name="buttonClose" Grid.Column="1" Grid.Row="7" Margin="20" Background="Sienna" Click="ButtonClose_Click">Завершить работу</Button>
+        <TextBlock  Grid.Row ="7" Name="PageTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите количество страниц</TextBlock>
+        <TextBox Name="textBoxPage" Grid.Row="7" Grid.Column="1" Margin="20"></TextBox>
+
+        <TextBlock  Grid.Row ="8" Name="numbTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите число книг в библиотеке</TextBlock>
+        <TextBox Name="textBoxNumberBook" Grid.Row="8" Grid.Column="1" Margin="20"></TextBox>
+
+        <Button Name="buttonAdd" Grid.ColumnSpan="2" Grid.Row="9" Margin="20" Background="Sienna" Click="ButtonAdd_Click">Добавить</Button>
+
+        <Button Name="buttonReturn" Grid.Column="0" Grid.Row="10" Margin="20" Background="Sienna" Click="ButtonReturn_Click">Вернуться назад</Button>
+        <Button Name="buttonClose" Grid.Column="1" Grid.Row="10" Margin="20" Background="Sienna" Click="ButtonClose_Click">Завершить работу</Button>
     </Grid>
 </Window>
