@@ -1,7 +1,7 @@
 [
   {
     "AllNumber": 7,
-    "AvailableNumber": 6,
+    "AvailableNumber": 7,
     "BookName": "Пикник на обочине",
     "Author": [
       "Борис Стругацкий",
@@ -68,7 +68,7 @@
   },
   {
     "AllNumber": 1,
-    "AvailableNumber": 0,
+    "AvailableNumber": 1,
     "BookName": "Система вещей",
     "Author": [
       "Жан Бодрийяр"
@@ -90,7 +90,7 @@
   },
   {
     "AllNumber": 2,
-    "AvailableNumber": 1,
+    "AvailableNumber": 2,
     "BookName": "О вещах действительно важных",
     "Author": [
       "Питер Сингер"
@@ -101,7 +101,7 @@
   },
   {
     "AllNumber": 5,
-    "AvailableNumber": 4,
+    "AvailableNumber": 5,
     "BookName": "Преступление и наказание",
     "Author": [
       "Фёдор Достоевский"
@@ -123,7 +123,7 @@
   },
   {
     "AllNumber": 1,
-    "AvailableNumber": 0,
+    "AvailableNumber": 1,
     "BookName": "Мартин Иден",
     "Author": [
       "Джек Лондон"
