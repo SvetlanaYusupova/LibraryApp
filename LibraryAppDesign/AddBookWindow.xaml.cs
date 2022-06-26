@@ -53,7 +53,7 @@ namespace LibraryAppDesign
                             {
                                 try
                                 {
-                                    if (int.Parse(textBoxNumberBook.Text) > 0 & double.Parse(textBoxRaiting.Text) >= 0 & int.Parse(textBoxYear.Text) > 0 & int.Parse(textBoxPage.Text) > 0)
+                                    if (int.Parse(textBoxNumberBook.Text) > 0 & double.Parse(textBoxRaiting.Text) >= 0 & double.Parse(textBoxRaiting.Text) <= 5 & int.Parse(textBoxYear.Text) > 0 & int.Parse(textBoxYear.Text) <= DateTime.Now.Year & int.Parse(textBoxPage.Text) > 0)
                                     {
                                         _storage.Books.Add(new BookInLibrary(textBoxName.Text, textBoxAuthors.Text.Split(new string[] { ", " }, StringSplitOptions.None).ToList(), ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, int.Parse(textBoxYear.Text), double.Parse(textBoxRaiting.Text), int.Parse(textBoxPage.Text), int.Parse(textBoxNumberBook.Text), int.Parse(textBoxNumberBook.Text)));
                                         _storage.SaveBooks();
@@ -61,7 +61,7 @@ namespace LibraryAppDesign
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Кол-во книг, рейтинг, год публикации и кол-во страниц должны быть больше 0.");
+                                        MessageBox.Show("Неккоректный ввод чисел.");
                                     }
                                 }
                                 catch
