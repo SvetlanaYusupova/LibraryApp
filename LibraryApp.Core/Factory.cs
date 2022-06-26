@@ -22,7 +22,6 @@ namespace LibraryApp.Core
             return _instance;
         }
 
-
         private IStorage _storage;
 
         public IStorage Storage => _storage ?? new JSONStorage();

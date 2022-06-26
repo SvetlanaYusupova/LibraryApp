@@ -23,12 +23,13 @@ namespace LibraryAppDesign
     {
         public MainWindow()
         {
-            _storage = Factory.GetInstance().Storage;
+            
             InitializeComponent();
+            
 
         }
 
-        static IStorage _storage;
+        static IStorage _storage = Factory.GetInstance().Storage;
         List<User> users = _storage.GetUsers;
         List<BookInLibrary> books = _storage.GetBooks;
         List<Admin> admins = _storage.GetAdmins;
