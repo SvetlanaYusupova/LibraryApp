@@ -54,7 +54,7 @@ namespace LibraryAppDesign
                                 try
                                 {
 
-                                    _storage.Books.Add(new BookInLibrary(textBoxName.Text, textBoxAuthors.Text.Split(',').ToList(), ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, int.Parse(textBoxNumberBook.Text), int.Parse(textBoxNumberBook.Text)));
+                                    _storage.Books.Add(new BookInLibrary(textBoxName.Text, textBoxAuthors.Text.Split(new string[] { ", "}, StringSplitOptions.None).ToList(), ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, int.Parse(textBoxNumberBook.Text), int.Parse(textBoxNumberBook.Text)));
                                     _storage.SaveBooks();
                                     MessageBox.Show("Книга создана!");
                                 }
@@ -85,7 +85,10 @@ namespace LibraryAppDesign
             }
             else
             {
-                MessageBox.Show("Введите название книги, чтобы её добавить");
+                if (doing)
+                {
+                    MessageBox.Show("Введите название книги, чтобы её добавить");
+                }
             }
         }
 
