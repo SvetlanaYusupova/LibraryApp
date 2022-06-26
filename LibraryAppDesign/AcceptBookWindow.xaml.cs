@@ -92,6 +92,7 @@ namespace LibraryAppDesign
                     break;
                 }
             }
+            _storage.SaveBooks();
             _storage.SaveUsers();
             //new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
 
