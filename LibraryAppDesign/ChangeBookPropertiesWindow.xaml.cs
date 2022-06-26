@@ -39,20 +39,23 @@ namespace LibraryAppDesign
             DescriptiontextBox.Text = currentbook.GetDescription();
             GenretextBox.Text = currentbook.GetGenre();
 
-            AuthorsListBox.ItemsSource = currentbook.GetAuthor();
+            //AuthorsListBox.ItemsSource = currentbook.GetAuthor();
 
+           // authorsList = new List<string> { };
 
-            foreach (var it in AuthorsListBox.Items)
+            /*foreach (var it in AuthorsListBox.Items)
             {
                 authorsList.Add(it.ToString());
-            }
+            }*/
+            authorsList = AuthorBox.Text.Split(new string[] { ", " }, StringSplitOptions.None).ToList();
         }
         string chosenbook;
         string login;
-        Storage _storage;
+        static Storage _storage;
         List<BookInLibrary> books;
         BookInLibrary bLibrary;
         TakenBook tb;
+
         
         BookInLibrary currentbook;
 
@@ -61,8 +64,8 @@ namespace LibraryAppDesign
 
         List<string> authorsList;
 
-        //List<User> users = _storage.Users;
-        //List<List<string>> pastBook = new List<List<string>> { };
+        List<User> users = _storage.Users;
+        List<List<string>> pastBook = new List<List<string>> { };
 
 
 
@@ -98,7 +101,7 @@ namespace LibraryAppDesign
 
 
             if (BookNametextBox.Text != "" & AgeRatingtextBox.Text != "" & DescriptiontextBox.Text != "" & GenretextBox.Text != ""
-                & AuthorsListBox.ItemStringFormat != "")
+                & AuthorBox.Text != "")
             {
 
                 foreach (var bk in _storage.Books)
@@ -127,30 +130,35 @@ namespace LibraryAppDesign
             }
             if (tb.GetBookName().Contains(BookNametextBox.Text))
             {
+                tb.SetName(BookNametextBox.Text);
                 tb.SetAgeRating(AgeRatingtextBox.Text);
                 tb.SetDescription(DescriptiontextBox.Text);
                 tb.SetGenre(GenretextBox.Text);
                 //bk.SetAuthor(AuthorsListBox.ItemStringFormat);
                 tb.SetAuthor(authorsList);
+                _storage.SaveBooks();
             }
-            if (tb.GetBookName().Contains(BookNametextBox.Text))
-            {
-                tb.SetAgeRating(AgeRatingtextBox.Text);
-                tb.SetDescription(DescriptiontextBox.Text);
-                tb.SetGenre(GenretextBox.Text);
-                //bk.SetAuthor(AuthorsListBox.ItemStringFormat);
-                tb.SetAuthor(authorsList);
-            }
+
             else
             {
                 MessageBox.Show("Поля незаполнены");
             }
 
+            foreach (var us in users)
+            {
+                List<List<string>> past = us.GetPastBook();
+                foreach(var pasB in us.GetPastBook())
+                {
+                    if(pasB[0].Contains(BookNametextBox.Text))
+                    {
+                        pasB[0] = BookNametextBox.Text;
+                    }
+                }
+            }
+
 
         }
             
-    
-
         private void AgeRatingtextBox_Initialized(object sender, EventArgs e)
         {
             ComboBox AgeRatingtextBox = sender as ComboBox;

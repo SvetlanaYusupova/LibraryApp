@@ -26,6 +26,7 @@
         <ComboBox Grid.Row="2" Name="AgeRatingtextBox" Grid.Column="2" Margin="5" Initialized="AgeRatingtextBox_Initialized"  StaysOpenOnEdit="False"></ComboBox>
         <TextBox Name="DescriptiontextBox" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="10"></TextBox>
         <TextBox Name="GenretextBox" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Margin="10"></TextBox>
+        <TextBox Name="AuthorBox" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="10"></TextBox>
 
 
 
@@ -38,7 +39,7 @@
         <Button Name="buttonSave" Grid.Row="5" Grid.Column="1" Click="buttonSave_Click" Background="Sienna" Margin="95 10">Сохранить</Button>
         <Button Name="buttonReturn" Grid.Row="5" Grid.Column="0" Click="buttonReturn_Click" Background="Sienna" Margin="95 10">Вернуться назад</Button>
 
-        <ListBox Name="AuthorsListBox" Grid.Row="1" Grid.Column="1"  Margin="10" Background="AliceBlue" HorizontalContentAlignment="Stretch">
+       <!-- <ListBox Name="AuthorsListBox" Grid.Row="1" Grid.Column="1"  Margin="10" Background="AliceBlue" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="10 15 0 15">
@@ -51,7 +52,7 @@
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+        </ListBox>-->
 
     </Grid>
 </Window>
