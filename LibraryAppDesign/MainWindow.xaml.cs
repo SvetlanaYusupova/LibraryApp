@@ -49,7 +49,7 @@ namespace LibraryAppDesign
             {
                 if (user.GetLogin() == textBoxName.Text)
                 {
-                    if (user.GetPassword() == textBoxPassword.Text)
+                    if (user.GetPassword() == textBoxPassword.Password)
                     {
                         MessageBox.Show("Авторизация пройдена.");
                         //Hide();
