@@ -88,6 +88,9 @@
     <Compile Include="PastBookWindow.xaml.cs">
       <DependentUpon>PastBookWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RatingBookWindow.xaml.cs">
+      <DependentUpon>RatingBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TakenBookWindow.xaml.cs">
       <DependentUpon>TakenBookWindow.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MessagesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RatingBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

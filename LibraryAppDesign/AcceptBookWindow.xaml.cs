@@ -68,7 +68,13 @@ namespace LibraryAppDesign
             {
                 if (book.GetBookName() == nameBook)
                 {
-                    user.AddPastBook(new List<string> { $"{nameBook}", $"{string.Join(", ", book.GetAuthor())}", $"{book.GetAgeRating()}", $"{book.GetGenre()}" });
+                    var ind = 0;
+                    if (user.GetPastBook().Count != 0)
+                    {
+                        ind = user.GetPastBook().Count - 1;
+                    }
+
+                    user.AddPastBook(new List<string> { $"{nameBook}", $"{string.Join(", ", book.GetAuthor())}", $"{book.GetAgeRating()}", $"{book.GetGenre()}", ind.ToString()});
                     foreach (BookInLibrary book2 in allBooks)
                     {
                         if (book2.GetBookName() == nameBook)

@@ -209,7 +209,7 @@ namespace LibraryAppDesign
                         {
                             if (user == currentuser)
                             {
-                                user.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
+                                user.AddOrderBook(new OrderBook(currentbook.GetName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), currentbook.GetPublishedYear(), currentbook.GetRating(), currentbook.GetNumPages(), DateTime.Today.AddDays(7))); // добавили книгу в список забронированных книг пользователя
                                 break;
                             }
                         }

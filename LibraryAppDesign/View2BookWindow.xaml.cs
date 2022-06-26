@@ -130,7 +130,7 @@ namespace LibraryAppDesign
             {
                 if (user == currentuser)
                 {
-                    user.AddTakenBook(new TakenBook(currentbook.GetBookName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), DateTime.Today, DateTime.Today.AddDays(30)));
+                    user.AddTakenBook(new TakenBook(currentbook.GetBookName(), currentbook.GetAuthor(), currentbook.GetAgeRating(), currentbook.GetDescription(), currentbook.GetGenre(), currentbook.GetPublishedYear(), currentbook.GetRating(), currentbook.GetNumPages(), DateTime.Today, DateTime.Today.AddDays(30)));
                     user.DicreaseOrderBook(currentbook);
                 }
             }

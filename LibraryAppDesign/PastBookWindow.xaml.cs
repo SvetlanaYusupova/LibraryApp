@@ -36,8 +36,6 @@ namespace LibraryAppDesign
         List<User> users = _storage.Users;
         List<List<string>> pastBook = new List<List<string>> { };
 
-
-
         private void PastUserBook()
         {
             foreach (var us in users)
@@ -106,6 +104,23 @@ namespace LibraryAppDesign
             List<string> book = GenreName.DataContext as List<string>;
             GenreName.Text = book[3];
         }
+
+        private void BookRate_Initialized(object sender, EventArgs e)
+        {
+            Button BookRate = sender as Button;
+            List<string> book = BookRate.DataContext as List<string>;
+
+            BookRate.Tag = book[4];
+        }
+
+        private void BookRate_Click(object sender, RoutedEventArgs e)
+        {
+            Button RateBook = sender as Button;
+            new RatingBookWindow(RateBook.Tag.ToString(), userlogin).Show();
+            Close();
+        }
+
+
 
         //private void StartDate_Initialized(object sender, EventArgs e)
         //{
