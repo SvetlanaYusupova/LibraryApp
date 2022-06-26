@@ -37,7 +37,7 @@ namespace LibraryAppDesign
             {
                 if (textBoxName.Text == book.GetName())
                 {
-                    MessageBox.Show("Фильм с таким названием уже существует. Повторите попытку.");
+                    MessageBox.Show("Книга с таким названием уже существует. Повторите попытку.");
                     doing = false;
                 }
             }
@@ -55,6 +55,8 @@ namespace LibraryAppDesign
                                 {
 
                                     _storage.Books.Add(new BookInLibrary(textBoxName.Text, textBoxAuthors.Text.Split(',').ToList(), ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, int.Parse(textBoxNumberBook.Text), int.Parse(textBoxNumberBook.Text)));
+                                    _storage.SaveBooks();
+                                    MessageBox.Show("Книга создана!");
                                 }
                                 catch
                                 {
