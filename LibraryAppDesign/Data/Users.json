@@ -1,2 +1,13 @@
 [
+  {
+    "Name": "Катя",
+    "Surname": "Аронова",
+    "Age": 20,
+    "Login": "kate",
+    "Password": "A6-65-A4-59-20-42-2F-9D-41-7E-48-67-EF-DC-4F-B8-A0-4A-1F-3F-FF-1F-A0-7E-99-8E-86-F7-F7-A2-7A-E3",
+    "UsersBook": [],
+    "UsersOrderBook": [],
+    "PastBooks": [],
+    "Messages": []
+  }
 ]

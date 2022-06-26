@@ -43,6 +43,12 @@ namespace LibraryApp.Core
             Messages = messages;
         }
 
+        [JsonConstructor]
+        private User()
+        {
+
+        }
+
         public string GetLogin()
         {
             return Login;

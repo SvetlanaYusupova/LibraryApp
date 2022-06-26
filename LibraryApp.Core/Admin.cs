@@ -21,6 +21,12 @@ namespace LibraryApp.Core
             Password = GetHash(password);
         }
 
+        [JsonConstructor]
+        private Admin()
+        {
+        
+        }
+
         public string GetLogin()
         {
             return Login;
