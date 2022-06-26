@@ -38,6 +38,8 @@ namespace LibraryAppDesign
         private void Deletebook_Click(object sender, RoutedEventArgs e)
         {
             // для удаления книги
+            new DeletingBookWindow(new List<string> { "", ""}, admin).Show();
+            Close();
         }
 
         private void Addbook_Click(object sender, RoutedEventArgs e)
@@ -47,7 +49,7 @@ namespace LibraryAppDesign
 
         private void Changebook_Click(object sender, RoutedEventArgs e)
         {
-
+            // для внесения изменений в данные по книге
         }
     }
 }

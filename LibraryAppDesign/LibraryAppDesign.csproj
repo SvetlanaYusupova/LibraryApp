@@ -61,6 +61,12 @@
     <Compile Include="AnaliticsWindow.xaml.cs">
       <DependentUpon>AnaliticsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckDeletingBookWindow.xaml.cs">
+      <DependentUpon>CheckDeletingBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeletingBookWindow.xaml.cs">
+      <DependentUpon>DeletingBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MessagesWindow.xaml.cs">
       <DependentUpon>MessagesWindow.xaml</DependentUpon>
     </Compile>
@@ -100,6 +106,9 @@
     <Compile Include="View2BookWindow.xaml.cs">
       <DependentUpon>View2BookWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewDeletingBookWindow.xaml.cs">
+      <DependentUpon>ViewDeletingBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewNotificationWindow.xaml.cs">
       <DependentUpon>ViewNotificationWindow.xaml</DependentUpon>
     </Compile>
@@ -123,6 +132,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AnaliticsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CheckDeletingBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeletingBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TakenBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewDeletingBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
