@@ -1,0 +1,57 @@
+﻿<Window x:Class="LibraryAppDesign.ChangeBookPropertiesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAppDesign"
+        mc:Ignorable="d"
+        Title="ChangeBookPropertiesWindow" Height="350" Width="800">
+    <Grid Margin="10" Height="Auto" Background="BurlyWood">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        
+        <TextBox Name="BookNametextBox" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="10"></TextBox>
+        <!-- <TextBox Name="AuthortextBox" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="10"></TextBox>-->
+        <ComboBox Grid.Row="2" Name="AgeRatingtextBox" Grid.Column="2" Margin="5" Initialized="AgeRatingtextBox_Initialized"  StaysOpenOnEdit="False"></ComboBox>
+        <TextBox Name="DescriptiontextBox" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="10"></TextBox>
+        <TextBox Name="GenretextBox" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Margin="10"></TextBox>
+
+
+
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">Введите название книги:</TextBlock>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0">Введите автора(ов):</TextBlock>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0">Введите возрастной рейтинг:</TextBlock>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0">Введите описание:</TextBlock>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0">Введите жанр:</TextBlock>
+
+        <Button Name="buttonSave" Grid.Row="5" Grid.Column="1" Click="buttonSave_Click" Background="Sienna" Margin="95 10">Сохранить</Button>
+        <Button Name="buttonReturn" Grid.Row="5" Grid.Column="0" Click="buttonReturn_Click" Background="Sienna" Margin="95 10">Вернуться назад</Button>
+
+        <ListBox Name="AuthorsListBox" Grid.Row="1" Grid.Column="1"  Margin="10" Background="AliceBlue" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10 15 0 15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBox Name="AuthortextBox" VerticalAlignment="Center" Grid.Column="1" Margin="10"></TextBox>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>

@@ -58,6 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BooksInLibrabyWindow.xaml.cs">
+      <DependentUpon>BooksInLibrabyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeBookPropertiesWindow.xaml.cs">
+      <DependentUpon>ChangeBookPropertiesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MessagesWindow.xaml.cs">
       <DependentUpon>MessagesWindow.xaml</DependentUpon>
     </Compile>
@@ -110,6 +116,14 @@
       <DependentUpon>WindowUser.xaml</DependentUpon>
     </Compile>
     <Page Include="AcceptBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BooksInLibrabyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeBookPropertiesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

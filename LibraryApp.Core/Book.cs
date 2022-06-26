@@ -61,6 +61,25 @@ namespace LibraryApp.Core
 
         public virtual DateTime GetEndDate()
         { return default; }
+
+        public string SetName(string name)
+        { return BookName = name; }
+        public string SetDescription(string desc)
+        { return Description = desc; }
+
+        public string SetAgeRating(string ageR)
+        {
+            return AgeRating = ageR;
+        }
+        public List<string> SetAuthor(List<string> auth)
+        {
+            return Author = auth;
+        }
+        
+        public string SetGenre(string genr)
+        {
+            return Genre = genr;
+        }
     }
 
     public class BookInLibrary : Book
