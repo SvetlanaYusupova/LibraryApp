@@ -51,7 +51,15 @@ namespace LibraryAppDesign
                         {
                             if (textBoxAuthors.Text != "")
                             {
-                                _storage.Books.Add(new BookInLibrary(textBoxName.Text, , ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, ));
+                                try
+                                {
+
+                                    _storage.Books.Add(new BookInLibrary(textBoxName.Text, textBoxAuthors.Text.Split(',').ToList(), ageBox.SelectedItem.ToString(), textBoxDescription.Text, textBoxGenre.Text, int.Parse(textBoxNumberBook.Text), int.Parse(textBoxNumberBook.Text)));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Неверный ввод кол-ва книг");
+                                }
                             }
                             else
                             {
