@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Button Grid.Row ="0" Grid.Column="0" Name="button5" Click="LogOut" Content="Вернуться" Width="85" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Button>
+        <Button Grid.Row ="0" Grid.Column="0" Name="Return" Click="Return_Click" Content="Вернуться" Width="85" Height="25" FontSize="15" Background="Sienna" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Button>
 
 
         <TextBlock  Grid.Row ="1" Name="Title" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите название книги</TextBlock>
@@ -31,7 +31,7 @@
 
 
         <Button Grid.Row ="3" Name="Apply" Grid.Column="1" Click="Apply_Click" Content="Применить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
-        <Button Grid.Row ="3" Name="Return" Grid.Column="0" Click="Return_Click" Content="Очистить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
+        <Button Grid.Row ="3" Name="Clear" Grid.Column="0" Click="Clear_Click" Content="Очистить фильтры" Width="165" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Button>
 
 
         <ListBox Name="BooksListBox" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Background="AliceBlue" HorizontalContentAlignment="Stretch">
@@ -49,9 +49,10 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <TextBlock Name="BookName"   Grid.Row="0" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="NameBook_Initialized" ></TextBlock>
-                        <TextBlock Name="AuthorName"  Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="15" FontFamily="Monsterrat" Initialized="AuthorBook_Initialized"></TextBlock>
+                        <TextBlock Name="BookName"   Grid.Row="0" Grid.Column="0" Margin="10 5" FontSize="20" FontFamily="Monsterrat" Initialized="BookName_Initialized" ></TextBlock>
+                        <TextBlock Name="BookAuthor"  Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="15" FontFamily="Monsterrat" Initialized="BookAuthor_Initialized"></TextBlock>
                         <Button Name="ChooseBook"  Grid.Row="3" Grid.Column="1" Click="ChooseBook_Click" Content="Выбрать" Width="75" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Initialized="ChooseBook_Initialized"></Button>
+                    
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

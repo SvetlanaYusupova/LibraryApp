@@ -49,7 +49,7 @@ namespace LibraryAppDesign
 
         private void Changebook_Click(object sender, RoutedEventArgs e)
         {
-
+            // для внесения изменений в данные по книге
         }
     }
 }
