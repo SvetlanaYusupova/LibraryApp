@@ -35,7 +35,7 @@ namespace LibraryAppDesign
                     }
                 }
                 textBoxLogin.Text = admin.GetLogin();
-                textBoxPassword.Text = admin.GetPassword();
+                textBoxPassword.Password = admin.GetPassword();
                 buttonCheck.Content = "Изменить";
             }
             if (action == "newadmin")
@@ -73,7 +73,7 @@ namespace LibraryAppDesign
                 {
                     if (adm.GetLogin() == textBoxLogin.Text)
                     {
-                        if (adm.GetPassword() == textBoxPassword.Text)
+                        if (adm.GetPassword() == textBoxPassword.Password)
                         {
                             MessageBox.Show("Авторизация пройдена.");
                             Hide();
@@ -95,11 +95,11 @@ namespace LibraryAppDesign
             }
             if (action == "edit")
             {
-                if (textBoxLogin.Text != "" & textBoxPassword.Text != "")
+                if (textBoxLogin.Text != "" & textBoxPassword.Password != "")
                 {
                     admin.SetLogin(textBoxLogin.Text);
                     login = textBoxLogin.Text;
-                    admin.SetPassword(textBoxPassword.Text);
+                    admin.SetPassword(textBoxPassword.Password);
                     _storage.SaveAdmin();
                 }
                 else
@@ -118,9 +118,9 @@ namespace LibraryAppDesign
                 }
                 if (doing)
                 {
-                    if (textBoxLogin.Text != "" & textBoxPassword.Text != "")
+                    if (textBoxLogin.Text != "" & textBoxPassword.Password != "")
                     {
-                        Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Text);
+                        Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Password);
                         _storage.Admins.Add(newAdmin);
                         _storage.SaveAdmin();
                     }
