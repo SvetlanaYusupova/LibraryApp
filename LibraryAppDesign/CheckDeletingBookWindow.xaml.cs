@@ -68,7 +68,7 @@ namespace LibraryAppDesign
             {
                 if (book.GetName() == bookName)
                 {
-                    if (book.GetAllNumber() > book.GetAvailableNumber())
+                    if (book.GetAvailableNumber() < book.GetAllNumber())
                     {
                         canbedeleted = false;
                     }

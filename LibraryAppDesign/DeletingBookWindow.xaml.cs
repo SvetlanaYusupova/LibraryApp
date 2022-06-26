@@ -112,8 +112,9 @@ namespace LibraryAppDesign
             TextBlock BookAuthor = sender as TextBlock;
 
             BookInLibrary book = BookAuthor.DataContext as BookInLibrary;
+            string authors = String.Join(", ", book.GetAuthor());
 
-            BookAuthor.Text = book.GetName();
+            BookAuthor.Text = authors;
         }
 
         private void ChooseBook_Initialized(object sender, EventArgs e)
