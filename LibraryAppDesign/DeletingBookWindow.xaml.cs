@@ -178,7 +178,5 @@ namespace LibraryAppDesign
             new EditBookWindow(admin).Show();
             Close();
         }
-
-
     }
 }
