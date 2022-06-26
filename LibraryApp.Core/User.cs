@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,7 +36,7 @@ namespace LibraryApp.Core
             Surname = surname;
             Age = age;
             Login = login;
-            Password = password;
+            Password = GetHash(password);
             UsersBook = usersBook;
             UsersOrderBook = usersorderBook;
             PastBooks = pastBook;
@@ -78,7 +79,7 @@ namespace LibraryApp.Core
         }
         public void SetPassword(string password)
         {
-            Password = password;
+            Password = GetHash(password);
         }
         public void SetName(string name)
         {
@@ -142,6 +143,15 @@ namespace LibraryApp.Core
         public string GetName()
         {
             return Name + " " + Surname;
+        }
+
+        public static string GetHash(string password)
+        {
+            byte[] bytePass = new System.Text.UTF8Encoding().GetBytes(password);
+            SHA256 sha = new SHA256Managed();
+            byte[] bytesh = sha.ComputeHash(bytePass);
+            string result = BitConverter.ToString(bytesh);
+            return result;
         }
     }
 }
