@@ -22,10 +22,11 @@ namespace LibraryAppDesign
     {
         public TakeBookWindow(string login, List<string> filters)
         {
+            _storage = new Storage();
+
             InitializeComponent();
             userlogin = login;
             filters4Book = filters;
-            _storage = new Storage();
 
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
