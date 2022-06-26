@@ -29,7 +29,7 @@
         <TextBox Name="textBoxGenre" Grid.Row="1" Grid.Column="1" Margin="20"></TextBox>
 
         <TextBlock  Grid.Row ="2" Name="ageTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Выберите возрастное ограничение</TextBlock>
-        <ComboBox Grid.Row="2" Name="ageBox" Grid.Column="1" Margin="20" Initialized="ageBox_Initialized" SelectionChanged="ageBox_SelectionChanged"></ComboBox>
+        <ComboBox Grid.Row="2" Name="ageBox" Grid.Column="1" Margin="20" Initialized="ageBox_Initialized"></ComboBox>
 
         <TextBlock  Grid.Row ="3" Name="descriptionTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите описание новой книги</TextBlock>
         <TextBox Name="textBoxDescription" Grid.Row="3" Grid.Column="1" Margin="20"></TextBox>
