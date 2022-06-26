@@ -58,7 +58,6 @@ namespace LibraryApp.Core
         {
             return Description;
         }
-
         
         public int GetIntBookAge() // целочисленное значение возрастного рейтинга книги для сравнения с возрастом пользователя
         {
@@ -67,6 +66,15 @@ namespace LibraryApp.Core
         }
         public string GetName()
         { return BookName; }
+
+        public int GetPublishedYear()
+        { return PublishedYear; }
+
+        public double GetRating()
+        { return Rating; }
+
+        public int GetNumPages()
+        { return NumPages; }
 
         public virtual DateTime GetEndDate()
         { return default; }
