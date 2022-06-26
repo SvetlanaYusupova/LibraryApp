@@ -22,11 +22,11 @@ namespace LibraryApp.Core
         [JsonProperty]
         private int PublishedYear { get; set; }
         [JsonProperty]
-        private float Rating { get; set; }
+        private double Rating { get; set; }
         [JsonProperty]
         private int NumPages { get; set; }
 
-        public Book(string bookname, List<string> author, string age, string description, string genre, int publishedyear, float rating, int numpages)
+        public Book(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages)
         {
             BookName = bookname;
             Author = author;
@@ -82,7 +82,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private int AvailableNumber { get; set; }
 
-        public BookInLibrary(string bookname, List<string> author, string age, string description, string genre, int publishedyear, float rating, int numpages, int allnumber, int availablenumber)
+        public BookInLibrary(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages, int allnumber, int availablenumber)
         : base(bookname, author, age, description, genre, publishedyear, rating, numpages)
         {
             AllNumber = allnumber;
@@ -116,7 +116,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private DateTime EndDate { get; set; }
 
-        public TakenBook(string bookname, List<string> author, string age, string description, string genre, int publishedyear, float rating, int numpages, DateTime start, DateTime end)
+        public TakenBook(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages, DateTime start, DateTime end)
         : base(bookname, author, age, description, genre, publishedyear, rating, numpages)
         {
             StartDate = start;
@@ -144,7 +144,7 @@ namespace LibraryApp.Core
         [JsonProperty]
         private DateTime EndDate { get; set; }
 
-        public OrderBook(string bookname, List<string> author, string age, string description, string genre, int publishedyear, float rating, int numpages, DateTime end)
+        public OrderBook(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages, DateTime end)
         : base(bookname, author, age, description, genre, publishedyear, rating, numpages)
         {
             EndDate = end;
