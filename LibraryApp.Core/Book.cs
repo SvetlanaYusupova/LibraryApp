@@ -19,14 +19,23 @@ namespace LibraryApp.Core
         private string Description { get; set; }
         [JsonProperty]
         private string Genre { get; set; }
+        [JsonProperty]
+        private int PublishedYear { get; set; }
+        [JsonProperty]
+        private double Rating { get; set; }
+        [JsonProperty]
+        private int NumPages { get; set; }
 
-        public Book(string bookname, List<string> author, string age, string description, string genre)
+        public Book(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages)
         {
             BookName = bookname;
             Author = author;
             AgeRating = age;
             Description = description;
             Genre = genre;
+            PublishedYear = publishedyear;
+            Rating = rating;
+            NumPages = numpages;
         }
         public string GetGenre()
         {
@@ -73,8 +82,8 @@ namespace LibraryApp.Core
         [JsonProperty]
         private int AvailableNumber { get; set; }
 
-        public BookInLibrary(string bookname, List<string> author, string age, string description, string genre, int allnumber, int availablenumber)
-        : base(bookname, author, age, description, genre)
+        public BookInLibrary(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages, int allnumber, int availablenumber)
+        : base(bookname, author, age, description, genre, publishedyear, rating, numpages)
         {
             AllNumber = allnumber;
             AvailableNumber = availablenumber;
@@ -107,8 +116,8 @@ namespace LibraryApp.Core
         [JsonProperty]
         private DateTime EndDate { get; set; }
 
-        public TakenBook(string bookname, List<string> author, string age, string description, string genre, DateTime start, DateTime end)
-        : base(bookname, author, age, description, genre)
+        public TakenBook(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages, DateTime start, DateTime end)
+        : base(bookname, author, age, description, genre, publishedyear, rating, numpages)
         {
             StartDate = start;
             EndDate = end;
@@ -135,8 +144,8 @@ namespace LibraryApp.Core
         [JsonProperty]
         private DateTime EndDate { get; set; }
 
-        public OrderBook(string bookname, List<string> author, string age, string description, string genre, DateTime end)
-        : base(bookname, author, age, description, genre)
+        public OrderBook(string bookname, List<string> author, string age, string description, string genre, int publishedyear, double rating, int numpages, DateTime end)
+        : base(bookname, author, age, description, genre, publishedyear, rating, numpages)
         {
             EndDate = end;
         }
