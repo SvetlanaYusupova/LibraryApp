@@ -1,0 +1,48 @@
+﻿<Window x:Class="LibraryAppDesign.AddBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAppDesign"
+        mc:Ignorable="d"
+        Title="AddBookWindow" Height="600" Width="800">
+    <Grid Background="BurlyWood">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock  Grid.Row ="0" Name="nameTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите название новой книги</TextBlock>
+        <TextBox Name="textBoxName" Grid.Row="0" Grid.Column="1" Margin="20"></TextBox>
+
+        <TextBlock  Grid.Row ="1" Name="genreTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите жанр новой книги</TextBlock>
+        <TextBox Name="textBoxGenre" Grid.Row="1" Grid.Column="1" Margin="20"></TextBox>
+
+        <TextBlock  Grid.Row ="2" Name="ageTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Выберите возрастное ограничение</TextBlock>
+        <ComboBox Grid.Row="2" Name="ageBox" Grid.Column="1" Margin="20" Initialized="ageBox_Initialized"></ComboBox>
+
+        <TextBlock  Grid.Row ="3" Name="descriptionTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите описание новой книги</TextBlock>
+        <TextBox Name="textBoxDescription" Grid.Row="3" Grid.Column="1" Margin="20"></TextBox>
+
+        <TextBlock  Grid.Row ="4" Name="authorTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите ФИО авторов через запятую</TextBlock>
+        <TextBox Name="textBoxAuthors" Grid.Row="4" Grid.Column="1" Margin="20"></TextBox>
+
+        <TextBlock  Grid.Row ="5" Name="numbTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите число книг в библиотеке</TextBlock>
+        <TextBox Name="textBoxNumberBook" Grid.Row="5" Grid.Column="1" Margin="20"></TextBox>
+
+        <Button Name="buttonAdd" Grid.ColumnSpan="2" Grid.Row="6" Margin="20" Background="Sienna" Click="ButtonAdd_Click">Добавить</Button>
+
+        <Button Name="buttonReturn" Grid.Column="0" Grid.Row="7" Margin="20" Background="Sienna" Click="ButtonReturn_Click">Вернуться назад</Button>
+        <Button Name="buttonClose" Grid.Column="1" Grid.Row="7" Margin="20" Background="Sienna" Click="ButtonClose_Click">Завершить работу</Button>
+    </Grid>
+</Window>

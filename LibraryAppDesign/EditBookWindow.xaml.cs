@@ -45,6 +45,8 @@ namespace LibraryAppDesign
         private void Addbook_Click(object sender, RoutedEventArgs e)
         {
             // для добавления новой книги
+            new AddBookWindow(admin).Show();
+            Close();
         }
 
         private void Changebook_Click(object sender, RoutedEventArgs e)
