@@ -41,28 +41,60 @@ namespace LibraryAppDesign
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckBook(bookname))
+            {
+                MessageBox.Show("Книга не может быть удалена, так как на данный момент она забронирована или находится на руках у пользователя!");
+                new ViewDeletingBookWindow(bookname, admin).Show();
+                Close();
+            }
+            else
+            {
+                _storage.Books.Remove(GetCurrentBook(bookname));
+                _storage.SaveBooks();
+
+                MessageBox.Show("Книга удалена из библиотеки!");
+                new DeletingBookWindow(new List<string> { "", "" }, admin).Show();
+                Close();
+            }
+
+            
+        }
+
+        bool CheckBook(string bookName)
+        {
+            bool canbedeleted = false;
+
             foreach (var book in _storage.Books)
             {
-                if (book.GetName() == bookname)
+                if (book.GetName() == bookName)
                 {
-                    if (book.GetAllNumber() < book.GetAvailableNumber())
+                    if (book.GetAllNumber() > book.GetAvailableNumber())
                     {
-                        MessageBox.Show("Книга не может быть удалена, так как на данный момент она забронирована или находится на руках у пользователя!");
-                        new ViewDeletingBookWindow(bookname, admin).Show();
-                        Close();
+                        canbedeleted = false;
                     }
                     else
                     {
-                        _storage.Books.Remove(book);
-                        _storage.SaveBooks();
-
-                        MessageBox.Show("Книга удалена из библиотеки!");
-                        new DeletingBookWindow(new List<string> { "", "" }, admin).Show();
-                        Close();
-
+                        canbedeleted = true;
                     }
                 }
+                
             }
+
+            return canbedeleted;
+
+        }
+
+        BookInLibrary GetCurrentBook(string chosenbook)
+        {
+            foreach (var book in _storage.Books)
+            {
+                if (book.GetName() == chosenbook)
+                {
+                    return book;
+                }
+            }
+
+            return default;
         }
     }
 }
