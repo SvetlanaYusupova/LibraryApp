@@ -72,33 +72,7 @@ namespace LibraryAppDesign
                     
             }
 
-            //Для перехода к окну принятия книги
-
-            /*if (UserList.Text.ToString() != "")
-            //Для перехода к окну принятия книги
-            bool doing = true;
-            foreach (var us in _storage.Users)
-            {
-                if (us.GetLogin() == UserList.Text)
-                {
-                    //us.UsersBook.Add(new TakenBook("testbook2", new List<string> { "testauthor"}, "19", "testdescription2", "test2", DateTime.Now, DateTime.Parse("30.05.2022")));
-                    if (us.GetUsersBook().Count != 0)
-                    {
-                        new AcceptBookWindow(UserList.Text, new List<string> { "", "", "", "" }).Show();
-                        Close();
-                        doing = false;
-                    }
-                    else
-                    {
-                        MessageBox.Show("У пользователя нет взятых книг.");
-                        doing = false;
-                    }
-                }
-            }
-            if (doing)
-            {
-                MessageBox.Show("Такого пользователя нет.");
-            }*/
+            
         }
 
         private void UserList_Initialized(object sender, EventArgs e)

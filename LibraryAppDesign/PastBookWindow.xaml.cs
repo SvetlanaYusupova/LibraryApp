@@ -22,7 +22,6 @@ namespace LibraryAppDesign
     {
         public PastBookWindow(string login)
         {
-            //PastUserBook();
             _storage = Factory.GetInstance().Storage;
             users = _storage.GetUsers;
             PastUserBook();
@@ -56,23 +55,6 @@ namespace LibraryAppDesign
             Close();
         }
 
-        //private void NameGenre_Initialized(object sender, EventArgs e)
-        //{
-
-        //    ComboBox GenreName = sender as ComboBox;
-        //    foreach (var item in takenBook)
-        //    {
-        //        if (!genres.Contains(item.GetGenre()))
-        //        {
-        //            genres.Add(item.GetGenre());
-        //        }
-        //    }
-
-        //    foreach (var item in genres)
-        //    {
-        //        GenreName.Items.Add(item);
-        //    }
-        //}
         private void NameBook_Initialized(object sender, EventArgs e)
         {
             TextBlock BookName = sender as TextBlock;
@@ -80,18 +62,12 @@ namespace LibraryAppDesign
             BookName.Text = book[0];
         }
 
-        // user.AddPastBook(new List<string> { $"{nameBook}", $"{string.Join(", ", book.GetAuthor())}", $"{book.GetAgeRating()}", $"{book.GetGenre()}"});
-
-
-
         private void AgeRating_Initialized(object sender, EventArgs e)
         {
             TextBlock AgeRating = sender as TextBlock;
             List<string> book = AgeRating.DataContext as List<string>;
             AgeRating.Text = book[2];
         }
-
-
 
         private void AuthorBook_Initialized(object sender, EventArgs e)
         {
@@ -123,21 +99,6 @@ namespace LibraryAppDesign
             Close();
         }
 
-
-
-        //private void StartDate_Initialized(object sender, EventArgs e)
-        //{
-        //    TextBlock StartDate = sender as TextBlock;
-        //    List<string> book = StartDate.DataContext as List<string>;
-        //    StartDate.Text = book[3];
-        //}
-
-        //private void EndDate_Initialized(object sender, EventArgs e)
-        //{
-        //    TextBlock EndDate = sender as TextBlock;
-        //    List<string> book = EndDate.DataContext as List<string>;
-        //    EndDate.Text = book[4];
-        //}
 
     }
 }

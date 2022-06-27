@@ -30,20 +30,28 @@ namespace LibraryAppDesign
                     books = us.GetUsersBook();
                 }
             }
+
             allBooks = _storage.GetBooks;
             InitializeComponent();
             filters4Book = filt;
+            admin = logAdmin;
+
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
-            admin = logAdmin;
+            TitleName.Text = filt[0];
+            AuthorName.Text = filt[1];
+            GenreName.Text = filt[2];
+            AgeName.Text = filt[3];
             
         }
 
         User user;
+        string admin;
+
         static IStorage _storage = Factory.GetInstance().Storage;
         List<TakenBook> books;  //книги на руках у пользователя
         List<BookInLibrary> allBooks; //все книги в библиотеке
-        string admin;
+        
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
         List<string> titlenames = new List<string> { };
@@ -100,10 +108,6 @@ namespace LibraryAppDesign
             }
             _storage.Save();
             _storage.Save();
-            //new View1BookWindow(userLogin, ChooseBook.Tag.ToString()).Show();
-
-            //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
-            //Close();
         }
 
         private void Apply(object sender, RoutedEventArgs e)

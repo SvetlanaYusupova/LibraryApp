@@ -31,6 +31,8 @@ namespace LibraryAppDesign
 
             ChooseBooks();
             BooksListBox.ItemsSource = filtersBooks;
+            TitleName.Text = filters[0];
+            AuthorName.Text = filters[1];
         }
 
         string admin;

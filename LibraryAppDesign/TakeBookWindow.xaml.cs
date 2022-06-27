@@ -31,13 +31,14 @@ namespace LibraryAppDesign
 
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
+            TitleName.Text = filters[0];
+            AuthorName.Text = filters[1];
+            GenreName.Text = filters[2];
+            AgeName.Text = filters[3];
         }
 
         static IStorage _storage;
-        //List<User> users = _storage.Users;
         List<BookInLibrary> books;
-        //List<Admin> admins = _storage.Admins;
-        //List<Notification> notifications = _storage.Notifications;
 
         List<string> genres = new List<string> { };
         List<string> ageRatings = new List<string> { };
@@ -60,19 +61,11 @@ namespace LibraryAppDesign
             //для кнопки выбора книги
             Button ChooseBook = sender as Button;
             new View1BookWindow(userlogin, ChooseBook.Tag.ToString()).Show();
-            //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
             Close();
         }
 
         private void Apply(object sender, RoutedEventArgs e)
         {
-            //для кнопки применения фильтров
-            /*TextBox TitleName = sender as TextBox;
-            TextBox AuthorName = sender as TextBox;*/
-
-            /*ComboBox GenreName = sender as ComboBox;
-            ComboBox AgeName = sender as ComboBox;*/
-            
             List<string> fil = new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString()};
             
             AddFill(GenreName.SelectedItem);

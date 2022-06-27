@@ -33,7 +33,8 @@ namespace LibraryAppDesign
             InitializeComponent();
 
             OrderedBooksListBox.ItemsSource = filtersBooks;
-            //OrderedBooksListBox.ItemsSource = filtersBooks;
+            TitleName.Text = filters[0];
+            AuthorName.Text = filters[1];
         }
 
         string userlogin;
@@ -93,15 +94,6 @@ namespace LibraryAppDesign
             AgeName.Text = book.GetAgeRating();
         }
 
-
-        //private void StartDate_Initialized(object sender, EventArgs e)
-        //{
-        //    TextBlock StartDate = sender as TextBlock;
-        //    OrderBook book = StartDate.DataContext as OrderBook;
-        //    string start = book.GetStartDate().ToShortDateString().ToString();
-        //    StartDate.Text = start;
-        //}
-
         private void EndDate_Initialized(object sender, EventArgs e)
         {
             TextBlock EndDate = sender as TextBlock;
@@ -121,9 +113,7 @@ namespace LibraryAppDesign
         {
             // для кнопки выбора книги
             Button ChooseBook = sender as Button;
-            // new View1BookWindow(userlogin, ChooseBook.Tag.ToString()).Show();
             new ExtendingOrderedBookWindow(userlogin, ChooseBook.Tag.ToString(), "Продление бронирования").Show();
-            //new TakeBookWindow(userlogin, new List<string> { TitleName.Text.ToString(), AuthorName.Text.ToString(), GenreName.SelectedItem.ToString(), AgeName.SelectedItem.ToString() }).Show();
             Close();
         }
 

@@ -35,6 +35,10 @@ namespace LibraryAppDesign
             InitializeComponent();
             ChoseBooks();
             BooksListBox.ItemsSource = filtersBooks;
+            TitleName.Text = filters[0];
+            AuthorName.Text = filters[1];
+            GenreName.Text = filters[2];
+            AgeName.Text = filters[3];
         }
 
         string currentuser;
@@ -113,6 +117,7 @@ namespace LibraryAppDesign
         private void AuthorName_Initialized(object sender, EventArgs e)
         {
             ComboBox AuthorName = sender as ComboBox;
+
             foreach (var item in GetUser(currentuser))
             {
                 foreach (var author in item.GetAuthor())
@@ -133,6 +138,7 @@ namespace LibraryAppDesign
         private void GenreName_Initialized(object sender, EventArgs e)
         {
             ComboBox GenreName = sender as ComboBox;
+
             foreach (var item in GetUser(currentuser))
             {
                 if (!genres.Contains(item.GetGenre()))
@@ -151,6 +157,7 @@ namespace LibraryAppDesign
         private void AgeName_Initialized(object sender, EventArgs e)
         {
             ComboBox AgeName = sender as ComboBox;
+
             foreach (var item in GetUser(currentuser))
             {
                 if (!ageRatings.Contains(item.GetAgeRating()))

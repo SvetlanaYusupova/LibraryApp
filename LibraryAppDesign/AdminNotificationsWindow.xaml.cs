@@ -34,6 +34,7 @@ namespace LibraryAppDesign
 
             ChooseNotifications();
             NotificationsListBox.ItemsSource = filterNotifications;
+            UserList.Text = filter;
             
         }
 
@@ -122,6 +123,7 @@ namespace LibraryAppDesign
         private void ChooseNotification_Initialized(object sender, EventArgs e)
         {
             Button ChooseNotification = sender as Button;
+
             Notification notification = ChooseNotification.DataContext as Notification;
 
             string chosennotification = "";
