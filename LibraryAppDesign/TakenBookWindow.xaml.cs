@@ -23,6 +23,7 @@ namespace LibraryAppDesign
         public TakenBookWindow(string login, List<string> filters)
         {
             _storage = Factory.GetInstance().Storage;
+            users = _storage.GetUsers;
 
             userlogin = login;
             filters4Book = filters;
@@ -36,7 +37,7 @@ namespace LibraryAppDesign
 
         string userlogin;
         static IStorage _storage;
-        List<User> users = _storage.GetUsers;
+        List<User> users;
         List<TakenBook> takenBook = new List<TakenBook> { };
         List<string> filters4Book;
         List<string> titlenames = new List<string> { };

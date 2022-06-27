@@ -26,7 +26,7 @@
         
         <Button Grid.Row ="1" Grid.Column="0" Name="button2" Click="TakeNew" Content="Взять новую книгу" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"></Button>
         <Button Grid.Row ="1" Grid.Column="1" Name="button6" Click="LookBook" Content="Посмотреть забронированные книги" Width="270" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" ></Button>
-        <Button Grid.Row ="2" Grid.Column="0" Name="button3" Click="LookPresent" Content="Посмотреть текущии книги" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Grid.Row ="2" Grid.Column="0" Name="button3" Click="LookPresent" Content="Посмотреть текущиe книги" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
         <Button Grid.Row ="2" Grid.Column="1" Name="button4" Click="LookPast" Content="Посмотреть прошлые книги" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
 
         <Button Grid.Row ="4" Grid.Column="1" Name="button5" Click="LogOut" Content="Завершить" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"></Button>

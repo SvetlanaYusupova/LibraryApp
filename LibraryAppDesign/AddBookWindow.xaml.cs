@@ -105,11 +105,6 @@ namespace LibraryAppDesign
             Close();
         }
 
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
         private void ageBox_Initialized(object sender, EventArgs e)
         {
             ComboBox ageBox = sender as ComboBox;

@@ -22,18 +22,21 @@ namespace LibraryAppDesign
     {
         public PastBookWindow(string login)
         {
-            PastUserBook();
+            //PastUserBook();
             _storage = Factory.GetInstance().Storage;
+            users = _storage.GetUsers;
+            PastUserBook();
+
             InitializeComponent();
             userlogin = login;
-            PastUserBook();
+            
             PastBooksListBox.ItemsSource = pastBook;
         }
 
         string userlogin;
 
         static IStorage _storage;
-        List<User> users = _storage.GetUsers;
+        List<User> users;
         List<List<string>> pastBook = new List<List<string>> { };
 
         private void PastUserBook()

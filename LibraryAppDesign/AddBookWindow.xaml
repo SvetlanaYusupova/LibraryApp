@@ -22,7 +22,6 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />
         </Grid.RowDefinitions>
 
         <TextBlock  Grid.Row ="0" Name="nameTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите название новой книги</TextBlock>
@@ -52,9 +51,8 @@
         <TextBlock  Grid.Row ="8" Name="numbTextBlock" Grid.Column="0"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Введите число книг в библиотеке</TextBlock>
         <TextBox Name="textBoxNumberBook" Grid.Row="8" Grid.Column="1" Margin="20"></TextBox>
 
-        <Button Name="buttonAdd" Grid.ColumnSpan="2" Grid.Row="9" Margin="20" Background="Sienna" Click="ButtonAdd_Click">Добавить</Button>
+        <Button Name="buttonReturn" Grid.Column="0" Grid.Row="9" Margin="20" Background="Sienna" Click="ButtonReturn_Click">Вернуться назад</Button>
+        <Button Name="buttonAdd" Grid.Column="1" Grid.Row="9" Margin="20" Background="Sienna" Click="ButtonAdd_Click">Добавить</Button>
 
-        <Button Name="buttonReturn" Grid.Column="0" Grid.Row="10" Margin="20" Background="Sienna" Click="ButtonReturn_Click">Вернуться назад</Button>
-        <Button Name="buttonClose" Grid.Column="1" Grid.Row="10" Margin="20" Background="Sienna" Click="ButtonClose_Click">Завершить работу</Button>
     </Grid>
 </Window>
