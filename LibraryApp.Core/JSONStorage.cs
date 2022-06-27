@@ -18,7 +18,7 @@ namespace LibraryApp.Core
         {
             _users = new Repository<User>("../../Data/Users.json");
             _admins = new Repository<Admin>("../../Data/Admin.json");
-            _books = new Repository<BookInLibrary>("../../Data/Books.json");
+            _books = new Repository<BookInLibrary>("../../Data/boooks.json");
             _notifications = new Repository<Notification>("../../Data/Notifications.json");
         }
 
