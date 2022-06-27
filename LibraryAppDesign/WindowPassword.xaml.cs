@@ -121,7 +121,7 @@ namespace LibraryAppDesign
                     if (textBoxLogin.Text != "" & textBoxPassword.Password != "")
                     {
                         Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Password);
-                        
+                        MessageBox.Show("Админ создан!");
                         _storage.GetAdmins.Add(newAdmin);
                         _storage.Save();
                     }
