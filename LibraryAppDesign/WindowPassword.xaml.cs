@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,7 +36,6 @@ namespace LibraryAppDesign
                     }
                 }
                 textBoxLogin.Text = admin.GetLogin();
-                textBoxPassword.Text = admin.GetPassword();
                 buttonCheck.Content = "Изменить";
             }
             if (action == "newadmin")
@@ -73,7 +73,7 @@ namespace LibraryAppDesign
                 {
                     if (adm.GetLogin() == textBoxLogin.Text)
                     {
-                        if (adm.GetPassword() == textBoxPassword.Text)
+                        if (adm.GetPassword() == GetHash(textBoxPassword.Password))
                         {
                             MessageBox.Show("Авторизация пройдена.");
                             Hide();
@@ -95,10 +95,12 @@ namespace LibraryAppDesign
             }
             if (action == "edit")
             {
-                if (textBoxLogin.Text != "" & textBoxPassword.Text != "")
+                if (textBoxLogin.Text != "" & textBoxPassword.Password != "")
                 {
                     admin.SetLogin(textBoxLogin.Text);
                     login = textBoxLogin.Text;
+                    admin.SetPassword(textBoxPassword.Password);
+                    _storage.SaveAdmin();
                     admin.SetPassword(textBoxPassword.Text);
                     _storage.Save();
                 }
@@ -118,8 +120,11 @@ namespace LibraryAppDesign
                 }
                 if (doing)
                 {
-                    if (textBoxLogin.Text != "" & textBoxPassword.Text != "")
+                    if (textBoxLogin.Text != "" & textBoxPassword.Password != "")
                     {
+                        Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Password);
+                        _storage.Admins.Add(newAdmin);
+                        _storage.SaveAdmin();
                         Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Text);
                         _storage.GetAdmins.Add(newAdmin);
                         _storage.Save();
@@ -134,6 +139,15 @@ namespace LibraryAppDesign
                     MessageBox.Show("Такой логин уже есть! Повторите попытку.");
                 }
             }
+        }
+
+        public static string GetHash(string password)
+        {
+            byte[] bytePass = new System.Text.UTF8Encoding().GetBytes(password);
+            SHA256 sha = new SHA256Managed();
+            byte[] bytesh = sha.ComputeHash(bytePass);
+            string result = BitConverter.ToString(bytesh);
+            return result;
         }
     }
 }

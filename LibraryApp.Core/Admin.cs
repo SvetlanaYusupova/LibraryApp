@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,13 @@ namespace LibraryApp.Core
         public Admin(string login, string password)
         {
             Login = login;
-            Password = password;
+            Password = GetHash(password);
+        }
+
+        [JsonConstructor]
+        private Admin()
+        {
+        
         }
 
         public string GetLogin()
@@ -37,7 +44,16 @@ namespace LibraryApp.Core
 
         public void SetPassword(string password)
         {
-            Password = password;
+            Password = GetHash(password);
+        }
+
+        public static string GetHash(string password)
+        {
+            byte[] bytePass = new System.Text.UTF8Encoding().GetBytes(password);
+            SHA256 sha = new SHA256Managed();
+            byte[] bytesh = sha.ComputeHash(bytePass);
+            string result = BitConverter.ToString(bytesh);
+            return result;
         }
     }
 }

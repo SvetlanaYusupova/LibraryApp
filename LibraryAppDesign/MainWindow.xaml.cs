@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -52,7 +53,7 @@ namespace LibraryAppDesign
             {
                 if (user.GetLogin() == textBoxName.Text)
                 {
-                    if (user.GetPassword() == textBoxPassword.Text)
+                    if (user.GetPassword() == GetHash(textBoxPassword.Password))
                     {
                         MessageBox.Show("Авторизация пройдена.");
                         
@@ -86,6 +87,15 @@ namespace LibraryAppDesign
             _storage.SaveAdmin();
             _storage.SaveNotifications();*/
             Close();
+        }
+
+        public static string GetHash(string password)
+        {
+            byte[] bytePass = new System.Text.UTF8Encoding().GetBytes(password);
+            SHA256 sha = new SHA256Managed();
+            byte[] bytesh = sha.ComputeHash(bytePass);
+            string result = BitConverter.ToString(bytesh);
+            return result;
         }
     }
 }
