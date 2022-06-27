@@ -27,8 +27,6 @@ namespace LibraryAppDesign
 
         string admin;
 
-
-
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             new WindowAdmin(admin).Show();
@@ -47,11 +45,6 @@ namespace LibraryAppDesign
             // для добавления новой книги
             new AddBookWindow(admin).Show();
             Close();
-        }
-
-        private void Changebook_Click(object sender, RoutedEventArgs e)
-        {
-            // для внесения изменений в данные по книге
         }
     }
 }
