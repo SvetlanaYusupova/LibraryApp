@@ -31,5 +31,8 @@
 
         <Button Grid.Row ="4" Grid.Column="1" Name="button5" Click="LogOut" Content="Завершить" Width="85" Height="40" FontSize="15" Background="Sienna" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"></Button>
 
+
+        <Button Grid.Row ="0" Grid.Column="0" Name="CB" Click="CB_Click" Content="Посмотреть рекомендацию" Width="200" Height="50" FontSize="15" Background="Sienna" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+
     </Grid>
 </Window>

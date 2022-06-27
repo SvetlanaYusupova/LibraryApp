@@ -75,5 +75,11 @@ namespace LibraryAppDesign
             new MainWindow().Show();
             Close();
         }
+
+        private void CB_Click(object sender, RoutedEventArgs e)
+        {
+            new CBWindow(userlogin, new List<string> { "", ""}).Show();
+            Close();
+        }
     }
 }

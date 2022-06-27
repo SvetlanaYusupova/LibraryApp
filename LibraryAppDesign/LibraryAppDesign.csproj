@@ -61,6 +61,9 @@
     <Compile Include="AnaliticsWindow.xaml.cs">
       <DependentUpon>AnaliticsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CBWindow.xaml.cs">
+      <DependentUpon>CBWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CheckDeletingBookWindow.xaml.cs">
       <DependentUpon>CheckDeletingBookWindow.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AnaliticsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CBWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
