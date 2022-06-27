@@ -100,8 +100,6 @@ namespace LibraryAppDesign
                     admin.SetLogin(textBoxLogin.Text);
                     login = textBoxLogin.Text;
                     admin.SetPassword(textBoxPassword.Password);
-                    _storage.SaveAdmin();
-                    admin.SetPassword(textBoxPassword.Text);
                     _storage.Save();
                 }
                 else
@@ -123,9 +121,7 @@ namespace LibraryAppDesign
                     if (textBoxLogin.Text != "" & textBoxPassword.Password != "")
                     {
                         Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Password);
-                        _storage.Admins.Add(newAdmin);
-                        _storage.SaveAdmin();
-                        Admin newAdmin = new Admin(textBoxLogin.Text, textBoxPassword.Text);
+                        
                         _storage.GetAdmins.Add(newAdmin);
                         _storage.Save();
                     }
