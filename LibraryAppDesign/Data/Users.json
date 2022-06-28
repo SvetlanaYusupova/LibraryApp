@@ -36,5 +36,30 @@
     "Messages": [
       "У вас истекает срок бронирования книги: E. Осталось менее 3 дней."
     ]
+  },
+  {
+    "Name": "Lana",
+    "Surname": "QW",
+    "Age": 22,
+    "Login": "Lana",
+    "Password": "A6-65-A4-59-20-42-2F-9D-41-7E-48-67-EF-DC-4F-B8-A0-4A-1F-3F-FF-1F-A0-7E-99-8E-86-F7-F7-A2-7A-E3",
+    "UsersBook": [],
+    "UsersOrderBook": [
+      {
+        "EndDate": "2022-07-04T00:00:00+03:00",
+        "BookName": "E",
+        "Author": [
+          "David Bodanis"
+        ],
+        "AgeRating": "18+",
+        "Description": "Examines the science and scientists who provided the backdrop to Einstein's influential 1905 discovery and offers an explanation of the equation from mathematical, historical, and scientific perspectives.",
+        "Genre": "Science",
+        "PublishedYear": 2000,
+        "Rating": 4.09,
+        "NumPages": 337
+      }
+    ],
+    "PastBooks": [],
+    "Messages": []
   }
 ]

@@ -17,11 +17,11 @@ users <- fromJSON(txt="Users.json")
 users = users %>% select(Login, PastBooks)
 metadata_content_based = books %>% select(id, BookName, Author, Genre, PublishedYear, Rating, NumPages)
 
-#возраст фильма
-metadata_content_based$film_age = 2022 - metadata_content_based$PublishedYear
+#возраст 
+metadata_content_based$book_age = 2022 - metadata_content_based$PublishedYear
 metadata_content_based = metadata_content_based %>% select(-PublishedYear)
 
-#длина названия фильма
+#длина названия 
 metadata_content_based = metadata_content_based %>% mutate(tlLength = str_length(metadata_content_based$BookName))
 metadata_content_based$tlLength = ifelse(is.na(metadata_content_based$tlLength), 0, metadata_content_based$tlLength)
 
@@ -51,7 +51,7 @@ review_top_terms <- review_topics %>%
 
 review_tags <- review_topics %>% rename(Genre = term)
 
-#Каждому тегу выбирается только одна группа с наибольшим бета
+#Каждому жанру выбирается только одна группа с наибольшим бета
 tags_best_beta <- review_tags %>% 
   group_by(Genre) %>% 
   summarise(max_beta = max(beta))
